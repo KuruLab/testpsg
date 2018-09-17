@@ -8,9 +8,10 @@ public class Attack extends Actor{
 
     private Texture attack;
     private float energy;
+    int ID, target, team;
 
 
-    public Attack(Texture attack, float energy, float modify, float bonus){
+    public Attack(Texture attack, int target, float energy, float modify, float bonus){
         this.attack = attack;
         this.energy = energy*modify + bonus;
     }
