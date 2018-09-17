@@ -7,17 +7,22 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class Attack extends Actor{
 
     private Texture attack;
+    private float energy;
 
-    public Attack(Texture attack){
 
+    public Attack(Texture attack, float energy, float modify, float bonus){
         this.attack = attack;
+        this.energy = energy*modify + bonus;
+    }
 
+    @Override
+    public void act(float delta) {
+        super.act(delta);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-
-        batch.draw(attack, getX(), getY());
-
+        batch.setColor(1,0,1,1);
+        batch.draw(attack, getX(), getY(), energy, energy);
     }
 }

@@ -1,6 +1,7 @@
-package com.mygdx.game.psg;
+package com.mygdx.game.psg.Screens;
 
 import com.badlogic.gdx.Screen;
+import com.mygdx.game.psg.MainGame;
 
 public abstract class BaseScreen implements Screen {
 
