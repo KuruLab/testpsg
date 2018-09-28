@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class Player extends Actor {
+public class Players extends Actor {
 
     private Texture cell;
     private World world;
@@ -23,7 +23,7 @@ public class Player extends Actor {
 
 
 
-    public Player(Texture cell, World world) {
+    public Players(Texture cell, World world) {
 
         super();
         this.cell = cell;

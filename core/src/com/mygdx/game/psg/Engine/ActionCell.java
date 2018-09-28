@@ -9,12 +9,10 @@ public class ActionCell extends Action {
 
     public void ActionCell(){
 
-
     }
 
     @Override
     public boolean act(float delta) {
-
 
         return false;
     }

@@ -4,10 +4,10 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.psg.Screens.PlayScreen;
 
-public class MainGame extends Game {
+public class MainGame extends Game{
 
 	public SpriteBatch batch;
-	public static final int V_Width = 1080*2, V_Height = 1920*2, PPM = 100;
+	public static final float V_Width = 1080, V_Height = 1920, PPM = 100;
 
 	@Override
 	public void create() {
@@ -21,4 +21,5 @@ public class MainGame extends Game {
 		super.render();
 
 	}
+
 }
