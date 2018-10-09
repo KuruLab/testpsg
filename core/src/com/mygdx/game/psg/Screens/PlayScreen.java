@@ -2,10 +2,10 @@ package com.mygdx.game.psg.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -19,19 +19,38 @@ import com.mygdx.game.psg.MainGame;
 import com.mygdx.game.psg.Sprites.Attack;
 import com.mygdx.game.psg.Sprites.Cell;
 
+import java.util.ArrayList;
+
+import static com.badlogic.gdx.math.MathUtils.*;
+import static com.mygdx.game.psg.Sprites.Cell.Clear;
+import static com.mygdx.game.psg.Sprites.Cell.DamageCell;
+
 public class PlayScreen implements Screen{
     private Stage stage;
 
-    //auxiliary variables
-    public static Vector2 positionCamera, sizeViewport;
+    public enum Team {
+        NEUTRAL,
+        PLAYER,
+        BOT1,
+        BOT2,
+        BOT3,
+        BOT4;
+    }
+
+    //other variables
+    public static Vector2 positionCamera, sizeViewport, positionSelected, positionTarget, positionA, positionB, attackDirection;
+    public static Team selectedTeam;
+    public static Color selectedColor;
     public static boolean oneSelected, oneTarget;
-    public static  int selectedeID, targedID;
+    public static int selectedID, targetID;
+    public static float selectedRadius;
 
+    public static ArrayList<Vector2> contact = new ArrayList<Vector2>();
 
+    //game elements
     private MainGame game;
     private OrthographicCamera camera;
     private Viewport viewport;
-
     private World world;
     private Box2DDebugRenderer box2DDebugRenderer;
 
@@ -39,8 +58,8 @@ public class PlayScreen implements Screen{
     private Texture textureCell = new Texture("cell.png");
     private Texture textureAttack = new Texture("attack.png");
 
-    private int ID = 0, numberOfCells = 10;
-    private Actor cell1, cell2, cell3;
+    //initial values
+    private int ID = 0, numberOfNeltral = 20, teamCells = 2;
 
     public PlayScreen(MainGame game){
 
@@ -60,57 +79,50 @@ public class PlayScreen implements Screen{
         box2DDebugRenderer = new Box2DDebugRenderer();
         CollisionDetector collisionDetector = new CollisionDetector();
         world.setContactListener(collisionDetector);
+
+
+        //world.setAutoClearForces(true);
     }
 
     @Override
     public void show() {
-
-        //create units
-        //cell1 = new Cell(world, 600, 700, 1);
-        //cell2 = new Cell(world, 300, 600, 2);
-        //cell3 = new Cell(world, 800, 1000, 3);
+         attackDirection = new Vector2();
 
         //add units on stage
         stage = new Stage();
 
-        for(int i = 0; i <= numberOfCells; i++){
-            stage.addActor(new Cell(world, MathUtils.random(-MainGame.V_Width/2,MainGame.V_Width*3/2),
-                    MathUtils.random(-MainGame.V_Height/2,MainGame.V_Width*3/2), setID()));
-        }
-        //stage.addActor(cell1);
-        //stage.addActor(cell2);
-        //stage.addActor(cell3);
+        firstGame();
 
-        for(int i = 0; i <= numberOfCells; i++){
-            stage.addActor(new Attack(world, 0, MathUtils.random(-MainGame.V_Width/2,MainGame.V_Width*3/2),
-                    MathUtils.random(-MainGame.V_Height/2,MainGame.V_Width*3/2), setID()));
-        }
 
-        if(oneSelected && oneTarget && true){
 
-            stage.addActor(new Attack(world, targedID ,
-                    stage.getActors().get(targedID).getX(),stage.getActors().get(targedID).getX(), setID()));
-            oneSelected = false;
-            oneTarget = false;
-        }
+        //action Bot
+        for(Actor Bot : stage.getActors()){
 
-        for(Actor actor : stage.getActors())
-        {
 
         }
     }
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0f,0.1f,0.4f,0.5f);
+        //physics time execute
+        world.step(1/60f, 6,2);
+
+        Gdx.gl.glClearColor(0.8f,0.8f,0.8f,1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        //Matrix4 matrix4 = game.batch.getProjectionMatrix().cpy().scale(MainGame.PPM, MainGame.PPM, 0);
-        //box2DDebugRenderer.render(world, matrix4);
+        //Draw body
+        Matrix4 matrix4 = game.batch.getProjectionMatrix().cpy().scale(MainGame.PPM, MainGame.PPM, 0);
+        box2DDebugRenderer.render(world, matrix4);
         game.batch.setProjectionMatrix(camera.combined);
+
 
         //update players
         stage.act();
+
+        //Collisions
+        updateCollision();
+
+
 
         //draw textures
         for(Actor actor : stage.getActors())
@@ -123,12 +135,22 @@ public class PlayScreen implements Screen{
         for(Actor actor : stage.getActors())
         {
             if(actor.getClass()== Attack.class) {
-                DrawAttack((Attack) actor);
+                if(((Attack) actor).remove) {
+                    world.destroyBody(((Attack) actor).body);
+                    actor.remove();
+                }else{
+                    DrawAttack((Attack) actor);
+                }
             }
         }
 
+
+
+        createAttack();
+
         //other updates
-        update();
+        updateCamera(delta);
+
     }
 
     @Override
@@ -163,60 +185,87 @@ public class PlayScreen implements Screen{
         box2DDebugRenderer.dispose();
     }
 
-    private void controlCamera(){
-        if (Gdx.input.isTouched()){
+    private void controlCamera(float delta){
 
-            camera.position.x -= Gdx.input.getDeltaX()*MainGame.V_Width/ sizeViewport.x;
-            camera.position.y += Gdx.input.getDeltaY()*MainGame.V_Height/ sizeViewport.y;
+        if (Gdx.input.isTouched()) {
 
-            if(camera.position.x < 0){
-                camera.position.x = 0;
-            }
-            if(camera.position.x > MainGame.V_Width){
-                camera.position.x = MainGame.V_Width;
-            }
-            if(camera.position.y < 0){
-                camera.position.y = 0;
-            }
-            if(camera.position.y > MainGame.V_Height) {
-                camera.position.y = MainGame.V_Height;
-            }
-            positionCamera.set(camera.position.x, camera.position.y);
+            camera.position.x -= Gdx.input.getDeltaX() * MainGame.V_Width / sizeViewport.x;
+            camera.position.y += Gdx.input.getDeltaY() * MainGame.V_Height / sizeViewport.y;
+
+        }else{
+
+            if(oneSelected) {
+
+                camera.position.x = camera.position.x + (positionSelected.x * MainGame.PPM * sizeViewport.x / MainGame.V_Width + sizeViewport.x / 2
+                        - positionCamera.x * sizeViewport.x / MainGame.V_Width - (sizeViewport.x / 2))*delta;
+
+                camera.position.y = camera.position.y + (positionSelected.y * MainGame.PPM * sizeViewport.y / MainGame.V_Height + sizeViewport.y / 2
+                        - positionCamera.y * sizeViewport.y / MainGame.V_Height - (sizeViewport.y / 2))*delta;
+                }
         }
+
+        if(camera.position.x < -MainGame.V_Width/2){
+            camera.position.x = -MainGame.V_Width/2;
+        }
+        if(camera.position.x > MainGame.V_Width*3/2){
+            camera.position.x = MainGame.V_Width*3/2;
+        }
+        if(camera.position.y < 0){
+            camera.position.y = 0;
+        }
+        if(camera.position.y > MainGame.V_Height) {
+            camera.position.y = MainGame.V_Height;
+        }
+        positionCamera.set(camera.position.x, camera.position.y);
     }
 
-    private void update(){
-        //physics time execute
-        world.step(1/60f, 6,2);
-
+    private void updateCamera(float delta){
         //update camera
-        controlCamera();
-        camera.update();
-        positionCamera.set(camera.position.x, camera.position.y);
+        controlCamera(delta);
         sizeViewport.set(viewport.getScreenWidth(),viewport.getScreenHeight());
+        positionCamera.set(camera.position.x, camera.position.y);
+        camera.update();
     }
 
     private void DrawCell(Cell cell){
-
-
         game.batch.begin();
-        if(cell.selected){game.batch.setColor(0.9f,0.1f,0.1f,1);}
-        if(!cell.selected){game.batch.setColor(0.8f,0.8f,0.9f,1);}
+        if(cell.selected){
+         /*   game.batch.setColor(
+                    cell.getColor().r,
+                    cell.getColor().g,
+                    cell.getColor().b, 0.05f);
 
-        game.batch.draw(textureCell,
-               cell.body.getPosition().x*MainGame.PPM - cell.baseRadius,
-               cell.body.getPosition().y*MainGame.PPM - cell.baseRadius,
-               cell.baseRadius *2,cell.baseRadius *2);
-        game.batch.end();
+            game.batch.draw(
+                    textureCell,
+                    cell.body.getPosition().x*MainGame.PPM - cell.baseRadius-100,
+                    cell.body.getPosition().y*MainGame.PPM - cell.baseRadius-100,
+                    (cell.baseRadius + 100) *2,
+                    (cell.baseRadius + 100) *2);*/
+
+            game.batch.setColor(
+                    cell.getColor().r*1f,
+                    cell.getColor().g*1f,
+                    cell.getColor().b*1f,
+                    cell.getColor().a*0.7f);
+        }
+
+        if(!cell.selected){game.batch.setColor(cell.getColor());}
+
+            game.batch.draw(
+                    textureCell,
+                   cell.body.getPosition().x*MainGame.PPM - cell.baseRadius,
+                   cell.body.getPosition().y*MainGame.PPM - cell.baseRadius,
+                   cell.baseRadius *2,
+                   cell.baseRadius *2);
+            game.batch.end();
     }
 
     private void DrawAttack(Attack attack){
 
         game.batch.begin();
+        game.batch.setColor(attack.getColor());
 
-        game.batch.setColor(0.9f,0.9f,0.1f,1);
-
-        game.batch.draw(textureAttack,
+        game.batch.draw(textureCell,
                 attack.body.getPosition().x*MainGame.PPM - attack.baseRadius,
                 attack.body.getPosition().y*MainGame.PPM - attack.baseRadius,
                 attack.baseRadius *2,attack.baseRadius *2);
@@ -228,5 +277,91 @@ public class PlayScreen implements Screen{
         ID = ID+1;
 
         return ID-1;
+    }
+
+    private void createAttack(){
+        if(oneSelected && oneTarget){
+
+            stage.addActor(new Attack(world,(stage.getActors().get(selectedID)).getX()*MainGame.PPM,
+                    (stage.getActors().get(selectedID)).getY()*MainGame.PPM, setID(), selectedRadius, selectedColor, selectedTeam));
+
+            Clear((Cell)stage.getActors().get(selectedID));
+            Clear((Cell)stage.getActors().get(targetID));
+
+            oneSelected = false;
+            oneTarget = false;
+        }
+    }
+
+    public void updateCollision(){
+
+        while(contact.size() > 0){
+
+            positionA = contact.get(0);
+            contact.remove(0);
+            contact.trimToSize();
+
+            positionB = contact.get(0);
+            contact.remove(0);
+            contact.trimToSize();
+
+            for(int a = 0; a < stage.getActors().size; a++) {
+
+                if (stage.getActors().items[a].getX() == positionA.x && stage.getActors().items[a].getY() == positionA.y) {
+
+                    for (int b = 0; b < stage.getActors().size; b++) {
+
+                        if (stage.getActors().items[b].getX() == positionB.x && stage.getActors().items[b].getY() == positionB.y) {
+
+                            DamageCell(stage.getActors().get(a),stage.getActors().get(b));
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    private void firstGame(){
+
+        //Neutral
+        for(int i = 0; i < numberOfNeltral; i++){
+            stage.addActor(new Cell(world, random(-MainGame.V_Width,MainGame.V_Width),
+                    random(-MainGame.V_Height/2,MainGame.V_Height*3/2), setID(), Team.NEUTRAL));
+        }
+
+        //Player
+        for(int i = 0; i < teamCells; i++){
+            stage.addActor(new Cell(world, random(-MainGame.V_Width,MainGame.V_Width),
+                    random(-MainGame.V_Height/2,MainGame.V_Height*3/2), setID(), Team.PLAYER));
+        }
+
+        //Bot1
+        for(int i = 0; i < teamCells; i++){
+            stage.addActor(new Cell(world, random(-MainGame.V_Width,MainGame.V_Width),
+                    random(-MainGame.V_Height/2,MainGame.V_Height*3/2), setID(), Team.BOT1));
+        }
+
+        //Bot2
+        for(int i = 0; i < teamCells; i++) {
+            stage.addActor(new Cell(world, random(-MainGame.V_Width, MainGame.V_Width),
+                    random(-MainGame.V_Height / 2, MainGame.V_Height * 3 / 2), setID(), Team.BOT2));
+        }
+
+        //Bot3
+        //Bot2
+        for(int i = 0; i < teamCells; i++) {
+            stage.addActor(new Cell(world, random(-MainGame.V_Width, MainGame.V_Width),
+                    random(-MainGame.V_Height / 2, MainGame.V_Height * 3 / 2), setID(), Team.BOT3));
+        }
+
+        //Bot4
+        //Bot2
+        for(int i = 0; i < teamCells; i++) {
+            stage.addActor(new Cell(world, random(-MainGame.V_Width, MainGame.V_Width),
+                    random(-MainGame.V_Height / 2, MainGame.V_Height * 3 / 2), setID(), Team.BOT4));
+        }
     }
 }

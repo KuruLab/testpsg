@@ -4,21 +4,16 @@ import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import com.mygdx.game.psg.Screens.PlayScreen;
 
 public class CollisionDetector implements ContactListener {
 
     @Override
     public void beginContact(Contact contact) {
         if(contact.getFixtureA().getBody().isBullet()!= contact.getFixtureB().getBody().isBullet()){
-
-
-
+            PlayScreen.contact.add(contact.getFixtureA().getBody().getPosition());
+            PlayScreen.contact.add(contact.getFixtureB().getBody().getPosition());
         }
-
-        if(contact.getFixtureA().getBody().isBullet() == true) {}
-
-        if(contact.getFixtureB().getBody().isBullet() == true) {}
-
     }
 
     @Override
