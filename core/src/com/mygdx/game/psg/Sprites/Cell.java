@@ -29,7 +29,7 @@ public class Cell extends Actor {
 
     public boolean selected, target, moving;
 
-    public Cell(World world, float x, float y, int ID, Team team) {
+    public Cell(float x, float y, int ID, Team team) {
         this.angle = new Vector2();
         this.move = new Vector2();
         this.bodyPosition = new Vector2();
@@ -44,17 +44,18 @@ public class Cell extends Actor {
         setColor();
         maxEnergy = 200;
         actualEnergy = maxEnergy*0.25f;
+        radiusEnergy = actualEnergy/maxEnergy;
         setX(x);
         setY(y);
-        setCell(world);
+        setCell();
     }
 
-    private void setCell(World world) {
+    private void setCell() {
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.position.set(getX() / MainGame.PPM, getY() / MainGame.PPM);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        body = world.createBody(bodyDef);
+        body = PlayScreen.world.createBody(bodyDef);
 
         FixtureDef fixtureDef = new FixtureDef();
         CircleShape circleShape = new CircleShape();
@@ -77,7 +78,7 @@ public class Cell extends Actor {
         DelimiterBorder();
         SelectOrTarget();
         MoveOrAttack();
-        //Regeneration();
+        Regeneration();
         setColor();
 
         setX(body.getPosition().x);
@@ -199,22 +200,19 @@ public class Cell extends Actor {
 
         if(actorA.getClass() == Cell.class){
 
-            System.out.println(((Cell)actorA).actualEnergy);
-            System.out.println(((Attack)actorB).actualEnergy);
-
-            ((Cell)actorA).actualEnergy = ((Cell)actorA).actualEnergy - ((Attack)actorB).actualEnergy*0.5f;
-
+            if(((Cell) actorA).team == ((Attack) actorB).team){
+                ((Cell)actorA).actualEnergy = ((Cell)actorA).actualEnergy + ((Attack)actorB).actualEnergy*0.5f;
+            }else {
+                ((Cell) actorA).actualEnergy = ((Cell) actorA).actualEnergy - ((Attack) actorB).actualEnergy * 0.5f;
+            }
 
             if(((Cell)actorA).actualEnergy < 0){
-
-                System.out.println(((Cell)actorA).team +" "+ ((Attack)actorB).team);
-
                 ((Cell)actorA).actualEnergy = (-1)*((Cell)actorA).actualEnergy;
                 ((Cell)actorA).team = ((Attack)actorB).team;
-
             }
 
             ((Attack)actorB).actualEnergy = ((Attack)actorB).actualEnergy - ((Attack)actorB).actualEnergy*0.5f;
+            ((Attack)actorB).damaged = true;
 
             if(((Attack)actorB).actualEnergy <= ((Attack)actorB).baseAttack){
                 ((Attack)actorB).remove = true;
@@ -222,30 +220,30 @@ public class Cell extends Actor {
 
         }else{
 
-
-            ((Cell)actorB).actualEnergy = ((Cell)actorB).actualEnergy - ((Attack)actorA).actualEnergy*0.5f;
+            if(((Cell)actorB).team == ((Attack)actorA).team){
+                ((Cell)actorB).actualEnergy = ((Cell)actorB).actualEnergy + ((Attack)actorA).actualEnergy*0.5f;
+            }else {
+                ((Cell) actorB).actualEnergy = ((Cell) actorB).actualEnergy - ((Attack) actorA).actualEnergy * 0.5f;
+            }
 
             if(((Cell)actorB).actualEnergy < 0){
-
                 ((Cell)actorB).actualEnergy = (-1)*((Cell)actorB).actualEnergy;
                 ((Cell)actorB).team = ((Attack)actorA).team;
-
             }
 
             ((Attack)actorA).actualEnergy = ((Attack)actorA).actualEnergy - ((Attack)actorA).actualEnergy*0.5f;
-
+            ((Attack)actorA).damaged = true;
 
             if(((Attack)actorA).actualEnergy < ((Attack)actorA).baseAttack){
                 ((Attack)actorA).remove = true;
             }
-
         }
-
-
     }
 
     private void Regeneration(){
-        actualEnergy = actualEnergy + baseRegeneration;
+        if(actualEnergy < maxEnergy*1.2f) {
+            actualEnergy = actualEnergy + baseRegeneration;
+        }
     }
 
     private void setColor(){

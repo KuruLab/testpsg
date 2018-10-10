@@ -51,7 +51,7 @@ public class PlayScreen implements Screen{
     private MainGame game;
     private OrthographicCamera camera;
     private Viewport viewport;
-    private World world;
+    public static World world;
     private Box2DDebugRenderer box2DDebugRenderer;
 
     //load textures
@@ -230,33 +230,36 @@ public class PlayScreen implements Screen{
     private void DrawCell(Cell cell){
         game.batch.begin();
         if(cell.selected){
-         /*   game.batch.setColor(
-                    cell.getColor().r,
-                    cell.getColor().g,
-                    cell.getColor().b, 0.05f);
-
-            game.batch.draw(
-                    textureCell,
-                    cell.body.getPosition().x*MainGame.PPM - cell.baseRadius-100,
-                    cell.body.getPosition().y*MainGame.PPM - cell.baseRadius-100,
-                    (cell.baseRadius + 100) *2,
-                    (cell.baseRadius + 100) *2);*/
 
             game.batch.setColor(
-                    cell.getColor().r*1f,
-                    cell.getColor().g*1f,
-                    cell.getColor().b*1f,
-                    cell.getColor().a*0.7f);
-        }
+                    cell.getColor().r*0.7f,
+                    cell.getColor().g*0.7f,
+                    cell.getColor().b*0.7f,
+                    cell.getColor().a*1f);
+        }else{
+            game.batch.setColor(cell.getColor());}
 
-        if(!cell.selected){game.batch.setColor(cell.getColor());}
-
+            //draw cell
             game.batch.draw(
                     textureCell,
                    cell.body.getPosition().x*MainGame.PPM - cell.baseRadius,
                    cell.body.getPosition().y*MainGame.PPM - cell.baseRadius,
                    cell.baseRadius *2,
                    cell.baseRadius *2);
+
+        game.batch.setColor(
+                cell.getColor().r*0.8f,
+                cell.getColor().g*0.8f,
+                cell.getColor().b*0.8f,
+                cell.getColor().a*1f);
+
+            //draw energy
+            game.batch.draw(textureCell,
+                    cell.body.getPosition().x*MainGame.PPM - cell.radiusEnergy,
+                    cell.body.getPosition().y*MainGame.PPM - cell.radiusEnergy,
+                    cell.radiusEnergy*2,
+                    cell.radiusEnergy*2);
+
             game.batch.end();
     }
 
@@ -282,7 +285,7 @@ public class PlayScreen implements Screen{
     private void createAttack(){
         if(oneSelected && oneTarget){
 
-            stage.addActor(new Attack(world,(stage.getActors().get(selectedID)).getX()*MainGame.PPM,
+            stage.addActor(new Attack((stage.getActors().get(selectedID)).getX()*MainGame.PPM,
                     (stage.getActors().get(selectedID)).getY()*MainGame.PPM, setID(), selectedRadius, selectedColor, selectedTeam));
 
             Clear((Cell)stage.getActors().get(selectedID));
@@ -328,39 +331,39 @@ public class PlayScreen implements Screen{
 
         //Neutral
         for(int i = 0; i < numberOfNeltral; i++){
-            stage.addActor(new Cell(world, random(-MainGame.V_Width,MainGame.V_Width),
+            stage.addActor(new Cell(random(-MainGame.V_Width,MainGame.V_Width),
                     random(-MainGame.V_Height/2,MainGame.V_Height*3/2), setID(), Team.NEUTRAL));
         }
 
         //Player
         for(int i = 0; i < teamCells; i++){
-            stage.addActor(new Cell(world, random(-MainGame.V_Width,MainGame.V_Width),
+            stage.addActor(new Cell(random(-MainGame.V_Width,MainGame.V_Width),
                     random(-MainGame.V_Height/2,MainGame.V_Height*3/2), setID(), Team.PLAYER));
         }
 
         //Bot1
         for(int i = 0; i < teamCells; i++){
-            stage.addActor(new Cell(world, random(-MainGame.V_Width,MainGame.V_Width),
+            stage.addActor(new Cell(random(-MainGame.V_Width,MainGame.V_Width),
                     random(-MainGame.V_Height/2,MainGame.V_Height*3/2), setID(), Team.BOT1));
         }
 
         //Bot2
         for(int i = 0; i < teamCells; i++) {
-            stage.addActor(new Cell(world, random(-MainGame.V_Width, MainGame.V_Width),
+            stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                     random(-MainGame.V_Height / 2, MainGame.V_Height * 3 / 2), setID(), Team.BOT2));
         }
 
         //Bot3
         //Bot2
         for(int i = 0; i < teamCells; i++) {
-            stage.addActor(new Cell(world, random(-MainGame.V_Width, MainGame.V_Width),
+            stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                     random(-MainGame.V_Height / 2, MainGame.V_Height * 3 / 2), setID(), Team.BOT3));
         }
 
         //Bot4
         //Bot2
         for(int i = 0; i < teamCells; i++) {
-            stage.addActor(new Cell(world, random(-MainGame.V_Width, MainGame.V_Width),
+            stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                     random(-MainGame.V_Height / 2, MainGame.V_Height * 3 / 2), setID(), Team.BOT4));
         }
     }

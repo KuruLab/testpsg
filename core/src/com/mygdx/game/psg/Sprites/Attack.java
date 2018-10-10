@@ -19,6 +19,8 @@ public class Attack extends Actor {
     public  Body body;
     private Vector2 velocity;
 
+    public boolean refactorBody, damaged;
+
     public float maxEnergy, actualEnergy, radiusEnergy;
 
     public float baseRadius = 25;
@@ -30,8 +32,9 @@ public class Attack extends Actor {
     private CircleShape circleShape = new CircleShape();
     private FixtureDef fixtureDef = new FixtureDef();
 
-    public Attack(World world, float x, float y, int ID, float radius,  Color color, PlayScreen.Team team){
-        actualEnergy = 50;
+    public Attack(float x, float y, int ID, float radius,  Color color, PlayScreen.Team team){
+        actualEnergy = 100;
+        maxEnergy = 100;
         baseAttack = 10;
         velocity = new Vector2();
         velocity.set(0,0);
@@ -39,28 +42,14 @@ public class Attack extends Actor {
         setColor(color);
         setX(x);
         setY(y);
-        setAttack(world, team, radius);
+        setAttack(team, radius);
 
     }
 
-    private void setAttack(World world, PlayScreen.Team team, float radius){
+    private void setAttack(PlayScreen.Team team, float radius){
 
         velocity.set(radius + baseRadius,1).setAngle(PlayScreen.attackDirection.angle());
-
-        BodyDef bodyDef = new BodyDef();
-        bodyDef.position.set((getX()+velocity.x)/MainGame.PPM,
-                (getY()+velocity.y)/MainGame.PPM);
-
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
-        body = world.createBody(bodyDef);
-
-
-        body.createFixture(setFixtureDef());
-        body.setBullet(true);
-
-        velocity.set(baseMove,baseMove).setAngle(PlayScreen.attackDirection.angle());
-        body.setLinearVelocity(velocity);
-
+        SetBody(velocity.x, velocity.y);
 
         this.team = team;
     }
@@ -70,19 +59,28 @@ public class Attack extends Actor {
 
 
         DelimiterBorder();
+/*
+        if(refactorBody) {
+            radiusEnergy = baseRadius * actualEnergy / maxEnergy;
+            RefactorBody();
+        }
 
+        if(damaged){
+            refactorBody = true;
+        }
+*/
         setX(body.getPosition().x);
         setY(body.getPosition().y);
     }
 
     private  float circleArea(float radius){
 
-        return radius*radius*3.14f;
+        return radius*radius*(float)Math.PI;
     }
 
     private float radiusEnergy(float energy){
 
-        return (float)Math.sqrt(energy*3.14f);
+        return (float)Math.sqrt(energy*(float)Math.PI);
     }
 
     private void DelimiterBorder() {
@@ -103,9 +101,9 @@ public class Attack extends Actor {
         }
     }
 
-    private FixtureDef setFixtureDef(){
+    private FixtureDef SetFixtureDef(){
 
-        circleShape.setRadius(baseRadius /MainGame.PPM);
+        circleShape.setRadius((baseRadius * actualEnergy/maxEnergy) /MainGame.PPM);
         fixtureDef.shape = circleShape;
 
         fixtureDef.density = 0.3f;
@@ -114,6 +112,47 @@ public class Attack extends Actor {
 
         return fixtureDef;
     }
+
+    private  void SetBody(float x, float y){
+        BodyDef bodyDef = new BodyDef();
+
+        bodyDef.position.set((getX()+x)/MainGame.PPM,
+                (getY()+y)/MainGame.PPM);
+
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        body = PlayScreen.world.createBody(bodyDef);
+
+
+        body.createFixture(SetFixtureDef());
+        body.setBullet(true);
+
+        velocity.set(baseMove,baseMove).setAngle(PlayScreen.attackDirection.angle());
+        body.setLinearVelocity(velocity);
+    }
+
+    private void RefactorBody(){
+        velocity.set(body.getLinearVelocity());
+
+        PlayScreen.world.destroyBody(this.body);
+        SetBody(0,0);
+
+        BodyDef bodyDef = new BodyDef();
+
+        bodyDef.position.set(getX(), getY());
+
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        body = PlayScreen.world.createBody(bodyDef);
+
+
+        body.createFixture(SetFixtureDef());
+        body.setBullet(true);
+
+        body.setLinearVelocity(velocity);
+
+        damaged = false;
+        refactorBody = false;
+    }
+
 }
 
 
