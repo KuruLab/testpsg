@@ -7,46 +7,57 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.mygdx.game.psg.Engine.Attribute;
 import com.mygdx.game.psg.MainGame;
 import com.mygdx.game.psg.Screens.PlayScreen;
 import static com.mygdx.game.psg.Screens.PlayScreen.*;
 
 public class Cell extends Actor {
 
-
+    public enum Team {
+        NEUTRAL,
+        PLAYER,
+        BOT1,
+        BOT2,
+        BOT3,
+        BOT4
+    }
 
     public Team team;
     public Body body;
 
-    private Vector2 angle, move, bodyPosition, inputPosition, gamePosition, velocity;
+    private Vector2 angle, move, bodyPosition, inputPosition, velocity;
 
-    public float baseRadius = 80, baseRegeneration = 0.1f;
-    private float baseMove = 1;
+    private float  baseRegeneration;
+    public float baseMove;
+    public float baseRadius;
 
-    public float maxEnergy, actualEnergy, radiusEnergy;
+    public float maxEnergy, actualEnergy, radiusEnergy, baseAttack;
+    public boolean selected, moving;
 
-    public boolean selected, target, moving;
+    public Cell(float x, float y, Team team) {
+        angle = new Vector2();
+        move = new Vector2();
+        bodyPosition = new Vector2();
+        inputPosition = new Vector2();
+        velocity = new Vector2(0,0);
+        Attribute DNA = new Attribute();
 
-    public Cell(float x, float y, int ID, Team team) {
-        this.angle = new Vector2();
-        this.move = new Vector2();
-        this.bodyPosition = new Vector2();
-        this.inputPosition = new Vector2();
-        this.gamePosition = new Vector2();
-        this.velocity = new Vector2(0,0);
-        setZIndex(ID);
+        baseRadius = 50 + (DNA.AttributeCount(Attribute.AttributeType.SIZE) * 4.5f);
+        baseRegeneration = 0.5f + (DNA.AttributeCount(Attribute.AttributeType.REGEN) * 0.1f);
+        baseAttack = 25 + (DNA.AttributeCount(Attribute.AttributeType.ATTACK) * 5.75f);
+        baseMove = 1 + (DNA.AttributeCount(Attribute.AttributeType.SPEED) * 0.05f);
 
-
+        maxEnergy = CircleArea(baseRadius);
+        actualEnergy = maxEnergy *(DNA.AttributeCount(Attribute.AttributeType.DEFENSE) * 0.01f);
+        radiusEnergy = baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
 
         this.team = team;
-        setColor();
-        maxEnergy = 200;
-        actualEnergy = maxEnergy*0.25f;
-        radiusEnergy = actualEnergy/maxEnergy;
+
         setX(x);
         setY(y);
+        setColor();
         setCell();
     }
 
@@ -73,7 +84,7 @@ public class Cell extends Actor {
 
     @Override
     public void act(float delta) {
-        this.radiusEnergy = RadiusEnergy(actualEnergy);
+        radiusEnergy = baseRadius * RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
 
         DelimiterBorder();
         SelectOrTarget();
@@ -132,35 +143,29 @@ public class Cell extends Actor {
     private void SelectOrTarget() {
 
             if (Gdx.input.justTouched() && isTouched() && selected == PlayScreen.oneSelected) {
-                body.setLinearVelocity(0, 0);
-                PlayScreen.oneSelected = !PlayScreen.oneSelected;
-                PlayScreen.selectedID = getZIndex();
-                PlayScreen.selectedTeam = team;
-                PlayScreen.positionSelected = body.getPosition();
-                PlayScreen.selectedRadius = baseRadius;
-                PlayScreen.selectedColor = getColor();
-                selected = !selected;
-                moving = false;
+                Select();
             } else {
 
                 if (Gdx.input.justTouched() && isTouched() && PlayScreen.oneSelected && !selected) {
-                    PlayScreen.positionTarget = body.getPosition();
-                    PlayScreen.targetID = getZIndex();
                     PlayScreen.oneTarget = true;
-                    target = true;
+                    targetCell = this;
                 }
             }
+        if(selected && PlayScreen.oneSelected) {
 
-        if (selected && PlayScreen.oneSelected || target && PlayScreen.oneTarget) {
-            PlayScreen.positionSelected = body.getPosition();
-            PlayScreen.positionTarget = body.getPosition();
+            if (BodyPosition(bodyPosition).x + baseRadius*sizeViewport.x/MainGame.V_Width < 0 ||
+                BodyPosition(bodyPosition).y + baseRadius*sizeViewport.y/MainGame.V_Height < 0 ||
+                BodyPosition(bodyPosition).x - baseRadius*sizeViewport.x/MainGame.V_Width  > sizeViewport.x ||
+                BodyPosition(bodyPosition).y - baseRadius*sizeViewport.y/MainGame.V_Height > sizeViewport.y) {
+
+                Select();
+            }
         }
     }
 
     private void MoveOrAttack() {
         if(moving) {
             if (Gdx.input.justTouched() && selected) {
-
                 move.set(Gdx.input.getX(), Gdx.input.getY());
                 angle.set(InputPosition(inputPosition).sub(bodyPosition));
                 velocity.set(baseMove, baseMove).setAngle(angle.angle());
@@ -177,12 +182,12 @@ public class Cell extends Actor {
         }else{moving = true;}
     }
 
-    private float CircleArea(float radius){
+    private static float CircleArea(float radius){
 
         return radius*radius*3.14f;
     }
 
-    private float RadiusEnergy(float energy){
+    private static float RadiusEnergy(float energy){
 
         return (float)Math.sqrt(energy*3.14f);
     }
@@ -191,19 +196,20 @@ public class Cell extends Actor {
         if(cell.selected) {
             cell.body.setLinearVelocity(0, 0);
         }
-
+        cell.moving = false;
         cell.selected = false;
-        cell.target = false;
+        PlayScreen.oneSelected = false;
+        PlayScreen.oneTarget = false;
     }
 
-    public static void DamageCell(Actor actorA, Actor actorB){
+    public static void Contact(Actor actorA, Actor actorB){
 
         if(actorA.getClass() == Cell.class){
 
             if(((Cell) actorA).team == ((Attack) actorB).team){
                 ((Cell)actorA).actualEnergy = ((Cell)actorA).actualEnergy + ((Attack)actorB).actualEnergy*0.5f;
             }else {
-                ((Cell) actorA).actualEnergy = ((Cell) actorA).actualEnergy - ((Attack) actorB).actualEnergy * 0.5f;
+                ((Cell) actorA).actualEnergy = ((Cell) actorA).actualEnergy - ((Attack) actorB).actualEnergy;
             }
 
             if(((Cell)actorA).actualEnergy < 0){
@@ -211,8 +217,8 @@ public class Cell extends Actor {
                 ((Cell)actorA).team = ((Attack)actorB).team;
             }
 
-            ((Attack)actorB).actualEnergy = ((Attack)actorB).actualEnergy - ((Attack)actorB).actualEnergy*0.5f;
-            ((Attack)actorB).damaged = true;
+            ((Attack)actorB).actualEnergy = ((Attack)actorB).actualEnergy - ((Attack)actorB).actualEnergy*0.25f;
+            ((Attack)actorB).modifyEnergy = true;
 
             if(((Attack)actorB).actualEnergy <= ((Attack)actorB).baseAttack){
                 ((Attack)actorB).remove = true;
@@ -221,9 +227,9 @@ public class Cell extends Actor {
         }else{
 
             if(((Cell)actorB).team == ((Attack)actorA).team){
-                ((Cell)actorB).actualEnergy = ((Cell)actorB).actualEnergy + ((Attack)actorA).actualEnergy*0.5f;
+                ((Cell)actorB).actualEnergy = ((Cell)actorB).actualEnergy + ((Attack)actorA).actualEnergy * 0.5f;
             }else {
-                ((Cell) actorB).actualEnergy = ((Cell) actorB).actualEnergy - ((Attack) actorA).actualEnergy * 0.5f;
+                ((Cell) actorB).actualEnergy = ((Cell) actorB).actualEnergy - ((Attack) actorA).actualEnergy;
             }
 
             if(((Cell)actorB).actualEnergy < 0){
@@ -231,8 +237,8 @@ public class Cell extends Actor {
                 ((Cell)actorB).team = ((Attack)actorA).team;
             }
 
-            ((Attack)actorA).actualEnergy = ((Attack)actorA).actualEnergy - ((Attack)actorA).actualEnergy*0.5f;
-            ((Attack)actorA).damaged = true;
+            ((Attack)actorA).actualEnergy = ((Attack)actorA).actualEnergy - ((Attack)actorA).actualEnergy*0.25f;
+            ((Attack)actorA).modifyEnergy = true;
 
             if(((Attack)actorA).actualEnergy < ((Attack)actorA).baseAttack){
                 ((Attack)actorA).remove = true;
@@ -241,21 +247,29 @@ public class Cell extends Actor {
     }
 
     private void Regeneration(){
-        if(actualEnergy < maxEnergy*1.2f) {
+        if(actualEnergy < maxEnergy) {
             actualEnergy = actualEnergy + baseRegeneration;
-        }
+        }else{actualEnergy = maxEnergy;}
     }
 
     private void setColor(){
 
         switch (team){
-            case NEUTRAL: setColor(Color.GRAY); break;
-            case PLAYER: setColor(Color.BLUE); break;
-            case BOT1: setColor(Color.RED); break;
+            case NEUTRAL: setColor(Color.LIGHT_GRAY); break;
+            case PLAYER: setColor(Color.ROYAL); break;
+            case BOT1: setColor(Color.SCARLET); break;
             case BOT2: setColor(Color.YELLOW); break;
-            case BOT3: setColor(Color.MAGENTA); break;
+            case BOT3: setColor(Color.PINK); break;
             case BOT4: setColor(Color.GREEN); break;
         }
+    }
+
+    private void Select(){
+        body.setLinearVelocity(0, 0);
+        PlayScreen.oneSelected = !PlayScreen.oneSelected;
+        selected = !selected;
+        selectedCell = this;
+        moving = false;
     }
 }
 

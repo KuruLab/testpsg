@@ -1,54 +1,55 @@
 package com.mygdx.game.psg.Sprites;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.psg.MainGame;
 import com.mygdx.game.psg.Screens.PlayScreen;
 
-
-
 public class Attack extends Actor {
-    public PlayScreen.Team team;
 
-    public  Body body;
-    private Vector2 velocity;
+    public enum Type{
+        DAMAGED,
+        TRANSFER,
+        MIXER
+    }
 
-    public boolean refactorBody, damaged;
+    public Cell.Team team;
+    public Body body;
+    private Vector2 velocity = new Vector2(0,0);
 
-    public float maxEnergy, actualEnergy, radiusEnergy;
+    public float baseAttack,maxEnergy, actualEnergy, energyRadius, baseRadius, baseMove;
+    public boolean remove, modifyEnergy;
 
-    public float baseRadius = 25;
-    private  float baseMove = 2;
-    public  float baseAttack;
-
-    public boolean remove;
+    private  int resize;
 
     private CircleShape circleShape = new CircleShape();
     private FixtureDef fixtureDef = new FixtureDef();
 
-    public Attack(float x, float y, int ID, float radius,  Color color, PlayScreen.Team team){
-        actualEnergy = 100;
-        maxEnergy = 100;
-        baseAttack = 10;
-        velocity = new Vector2();
-        velocity.set(0,0);
-        setZIndex(ID);
-        setColor(color);
-        setX(x);
-        setY(y);
-        setAttack(team, radius);
+    public Attack(Cell cell){
+        baseMove = cell.baseMove*2;
+        baseAttack = cell.baseAttack;
+        baseRadius = cell.baseRadius;
 
+        maxEnergy = cell.maxEnergy;
+        actualEnergy = baseAttack + cell.actualEnergy*0.3f;
+        energyRadius = baseRadius * RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
+
+        setColor(cell.getColor());
+        setX(cell.getX()*MainGame.PPM);
+        setY(cell.getY()*MainGame.PPM);
+
+        setAttack(cell.team, cell.baseRadius);
+
+        cell.actualEnergy = cell.actualEnergy*0.7f;
     }
 
-    private void setAttack(PlayScreen.Team team, float radius){
+    private void setAttack(Cell.Team team, float radius){
 
-        velocity.set(radius + baseRadius,1).setAngle(PlayScreen.attackDirection.angle());
+        velocity.set(radius + energyRadius,1).setAngle(PlayScreen.attackDirection.angle());
         SetBody(velocity.x, velocity.y);
 
         this.team = team;
@@ -59,43 +60,39 @@ public class Attack extends Actor {
 
 
         DelimiterBorder();
-/*
-        if(refactorBody) {
-            radiusEnergy = baseRadius * actualEnergy / maxEnergy;
-            RefactorBody();
+
+        if(modifyEnergy || resize > 60){ RefactorBody();}
+
+        actualEnergy = actualEnergy - 0.1f;
+        resize++;
+
+        if(actualEnergy < baseAttack){
+            remove = true;
         }
 
-        if(damaged){
-            refactorBody = true;
-        }
-*/
+
         setX(body.getPosition().x);
         setY(body.getPosition().y);
     }
 
-    private  float circleArea(float radius){
-
-        return radius*radius*(float)Math.PI;
-    }
-
-    private float radiusEnergy(float energy){
+    private float RadiusEnergy(float energy){
 
         return (float)Math.sqrt(energy*(float)Math.PI);
     }
 
     private void DelimiterBorder() {
 
-        if (body.getPosition().x * MainGame.PPM - baseRadius < (-1) * MainGame.V_Width) {
+        if (body.getPosition().x * MainGame.PPM - baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) < (-1) * MainGame.V_Width) {
             body.setLinearVelocity(baseMove, body.getLinearVelocity().y);
         }
-        if (body.getPosition().x * MainGame.PPM + baseRadius > MainGame.V_Width + (MainGame.V_Width)) {
+        if (body.getPosition().x * MainGame.PPM + baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) > MainGame.V_Width + (MainGame.V_Width)) {
 
             body.setLinearVelocity(-baseMove, body.getLinearVelocity().y);
         }
-        if (body.getPosition().y * MainGame.PPM - baseRadius < (-1) * MainGame.V_Height / 2) {
+        if (body.getPosition().y * MainGame.PPM - baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) < (-1) * MainGame.V_Height / 2) {
             body.setLinearVelocity(body.getLinearVelocity().x, baseMove);
         }
-        if (body.getPosition().y * MainGame.PPM + baseRadius > MainGame.V_Height + (MainGame.V_Height / 2)) {
+        if (body.getPosition().y * MainGame.PPM + baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) > MainGame.V_Height + (MainGame.V_Height / 2)) {
             body.setLinearVelocity(body.getLinearVelocity().x, -baseMove);
 
         }
@@ -103,7 +100,7 @@ public class Attack extends Actor {
 
     private FixtureDef SetFixtureDef(){
 
-        circleShape.setRadius((baseRadius * actualEnergy/maxEnergy) /MainGame.PPM);
+        circleShape.setRadius((baseRadius * RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy)) /MainGame.PPM);
         fixtureDef.shape = circleShape;
 
         fixtureDef.density = 0.3f;
@@ -131,26 +128,12 @@ public class Attack extends Actor {
     }
 
     private void RefactorBody(){
-        velocity.set(body.getLinearVelocity());
-
-        PlayScreen.world.destroyBody(this.body);
-        SetBody(0,0);
-
-        BodyDef bodyDef = new BodyDef();
-
-        bodyDef.position.set(getX(), getY());
-
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
-        body = PlayScreen.world.createBody(bodyDef);
-
-
+        body.destroyFixture(body.getFixtureList().pop());
         body.createFixture(SetFixtureDef());
-        body.setBullet(true);
 
-        body.setLinearVelocity(velocity);
-
-        damaged = false;
-        refactorBody = false;
+        energyRadius = baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
+        modifyEnergy = false;
+        resize = 0;
     }
 
 }
