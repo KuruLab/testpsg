@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.psg.Engine.Attribute;
 import com.mygdx.game.psg.MainGame;
 import com.mygdx.game.psg.Screens.PlayScreen;
-import static com.mygdx.game.psg.Screens.PlayScreen.*;
 
 public class Cell extends Actor {
 
@@ -28,12 +27,8 @@ public class Cell extends Actor {
     public Body body;
 
     private Vector2 angle, move, bodyPosition, inputPosition, velocity;
+    public float baseRadius, baseRegeneration, maxEnergy, actualEnergy, radiusEnergy, baseAttack, baseMove;
 
-    private float  baseRegeneration;
-    public float baseMove;
-    public float baseRadius;
-
-    public float maxEnergy, actualEnergy, radiusEnergy, baseAttack;
     public boolean selected, moving;
 
     public Cell(float x, float y, Team team) {
@@ -79,63 +74,62 @@ public class Cell extends Actor {
         body.createFixture(fixtureDef);
 
         move.set(body.getPosition());
-        body.setLinearVelocity(velocity.setToRandomDirection());
+       body.setLinearVelocity(velocity.setToRandomDirection());
     }
 
     @Override
     public void act(float delta) {
         radiusEnergy = baseRadius * RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
-
         DelimiterBorder();
         SelectOrTarget();
         MoveOrAttack();
         Regeneration();
         setColor();
-
-        setX(body.getPosition().x);
-        setY(body.getPosition().y);
     }
 
-    private boolean isTouched() {
-        return (Gdx.input.justTouched() &&
-                BodyPosition(bodyPosition).dst(InputPosition(inputPosition)) <
-                        baseRadius * sizeViewport.x / MainGame.V_Width) ||
-                (BodyPosition(bodyPosition).dst(InputPosition(inputPosition)) <
-                        baseRadius * sizeViewport.y / MainGame.V_Height);
-    }
+
 
     private Vector2 BodyPosition(Vector2 bodyPosition) {
 
-        bodyPosition.set(body.getPosition().x * MainGame.PPM * sizeViewport.x / MainGame.V_Width
-                        + sizeViewport.x / 2
-                        - positionCamera.x * sizeViewport.x / MainGame.V_Width,
-                body.getPosition().y * MainGame.PPM * sizeViewport.y / MainGame.V_Height
-                        + sizeViewport.y / 2
-                        - positionCamera.y * sizeViewport.y / MainGame.V_Height);
+        bodyPosition.set(
+                            body.getPosition().x * MainGame.PPM
+                            + (MainGame.W_Width/2) * PlayScreen.zoom
+                            - PlayScreen.positionCamera.x,
+
+                             body.getPosition().y * MainGame.PPM
+                            + (MainGame.W_Height/2) * PlayScreen.zoom
+                            - PlayScreen.positionCamera.y);
 
         return bodyPosition;
     }
 
     private Vector2 InputPosition(Vector2 inputPosition) {
 
-        inputPosition.set(Gdx.input.getX(), sizeViewport.y - Gdx.input.getY());
+        inputPosition.set(Gdx.input.getX() * PlayScreen.zoom, (MainGame.W_Height - Gdx.input.getY()) * PlayScreen.zoom);
 
         return inputPosition;
     }
 
+    private boolean isTouched() {
+
+        return (Gdx.input.justTouched() &&
+                (BodyPosition(bodyPosition).dst(InputPosition(inputPosition)) < baseRadius ||
+                 BodyPosition(bodyPosition).dst(InputPosition(inputPosition)) < baseRadius));
+    }
+
     private void DelimiterBorder() {
 
-        if (body.getPosition().x * MainGame.PPM - baseRadius < (-1) * MainGame.V_Width) {
+        if (body.getPosition().x * MainGame.PPM - baseRadius < -MainGame.V_Width) {
             body.setLinearVelocity(baseMove, body.getLinearVelocity().y);
         }
-        if (body.getPosition().x * MainGame.PPM + baseRadius > MainGame.V_Width + (MainGame.V_Width)) {
+        if (body.getPosition().x * MainGame.PPM + baseRadius > MainGame.V_Width) {
 
             body.setLinearVelocity(-baseMove, body.getLinearVelocity().y);
         }
-        if (body.getPosition().y * MainGame.PPM - baseRadius < (-1) * MainGame.V_Height / 2) {
+        if (body.getPosition().y * MainGame.PPM - baseRadius < -MainGame.V_Height) {
             body.setLinearVelocity(body.getLinearVelocity().x, baseMove);
         }
-        if (body.getPosition().y * MainGame.PPM + baseRadius > MainGame.V_Height + (MainGame.V_Height / 2)) {
+        if (body.getPosition().y * MainGame.PPM + baseRadius > MainGame.V_Height) {
             body.setLinearVelocity(body.getLinearVelocity().x, -baseMove);
         }
     }
@@ -148,34 +142,26 @@ public class Cell extends Actor {
 
                 if (Gdx.input.justTouched() && isTouched() && PlayScreen.oneSelected && !selected) {
                     PlayScreen.oneTarget = true;
-                    targetCell = this;
+                    //PlayScreen.targetCell = this;
+                    if(team == Team.PLAYER){PlayScreen.type = Attack.Type.TRANSFER;}
+                    if(team == Team.NEUTRAL){PlayScreen.type = Attack.Type.DOMINATE;
+                    }else{ PlayScreen.type = Attack.Type.DAMAGED;}
                 }
             }
-        if(selected && PlayScreen.oneSelected) {
-
-            if (BodyPosition(bodyPosition).x + baseRadius*sizeViewport.x/MainGame.V_Width < 0 ||
-                BodyPosition(bodyPosition).y + baseRadius*sizeViewport.y/MainGame.V_Height < 0 ||
-                BodyPosition(bodyPosition).x - baseRadius*sizeViewport.x/MainGame.V_Width  > sizeViewport.x ||
-                BodyPosition(bodyPosition).y - baseRadius*sizeViewport.y/MainGame.V_Height > sizeViewport.y) {
-
-                Select();
-            }
-        }
     }
 
     private void MoveOrAttack() {
         if(moving) {
-            if (Gdx.input.justTouched() && selected) {
+            if (Gdx.input.justTouched() && selected && team == Team.PLAYER) {
                 move.set(Gdx.input.getX(), Gdx.input.getY());
                 angle.set(InputPosition(inputPosition).sub(bodyPosition));
                 velocity.set(baseMove, baseMove).setAngle(angle.angle());
                 body.setLinearVelocity(velocity);
                 PlayScreen.attackDirection = velocity;
 
-                if(InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) > baseRadius * sizeViewport.x/MainGame.V_Width
-                            && InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) < (baseRadius + 100) *sizeViewport.x/MainGame.V_Width){
-
-                    PlayScreen.positionTarget = InputPosition(inputPosition);
+                if(InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) > baseRadius &&
+                        InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) < (baseRadius + PlayScreen.touchRadius*PlayScreen.zoom)){
+                    PlayScreen.type = Attack.Type.MIXER;
                     PlayScreen.oneTarget = true;
                 }
             }
@@ -194,9 +180,8 @@ public class Cell extends Actor {
 
     public static void Clear(Cell cell) {
         if(cell.selected) {
-            cell.body.setLinearVelocity(0, 0);
+            Stop(cell);
         }
-        cell.moving = false;
         cell.selected = false;
         PlayScreen.oneSelected = false;
         PlayScreen.oneTarget = false;
@@ -265,11 +250,23 @@ public class Cell extends Actor {
     }
 
     private void Select(){
-        body.setLinearVelocity(0, 0);
+        Stop(this);
+
         PlayScreen.oneSelected = !PlayScreen.oneSelected;
+        PlayScreen.selectedCell = this;
         selected = !selected;
-        selectedCell = this;
-        moving = false;
+
+        if(team == Team.PLAYER){
+        PlayScreen.selectedCell = this;}else{
+            PlayScreen.oneTarget = !PlayScreen.oneTarget;
+            PlayScreen.targetCell = this;
+        }
+    }
+
+    public static void Stop(Cell cell){
+        if(cell.team == Team.PLAYER)
+        cell.body.setLinearVelocity(0,0);
+        cell.moving = false;
     }
 }
 

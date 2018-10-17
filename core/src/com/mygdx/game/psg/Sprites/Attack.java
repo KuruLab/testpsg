@@ -14,7 +14,8 @@ public class Attack extends Actor {
     public enum Type{
         DAMAGED,
         TRANSFER,
-        MIXER
+        MIXER,
+        DOMINATE
     }
 
     public Cell.Team team;
@@ -29,39 +30,34 @@ public class Attack extends Actor {
     private CircleShape circleShape = new CircleShape();
     private FixtureDef fixtureDef = new FixtureDef();
 
-    public Attack(Cell cell){
+    public Attack(Cell cell, Cell target, Type type){
         baseMove = cell.baseMove*2;
         baseAttack = cell.baseAttack;
         baseRadius = cell.baseRadius;
-
         maxEnergy = cell.maxEnergy;
         actualEnergy = baseAttack + cell.actualEnergy*0.3f;
         energyRadius = baseRadius * RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
 
         setColor(cell.getColor());
-        setX(cell.getX()*MainGame.PPM);
-        setY(cell.getY()*MainGame.PPM);
-
-        setAttack(cell.team, cell.baseRadius);
+        setAttack(cell);
 
         cell.actualEnergy = cell.actualEnergy*0.7f;
     }
 
-    private void setAttack(Cell.Team team, float radius){
+    private void setAttack(Cell selected){
 
-        velocity.set(radius + energyRadius,1).setAngle(PlayScreen.attackDirection.angle());
-        SetBody(velocity.x, velocity.y);
+        velocity.set(selected.baseRadius + energyRadius,1).setAngle(PlayScreen.attackDirection.angle());
+        SetBody(selected, velocity.x, velocity.y);
 
-        this.team = team;
+        this.team = selected.team;
     }
 
     @Override
     public void act(float delta) {
 
-
         DelimiterBorder();
 
-        if(modifyEnergy || resize > 60){ RefactorBody();}
+        if(modifyEnergy || resize > 60){ RefactorFixture();}
 
         actualEnergy = actualEnergy - 0.1f;
         resize++;
@@ -70,9 +66,6 @@ public class Attack extends Actor {
             remove = true;
         }
 
-
-        setX(body.getPosition().x);
-        setY(body.getPosition().y);
     }
 
     private float RadiusEnergy(float energy){
@@ -82,17 +75,17 @@ public class Attack extends Actor {
 
     private void DelimiterBorder() {
 
-        if (body.getPosition().x * MainGame.PPM - baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) < (-1) * MainGame.V_Width) {
+        if (body.getPosition().x * MainGame.PPM - baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) < -MainGame.V_Width) {
             body.setLinearVelocity(baseMove, body.getLinearVelocity().y);
         }
-        if (body.getPosition().x * MainGame.PPM + baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) > MainGame.V_Width + (MainGame.V_Width)) {
+        if (body.getPosition().x * MainGame.PPM + baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) > MainGame.V_Width) {
 
             body.setLinearVelocity(-baseMove, body.getLinearVelocity().y);
         }
-        if (body.getPosition().y * MainGame.PPM - baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) < (-1) * MainGame.V_Height / 2) {
+        if (body.getPosition().y * MainGame.PPM - baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) < -MainGame.V_Height) {
             body.setLinearVelocity(body.getLinearVelocity().x, baseMove);
         }
-        if (body.getPosition().y * MainGame.PPM + baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) > MainGame.V_Height + (MainGame.V_Height / 2)) {
+        if (body.getPosition().y * MainGame.PPM + baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy) > MainGame.V_Height) {
             body.setLinearVelocity(body.getLinearVelocity().x, -baseMove);
 
         }
@@ -110,11 +103,11 @@ public class Attack extends Actor {
         return fixtureDef;
     }
 
-    private  void SetBody(float x, float y){
+    private  void SetBody(Cell cell, float x, float y){
         BodyDef bodyDef = new BodyDef();
 
-        bodyDef.position.set((getX()+x)/MainGame.PPM,
-                (getY()+y)/MainGame.PPM);
+        bodyDef.position.set(cell.body.getPosition().x + x/MainGame.PPM,
+                cell.body.getPosition().y + y/MainGame.PPM);
 
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         body = PlayScreen.world.createBody(bodyDef);
@@ -127,7 +120,7 @@ public class Attack extends Actor {
         body.setLinearVelocity(velocity);
     }
 
-    private void RefactorBody(){
+    private void RefactorFixture(){
         body.destroyFixture(body.getFixtureList().pop());
         body.createFixture(SetFixtureDef());
 

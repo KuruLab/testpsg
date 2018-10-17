@@ -6,7 +6,7 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.mygdx.game.psg.Screens.PlayScreen;
 
-public class Detector implements ContactListener {
+public class Detector implements ContactListener{
 
     @Override
     public void beginContact(Contact contact) {
