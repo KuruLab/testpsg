@@ -2,10 +2,11 @@ package com.mygdx.game.psg.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -16,15 +17,19 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.psg.Engine.Detector;
 import com.mygdx.game.psg.Engine.Gesture;
+import com.mygdx.game.psg.Engine.SaveGame;
 import com.mygdx.game.psg.MainGame;
 import com.mygdx.game.psg.Sprites.Attack;
 import com.mygdx.game.psg.Sprites.Cell;
+
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.badlogic.gdx.math.MathUtils.random;
+import static com.badlogic.gdx.math.MathUtils.randomBoolean;
 import static com.mygdx.game.psg.Sprites.Cell.Clear;
-import static com.mygdx.game.psg.Sprites.Cell.Contact;
-import static com.mygdx.game.psg.Sprites.Cell.Stop;
 
 public class PlayScreen implements Screen{
 
@@ -35,32 +40,43 @@ public class PlayScreen implements Screen{
     private OrthographicCamera camera;
     private Viewport viewport;
     private Box2DDebugRenderer box2DDebugRenderer;
-    private Gesture gesture = new Gesture();
+    public static int player, bots, neutral;
+    private Vector2 velocity = new Vector2();
+    public SaveGame saveGame = new SaveGame();
 
     //other variables
     public static boolean oneSelected, oneTarget;
-    public static Vector2 positionCamera, sizeViewport, attackDirection;
+    private static Vector2 sizeViewport;
+    public static  Vector2 positionCamera;
     public static  Cell selectedCell, targetCell;
     public static ArrayList<Body> contact = new ArrayList<Body>();
-    public static float touchRadius, zoom, zoomInit, zoomFinal;
+    public static float touchRadius, zoom, zoomInit, zoomFinal, attackDirection;
     public static Attack.Type type;
+    private float camX, camY;
+    private static int explosionCount, initCount = 300;
+    public static int numberAttack, restartCount;
 
     //load textures
     private Texture textureCircle = new Texture("circle.png");
+    private Texture textureSelect = new Texture("select.png");
+    private Texture textureAttack = new Texture("attack.png");
+    private Texture textureCell = new Texture("cell.png");
 
-    public PlayScreen(MainGame game){
+    public PlayScreen(MainGame game) throws IOException {
         //set zoom
         zoomInit = ((MainGame.W_Width/MainGame.V_Width)+(MainGame.W_Height/MainGame.V_Height))/2;
-        zoomFinal = MainGame.V_Width/MainGame.W_Width+MainGame.V_Height/MainGame.W_Height;
-        zoom = zoomInit;
-        touchRadius = 100*zoom;
-
+        zoom = MainGame.V_Width/MainGame.W_Width + MainGame.V_Height/MainGame.W_Height;
+        touchRadius = 100*zoomInit;
+        zoomFinal = zoom/2;
         this.game = game;
 
         //create camera & create viewport
         camera = new OrthographicCamera();
         viewport = new FitViewport(MainGame.W_Width, MainGame.W_Height,camera);
         camera.position.set(0,0,0);
+        camX = camera.position.x;
+        camY = camera.position.y;
+        Gesture gesture = new Gesture();
         Gdx.input.setInputProcessor(gesture);
 
 
@@ -71,37 +87,30 @@ public class PlayScreen implements Screen{
         //box 2d
         world = new World(new Vector2(0,0), true);
         box2DDebugRenderer = new Box2DDebugRenderer();
-        Detector collisionDetector = new Detector();
-        world.setContactListener(collisionDetector);
+
+        world.setContactListener(new Detector());
     }
 
     @Override
     public void show() {
-         attackDirection = new Vector2();
-
         //add units on stage
         stage = new Stage();
-
         firstGame();
-
-        //action Bot
-        for(Actor bot : stage.getActors()){
-            if(bot.getClass() == Cell.class){
-                 if(((Cell)bot).team != Cell.Team.PLAYER){
-
-                     BotAction((Cell)bot);
-
-                 }
-            }
-        }
     }
 
     @Override
     public void render(float delta) {
-        if(Math.abs(zoom - zoomFinal) > 0.005f){
-            zoom = zoom + (zoomFinal - zoom)*delta*2.5f;
+        saveGame.Print();
+
+        if(initCount == 0) {
+            if (Math.abs(zoom - zoomFinal) > 0.005f) {
+                zoom = zoom + (zoomFinal - zoom) * delta*2.5f;
+            } else {
+                zoom = zoomFinal;
+            }
         }else{
-            zoom = zoomFinal;
+            zoom = zoom + (zoomFinal - zoom) * delta*0.5f;
+            initCount--;
         }
 
 
@@ -113,39 +122,25 @@ public class PlayScreen implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         //Draw body
-        //Matrix4 matrix4 = game.batch.getProjectionMatrix().cpy().scale(MainGame.PPM, MainGame.PPM, 0);
+        Matrix4 matrix4 = game.batch.getProjectionMatrix().cpy().scale(MainGame.PPM, MainGame.PPM, 0);
         //box2DDebugRenderer.render(world, matrix4);
         game.batch.setProjectionMatrix(camera.combined);
 
         //update players
         stage.act();
         createAttack();
+        explosionCount++;
 
-
-        //draw textures
-        for(Actor actor : stage.getActors())
-        {
-            if(actor.getClass()== Cell.class) {
-                DrawCell((Cell) actor);
-            }
-        }
-
-        for(Actor actor : stage.getActors())
-        {
-            if(actor.getClass()== Attack.class) {
-                if(((Attack) actor).remove) {
-                    world.destroyBody(((Attack) actor).body);
-                    actor.remove();
-                }else{
-                    DrawAttack((Attack) actor);
-                }
-            }
-        }
+        //count players
+        player = 0;
+        neutral = 0;
+        bots = 0;
 
         //other updates
         updateCollision();
         updateCamera(delta);
-
+        Draw();
+        WinOrLose();
     }
 
     @Override
@@ -168,127 +163,76 @@ public class PlayScreen implements Screen{
     public void hide() {
 
         textureCircle.dispose();
-
+        textureSelect.dispose();
+        textureAttack.dispose();
     }
 
     @Override
     public void dispose() {
         textureCircle.dispose();
+        textureSelect.dispose();
+        textureAttack.dispose();
         world.dispose();
         stage.dispose();
         box2DDebugRenderer.dispose();
     }
 
-    private void controlCamera(float delta){
-
-        if(!gesture.zoom) {
+    private void updateCamera(float delta){
+        //update camera
+        if(!Gesture.zoom) {
 
             if (Gdx.input.isTouched()) {
-
-                camera.position.x -= Gdx.input.getDeltaX() * zoom;
-                camera.position.y += Gdx.input.getDeltaY() * zoom;
-
-
-            } else {
-
-                if (oneSelected && selectedCell.team == Cell.Team.PLAYER) {
-
-                    camera.position.x = camera.position.x + (selectedCell.body.getPosition().x * MainGame.PPM * MainGame.W_Width / MainGame.V_Width + sizeViewport.x / 2
-                            - positionCamera.x * sizeViewport.x / MainGame.V_Width - (MainGame.W_Width / 2)) * (delta*2.5f)/zoom;
-
-                    camera.position.y = camera.position.y + (selectedCell.body.getPosition().y * MainGame.PPM * MainGame.W_Height / MainGame.V_Height + sizeViewport.y / 2
-                            - positionCamera.y * sizeViewport.y / MainGame.V_Height - (MainGame.W_Height / 2)) * (delta*2.5f)/zoom;
-                }
+                camX -= Gdx.input.getDeltaX() * zoom;
+                camY += Gdx.input.getDeltaY() * zoom;
             }
+
+            if(Math.abs(camera.position.x - camX) > 0.0005f){
+                camera.position.x = camera.position.x  + (camX - camera.position.x)*delta*10f;
+            }else{
+                camera.position.x = camX;
+            }
+
+            if(Math.abs(camera.position.y - camY) > 0.0005f){
+                camera.position.y = camera.position.y  + (camY - camera.position.y)*delta*10f;
+            }else{
+                camera.position.y = camY;
+            }
+
+
         }else{if(oneSelected){Cell.Stop(selectedCell);}}
 
 
         if (camera.position.x < MainGame.W_Width * zoom - MainGame.W_Width * zoom / 2 - MainGame.V_Width) {
             camera.position.x = MainGame.W_Width * zoom - MainGame.W_Width * zoom / 2 - MainGame.V_Width;
-
+            camX = camera.position.x;
         }
 
         if (camera.position.x > -MainGame.W_Width * zoom + MainGame.W_Width * zoom / 2 + MainGame.V_Width) {
             camera.position.x = -MainGame.W_Width * zoom + MainGame.W_Width * zoom / 2 + MainGame.V_Width;
+            camX = camera.position.x;
         }
 
         if (camera.position.y < MainGame.W_Height * zoom - MainGame.W_Height * zoom / 2 - MainGame.V_Height) {
             camera.position.y = MainGame.W_Height * zoom - MainGame.W_Height * zoom / 2 - MainGame.V_Height;
+            camY = camera.position.y;
         }
 
         if (camera.position.y > -MainGame.W_Height * zoom + MainGame.W_Height * zoom / 2 + MainGame.V_Height) {
             camera.position.y = -MainGame.W_Height * zoom + MainGame.W_Height * zoom / 2 + MainGame.V_Height;
+            camY = camera.position.y;
         }
 
-
-
-
         positionCamera.set(camera.position.x, camera.position.y);
-        sizeViewport.set(MainGame.V_Height/2, MainGame.V_Width/2);
-
-    }
-
-    private void updateCamera(float delta){
-        //update camera
-        controlCamera(delta);
         sizeViewport.set(viewport.getScreenWidth(),viewport.getScreenHeight());
         positionCamera.set(camera.position.x, camera.position.y);
         camera.zoom = zoom;
         camera.update();
-
-    }
-
-    private void DrawCell(Cell cell){
-        game.batch.begin();
-        if(cell.selected){
-
-            game.batch.setColor(
-                    cell.getColor().r*0.7f,
-                    cell.getColor().g*0.7f,
-                    cell.getColor().b*0.7f,
-                    cell.getColor().a*1f);
-        }else{
-            game.batch.setColor(cell.getColor());}
-
-            //draw cell
-            game.batch.draw(
-                    textureCircle,
-                   cell.body.getPosition().x* MainGame.PPM - cell.baseRadius,
-                   cell.body.getPosition().y* MainGame.PPM - cell.baseRadius,
-                   cell.baseRadius *2,
-                   cell.baseRadius *2);
-
-        game.batch.setColor(
-                cell.getColor().r*0.8f,
-                cell.getColor().g*0.8f,
-                cell.getColor().b*0.8f,
-                cell.getColor().a*1f);
-
-            //draw energy
-            game.batch.draw(textureCircle,
-                    cell.body.getPosition().x* MainGame.PPM - cell.radiusEnergy,
-                    cell.body.getPosition().y* MainGame.PPM - cell.radiusEnergy,
-                    cell.radiusEnergy*2,
-                    cell.radiusEnergy*2);
-
-            game.batch.end();
-    }
-
-    private void DrawAttack(Attack attack){
-
-        game.batch.begin();
-        game.batch.setColor(attack.getColor());
-
-        game.batch.draw(textureCircle,
-                attack.body.getPosition().x* MainGame.PPM - attack.energyRadius,
-                attack.body.getPosition().y* MainGame.PPM - attack.energyRadius,
-                attack.energyRadius *2,attack.energyRadius *2);
-        game.batch.end();
     }
 
     private void createAttack(){
+
         if(oneSelected && oneTarget && selectedCell.team == Cell.Team.PLAYER){
-            stage.addActor(new Attack(selectedCell, targetCell, type));
+            stage.addActor(new Attack(selectedCell, targetCell, type, attackDirection));
             Clear(selectedCell);
         }
     }
@@ -317,10 +261,9 @@ public class PlayScreen implements Screen{
 
                                  if(((Attack)stage.getActors().get(b)).body == bodyA || ((Attack)stage.getActors().get(b)).body == bodyB){
 
-                                        if((stage.getActors().get(a)).getClass() == Cell.class){
-
-                                        Contact(stage.getActors().get(a), stage.getActors().get(b));
-                                 }else
+                                        if((stage.getActors().get(a)).getClass() == Cell.class)
+                                            Contact(stage.getActors().get(a), stage.getActors().get(b));
+                                        else
                                         Contact(stage.getActors().get(b), stage.getActors().get(a));
                                 }
                             }
@@ -331,56 +274,377 @@ public class PlayScreen implements Screen{
         }
     }
 
-    private void firstGame(){
+    private static void Contact(Actor actorA, Actor actorB){
 
-        int test = 0;
-        for(int i = 0; i < test; i++){
-            stage.addActor(new Cell(0,0, Cell.Team.PLAYER));
+        if(actorA.getClass() == Cell.class){
+
+            if(((Cell) actorA).team == ((Attack) actorB).team ){
+                if( ((Attack) actorB).type != Attack.Type.EXPLOSION){
+                ((Cell)actorA).actualEnergy = ((Cell)actorA).actualEnergy + ((Attack)actorB).actualEnergy*0.75f;
+                }else{
+                ((Cell)actorA).actualEnergy = ((Cell)actorA).actualEnergy + ((Attack)actorB).actualEnergy*0.3f;
+                }
+            }else {
+                ((Cell) actorA).actualEnergy = ((Cell) actorA).actualEnergy - ((Attack) actorB).actualEnergy;
+            }
+
+            if(((Cell)actorA).actualEnergy < 0){
+                ((Cell)actorA).actualEnergy = (-1)*((Cell)actorA).actualEnergy;
+                ((Cell)actorA).team = ((Attack)actorB).team;
+            }
+
+            ((Attack)actorB).actualEnergy = ((Attack)actorB).actualEnergy - ((Attack)actorB).actualEnergy*0.3f;
+            ((Attack)actorB).modifyEnergy = true;
+            ((Attack)actorB).inativity = 0;
+
+            if(((Attack)actorB).actualEnergy <= ((Attack)actorB).baseAttack){
+                ((Attack)actorB).remove = true;
+            }
+
+        }else{
+
+            if(((Cell)actorB).team == ((Attack)actorA).team) {
+                if(((Attack)actorA).type != Attack.Type.EXPLOSION){
+                ((Cell)actorB).actualEnergy = ((Cell)actorB).actualEnergy + ((Attack)actorA).actualEnergy * 0.75f;
+                }else{
+                ((Cell)actorB).actualEnergy = ((Cell)actorB).actualEnergy + ((Attack)actorA).actualEnergy * 0.3f;
+                }
+            }else {
+                ((Cell) actorB).actualEnergy = ((Cell) actorB).actualEnergy - ((Attack) actorA).actualEnergy;
+            }
+
+            if(((Cell)actorB).actualEnergy < 0){
+                ((Cell)actorB).actualEnergy = (-1)*((Cell)actorB).actualEnergy;
+                ((Cell)actorB).team = ((Attack)actorA).team;
+            }
+
+            ((Attack)actorA).actualEnergy = ((Attack)actorA).actualEnergy - ((Attack)actorA).actualEnergy*0.3f;
+            ((Attack)actorA).modifyEnergy = true;
+            ((Attack)actorA).inativity = 0;
+
+            if(((Attack)actorA).actualEnergy < ((Attack)actorA).baseAttack){
+                ((Attack)actorA).remove = true;
+            }
+        }
+    }
+
+    private void firstGame() {
+        int total = (int) (MainGame.V_Width*MainGame.V_Height/((1080*1920)/32));
+        int max = (int) (1 + MainGame.V_Width*MainGame.V_Height/((1080*1920)/4));
+        int min = (int) (1 + MainGame.V_Width*MainGame.V_Height/((1080*1920)/2));
+
+        player = 0;
+        bots = 0;
+
+        //Player
+        int teamCells = 0;
+        while (teamCells == 0){
+            teamCells = random(min, max);
+        }
+        for (int i = 0; i < teamCells; i++) {
+            if(i == 0){
+                stage.addActor(new Cell(0, 0, Cell.Team.PLAYER));
+                selectedCell = (Cell)stage.getActors().get(0);
+                oneSelected = true;
+            }else {
+                stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
+                        random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.PLAYER));
+            }
+            player++;
         }
 
+        while (bots == 0 || player == 0) {
+            //Bot1
+            if (randomBoolean()) {
+                for (int i = 0; i < teamCells; i++) {
+                    stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
+                            random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT1));
+                    bots++;
+                }
+            }
+            //Bot2
+            if (randomBoolean()) {
+                for (int i = 0; i < teamCells; i++) {
+                    stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
+                            random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT2));
+                    bots++;
+                }
+            }
+            //Bot3
+            if (randomBoolean()) {
+                for (int i = 0; i < teamCells; i++) {
+                    stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
+                            random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT3));
+                    bots++;
+                }
+            }
+
+            //Bot4
+            if (randomBoolean()) {
+                for (int i = 0; i < teamCells; i++) {
+                    stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
+                            random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT4));
+                    bots++;
+                }
+            }
+            //Bot5
+            if (randomBoolean()) {
+                for (int i = 0; i < teamCells; i++) {
+                    stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
+                            random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT5));
+                    bots++;
+                }
+            }
+        }
 
         //Neutral
-        int teamNeutral = 20;
+        int teamNeutral = random(total/4, total/2);
         for(int i = 0; i < teamNeutral; i++){
             stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                     random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.NEUTRAL));
         }
+    }
 
-        //Player
-        int teamCells = 3;
-        for(int i = 0; i < teamCells; i++){
-            stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
-                    random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.PLAYER));
-        }
+    private void BotAction(Cell bot) {
 
-        //Bot1
-        for(int i = 0; i < teamCells; i++){
-            stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
-                    random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT1));
-        }
+        if(random(100 ) < 1) {
+            if (bot.actualEnergy / bot.maxEnergy * random(100) > 10) {
+                    stage.addActor(new Attack(bot, targetCell, type, random(360)));
+                    Cell.Stop(bot);
+                 }
+                 else {
 
-        //Bot2
-        for(int i = 0; i < teamCells; i++) {
-            stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
-                    random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT2));
-        }
+                if ((bot.actualEnergy / bot.maxEnergy) * random(100) < 5) {
+                    velocity.set(bot.baseMove, bot.baseMove).setAngle(random(360));
+                    bot.body.setLinearVelocity(velocity);
 
-        //Bot3
-        //Bot2
-        for(int i = 0; i < teamCells; i++) {
-            stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
-                    random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT3));
-        }
-
-        //Bot4
-        //Bot2
-        for(int i = 0; i < teamCells; i++) {
-            stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
-                    random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT4));
+                }
+            }
         }
     }
 
-    private void BotAction(Cell bot){
+    private void WinOrLose() {
+
+        //condition win and lose
+        if(player == 0 || bots == 0) {
+            PlayScreen.zoomFinal = 2f / PlayScreen.zoomInit;
+            oneTarget = false;
+            oneSelected = false;
+            restartCount++;
+        }else{restartCount = 0;}
+    }
+
+    private void Explosion(Cell cell){
+        int angle = 0;
+        explosionCount = 0;
+
+        for(int i = 0; i < 20; i++){
+
+            stage.addActor(new Attack(cell, targetCell, Attack.Type.EXPLOSION, angle));
+            angle += 18;
+
+        }
+
+        cell.actualEnergy = 1;
+    }
+
+    private void Draw(){
+        game.batch.begin();
+
+        //draw light
+        for(Actor actor : stage.getActors())
+        {
+            if(actor.getClass()== Cell.class) {
+
+                DrawLightCell((Cell) actor);
+            }
+        }
+
+        for(Actor actor : stage.getActors())
+        {
+            if(actor.getClass()== Attack.class) {
+                DrawLightAttack((Attack)actor);
+            }
+
+        }
+
+        //draw selected
+        DrawInfo();
+
+        //draw cell
+        for(Actor actor : stage.getActors())
+        {
+            if(actor.getClass()== Cell.class) {
+                if (((Cell)actor).actualEnergy == ((Cell)actor).maxEnergy && explosionCount > 60 ){
+                    Explosion((Cell)actor);
+                }
+                if(((Cell)actor).team == Cell.Team.PLAYER){
+                    player++;
+                }
+                if(((Cell)actor).team == Cell.Team.NEUTRAL){
+                    neutral++;
+                }
+                if(((Cell)actor).team != Cell.Team.PLAYER && ((Cell)actor).team != Cell.Team.NEUTRAL){
+                    BotAction((Cell)actor);
+                    bots++;
+                }
+                DrawCell((Cell) actor);
+            }
+        }
+
+        //draw energy
+        for(Actor actor : stage.getActors())
+        {
+            if(actor.getClass()== Cell.class) {
+
+                DrawEnergy((Cell) actor);
+            }
+        }
+
+        numberAttack = 0;
+        for(Actor actor : stage.getActors())
+        {
+            if(actor.getClass()== Attack.class) {
+                if(((Attack)actor).remove) {
+                    ((Attack)actor).body.destroyFixture(((Attack)actor).body.getFixtureList().pop());
+                    world.destroyBody(((Attack)actor).body);
+                    actor.remove();
+                }else{
+                    numberAttack++;
+                    DrawAttack((Attack) actor);
+                }
+            }
+        }
+        game.batch.end();
+    }
+
+    private void DrawLightAttack(Attack attack){
+
+        game.batch.setColor(
+                attack.getColor().r*0.9f,
+                attack.getColor().g*0.9f,
+                attack.getColor().b*0.9f,
+                attack.getColor().a*0.6f);
+
+        game.batch.draw(textureAttack,
+                attack.body.getPosition().x* MainGame.PPM - attack.energyRadius*3f,
+                attack.body.getPosition().y* MainGame.PPM - attack.energyRadius*3f,
+                attack.energyRadius *6,attack.energyRadius *6);
+
+    }
+
+    private void DrawLightCell(Cell cell){
+
+        game.batch.setColor(cell.getColor());
+
+        //draw energy
+        game.batch.draw(textureAttack,
+                cell.body.getPosition().x * MainGame.PPM - cell.radiusEnergy*2f,
+                cell.body.getPosition().y * MainGame.PPM - cell.radiusEnergy*2f,
+                cell.radiusEnergy * 4,
+                cell.radiusEnergy * 4);
+    }
+
+    private  void DrawInfo(){
+        if(oneSelected){
+
+            //draw select
+            game.batch.setColor(selectedCell.getColor());
+
+            game.batch.draw(
+                    textureAttack,
+                    selectedCell.body.getPosition().x* MainGame.PPM - (selectedCell.baseRadius + touchRadius*zoom) * 1.5f,
+                    selectedCell.body.getPosition().y* MainGame.PPM - (selectedCell.baseRadius + touchRadius*zoom) * 1.5f,
+                    (selectedCell.baseRadius + touchRadius*zoom) * 3f,
+                    (selectedCell.baseRadius + touchRadius*zoom) * 3f);
+
+            game.batch.setColor(
+                    selectedCell.getColor().r,
+                    selectedCell.getColor().g,
+                    selectedCell.getColor().b,
+                    selectedCell.getColor().a*0.8f);
+
+            game.batch.draw(
+                    textureSelect,
+                    selectedCell.body.getPosition().x* MainGame.PPM - selectedCell.baseRadius - touchRadius*zoom,
+                    selectedCell.body.getPosition().y* MainGame.PPM - selectedCell.baseRadius - touchRadius*zoom,
+                    (selectedCell.baseRadius + touchRadius*zoom) * 2,
+                    (selectedCell.baseRadius + touchRadius*zoom) * 2);
+        }
+
+        if(oneTarget){
+
+            game.batch.setColor(targetCell.getColor());
+
+
+
+            game.batch.draw(
+                    textureAttack,
+                    targetCell.body.getPosition().x* MainGame.PPM - (targetCell.baseRadius + touchRadius*zoom) * 1.5f,
+                    targetCell.body.getPosition().y* MainGame.PPM - (targetCell.baseRadius + touchRadius*zoom) * 1.5f,
+                    (targetCell.baseRadius + touchRadius*zoom) * 3,
+                    (targetCell.baseRadius + touchRadius*zoom) * 3);
+
+            game.batch.setColor(
+                    targetCell.getColor().r,
+                    targetCell.getColor().g,
+                    targetCell.getColor().b,
+                    targetCell.getColor().a*0.8f);
+
+            //draw select
+            game.batch.draw(
+                    textureSelect,
+                    targetCell.body.getPosition().x* MainGame.PPM - targetCell.baseRadius - touchRadius*zoom ,
+                    targetCell.body.getPosition().y* MainGame.PPM - targetCell.baseRadius - touchRadius*zoom ,
+                    (targetCell.baseRadius + touchRadius*zoom) * 2,
+                    (targetCell.baseRadius + touchRadius*zoom) * 2);
+
+        }
+
+
+    }
+
+    private void DrawCell(Cell cell){
+
+
+        game.batch.setColor(cell.getColor());
+
+        //draw cell
+        game.batch.draw(
+                textureCell,
+                cell.body.getPosition().x* MainGame.PPM - cell.baseRadius,
+                cell.body.getPosition().y* MainGame.PPM - cell.baseRadius,
+                cell.baseRadius *2,
+                cell.baseRadius *2);
+
+
+    }
+
+    private void DrawEnergy(Cell cell){
+
+
+        game.batch.setColor(cell.getColor().mul(Color.WHITE));
+
+        game.batch.draw(textureCircle,
+                cell.body.getPosition().x * MainGame.PPM - cell.radiusEnergy,
+                cell.body.getPosition().y * MainGame.PPM - cell.radiusEnergy,
+                cell.radiusEnergy * 2,
+                cell.radiusEnergy * 2);
+
+
+    }
+
+    private void DrawAttack(Attack attack){
+
+
+
+        game.batch.setColor(attack.getColor());
+
+        game.batch.draw(textureCircle,
+                attack.body.getPosition().x* MainGame.PPM - attack.energyRadius,
+                attack.body.getPosition().y* MainGame.PPM - attack.energyRadius,
+                attack.energyRadius *2,attack.energyRadius *2);
+
 
     }
 

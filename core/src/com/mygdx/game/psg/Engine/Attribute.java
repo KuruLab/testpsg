@@ -1,6 +1,6 @@
 package com.mygdx.game.psg.Engine;
 
-import com.badlogic.gdx.math.MathUtils;
+import static com.badlogic.gdx.math.MathUtils.random;
 
 public class Attribute {
 
@@ -37,9 +37,23 @@ public class Attribute {
     private AttributeType[] DNA = new AttributeType[100];
 
     public Attribute(){
+        setDNA();
+    }
+
+    public int AttributeCount(AttributeType type){
+        int count = 0;
+        for (int i = 0; i < 100; i ++) {
+            if (DNA[i] == type) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public void setDNA(){
 
         for(int i = 0; i < 100; i ++) {
-            switch (MathUtils.random(1000)%21){
+            switch (random(0,20)){
                 case 0 : DNA[i] = AttributeType.NULL; break;
                 case 1 : DNA[i] = AttributeType.SIZE; break;
                 case 2 : DNA[i] = AttributeType.PASSIVE1; break;
@@ -65,13 +79,13 @@ public class Attribute {
         }
     }
 
-    public int AttributeCount(AttributeType type){
-        int count = 0;
-        for (int i = 0; i < 100; i ++) {
-            if (DNA[i] == type) {
-                count++;
-            }
-        }
-        return count;
+    public void setDNA(AttributeType[] attributes){
+
+
+
+    }
+
+    public AttributeType[] getDNA(){
+        return DNA;
     }
 }
