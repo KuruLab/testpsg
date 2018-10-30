@@ -53,8 +53,7 @@ public class Attribute {
     public void setDNA(){
 
         for(int i = 0; i < 100; i ++) {
-            switch (random(0,20)){
-                case 0 : DNA[i] = AttributeType.NULL; break;
+            switch (random(1,20)){
                 case 1 : DNA[i] = AttributeType.SIZE; break;
                 case 2 : DNA[i] = AttributeType.PASSIVE1; break;
                 case 3 : DNA[i] = AttributeType.PASSIVE2; break;

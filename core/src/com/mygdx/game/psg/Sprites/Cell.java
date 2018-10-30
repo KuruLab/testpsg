@@ -100,7 +100,7 @@ public class Cell extends Actor {
             }
         }
 
-        if(PlayScreen.restartCount ==1){
+        if(PlayScreen.restartCount ==1 && team != Team.PLAYER){
             velocity.set(baseMove, baseMove);
             body.setLinearVelocity(velocity.setToRandomDirection());
         }
@@ -170,13 +170,17 @@ public class Cell extends Actor {
     private void SelectOrTarget() {
         if (Gdx.input.justTouched() && isTouched()){
             Select();
-            Stop(this);
-            if(PlayScreen.oneSelected)
-
-                if(team == Team.PLAYER){PlayScreen.type = Attack.Type.TRANSFER;}
-            if(team == Team.NEUTRAL){PlayScreen.type = Attack.Type.DOMINATE;
-            }else{ PlayScreen.type = Attack.Type.DAMAGED;}
-
+            moving = false;
+            if(PlayScreen.oneSelected) {
+                if (team == Team.PLAYER) {
+                    PlayScreen.typeAttack = Attack.Type.TRANSFER;
+                }
+                if (team == Team.NEUTRAL) {
+                    PlayScreen.typeAttack = Attack.Type.DOMINATE;
+                } else {
+                    PlayScreen.typeAttack = Attack.Type.DAMAGED;
+                }
+            }
         }
     }
 
@@ -186,17 +190,19 @@ public class Cell extends Actor {
                 if (Gdx.input.justTouched()) {
                     if (team == Team.PLAYER) {
                         velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle());
-                        body.setLinearVelocity(velocity);
                         PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
                         body.setLinearVelocity(velocity);
+                        PlayScreen.oneMove = true;
+                        moving = false;
                     }
+
                     if (InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) > baseRadius &&
                             InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) < (baseRadius + PlayScreen.touchRadius * PlayScreen.zoom)) {
                         velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle());
                         PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
-                        Stop(this);
-                        PlayScreen.type = Attack.Type.MIXER;
+                        PlayScreen.typeAttack = Attack.Type.MIXER;
                         PlayScreen.oneTarget = true;
+                        moving = false;
                     }
                 }
             } else {
@@ -224,38 +230,21 @@ public class Cell extends Actor {
     }
 
     private void Regeneration(){
-
         actualEnergy += baseRegeneration;
-
-        /*
-        if(team == Team.PLAYER && PlayScreen.player != 0){
-            actualEnergy += (((PlayScreen.bots)/PlayScreen.player)*baseRegeneration)/6;
-        }
-
-        if(team == Team.NEUTRAL && PlayScreen.neutral != 0){
-            actualEnergy += (((PlayScreen.player + PlayScreen.bots)/PlayScreen.neutral)*baseRegeneration)/12;
-
-        }
-
-        if(team != Team.PLAYER && team != Team.NEUTRAL && PlayScreen.bots != 0){
-            actualEnergy += (((PlayScreen.player)/PlayScreen.bots)*baseRegeneration)/3;
-        }*/
-
         if(actualEnergy > maxEnergy){
             actualEnergy = maxEnergy;
         }
     }
 
     private void setColor(){
-
         switch (team){
-            case NEUTRAL: setColor(Color.LIGHT_GRAY); break;
-            case PLAYER: setColor(Color.ROYAL); break;
-            case BOT1: setColor(Color.RED); break;
-            case BOT2: setColor(Color.YELLOW); break;
-            case BOT3: setColor(Color.PURPLE); break;
-            case BOT4: setColor(Color.GREEN); break;
-            case BOT5: setColor(Color.ORANGE); break;
+            case NEUTRAL: setColor(Color.WHITE); break;
+            case PLAYER: setColor(102/255f, 255/255f, 255/255f, 1); break; //blue
+            case BOT1: setColor(Color.RED); break; //red
+            case BOT2: setColor(Color.GREEN); break; //green
+            case BOT3: setColor(Color.PURPLE); break; //purple
+            case BOT4: setColor(Color.YELLOW); break; //yellow
+            case BOT5: setColor(Color.ORANGE); break; // orange
         }
     }
 
