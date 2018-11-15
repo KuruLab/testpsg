@@ -10,54 +10,49 @@ import com.badlogic.gdx.utils.JsonWriter;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
 
 public class SaveGame {
 
-    public Attribute attribute = new Attribute();
-    public Population population = new Population();
-    private String text;
+    //public Attribute attribute = new Attribute();
+    //public Population population = new Population();
 
     Json myjson;
-    JsonWriter jsonWriter;
     JsonReader jsonReader;
-    JsonValue jsonValue;
-    Writer writer;
-    FileHandle fileHandle;
+
 
     public SaveGame() throws IOException {
 
         myjson = new Json();
-        jsonWriter = new JsonWriter(writer);
         jsonReader = new JsonReader();
 
-        //Gdx.files.local("Save/population.json").writeString(myjson.prettyPrint(population), false);
+    }
 
 
-
-        //attribute = myjson.readValue(Attribute.class, jsonReader.Gdx.files.local("Save/save.json").readString()));
-
+    public Actions GetActions(){
 
 
-
-
-        //jsonWriter.write(Gdx.files.local("Save/test.json").path(),);
-        //jsonWriter.flush();
-        //jsonWriter.close();
-
-
-
+        return myjson.readValue(Actions.class, jsonReader.parse(Gdx.files.local("Save/actions.json").readString()));
 
     }
 
-    public void Print(){
-        //text = myjson.toJson(myjson.readValue(Attribute.class, jsonReader.parse(Gdx.files.local("Save/save.json").readString())));
-        //System.out.println(myjson.prettyPrint(population));
-    }
+    public Population GetPopulation(){
 
-    public void SaveStage(Stage stage){
-
-        //Gdx.files.local("Save/stage.json").writeString(myjson.prettyPrint(stage), false);
+        return myjson.readValue(Population.class, jsonReader.parse(Gdx.files.local("Save/population.json").readString()));
 
     }
 
+    public boolean SavePopulation(Population population){
+
+        Gdx.files.local("Save/population.json").writeString(myjson.prettyPrint(population), false);
+
+        return true;
+    }
+
+    public  boolean SaveActions(Actions actions){
+
+        Gdx.files.local("Save/actions.json").writeString(myjson.prettyPrint(actions), false);
+
+        return true;
+    }
 }

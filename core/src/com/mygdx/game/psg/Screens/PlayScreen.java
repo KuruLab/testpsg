@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.game.psg.Engine.Actions;
 import com.mygdx.game.psg.Engine.Detector;
 import com.mygdx.game.psg.Engine.Gesture;
 import com.mygdx.game.psg.Engine.SaveGame;
@@ -32,7 +33,7 @@ import static com.mygdx.game.psg.Sprites.Cell.Clear;
 public class PlayScreen implements Screen{
 
     //game elements
-    private Stage stage;
+    public static Stage stage;
     public static World world;
     private MainGame game;
     private OrthographicCamera camera;
@@ -41,6 +42,7 @@ public class PlayScreen implements Screen{
     public static int player, bots, neutral;
     private Vector2 velocity = new Vector2();
     public SaveGame saveGame = new SaveGame();
+    public Actions actions = new Actions();
 
     //other variables
     public static boolean oneSelected, oneTarget, oneMove;
@@ -51,7 +53,7 @@ public class PlayScreen implements Screen{
     public static float touchRadius, zoom, zoomInit, zoomFinal, attackDirection;
     public static Attack.Type typeAttack;
     private float camX, camY;
-    private static int explosionCount, initCount = 300;
+    private static int explosionCount, initCount;
     public static int numberAttack, restartCount;
 
     //load textures
@@ -66,6 +68,7 @@ public class PlayScreen implements Screen{
         zoom = MainGame.V_Width/MainGame.W_Width + MainGame.V_Height/MainGame.W_Height;
         touchRadius = 100*zoomInit;
         zoomFinal = zoom/2;
+        initCount = 300;
         this.game = game;
 
         //create camera & create viewport
@@ -94,7 +97,6 @@ public class PlayScreen implements Screen{
         //add units on stage
         stage = new Stage();
         firstGame();
-        saveGame.Print();
     }
 
     @Override
@@ -110,7 +112,6 @@ public class PlayScreen implements Screen{
             zoom = zoom + (zoomFinal - zoom) * delta*0.5f;
             initCount--;
         }
-
 
         //physics time execute
         world.step(1/60f, 6,2);
@@ -135,7 +136,9 @@ public class PlayScreen implements Screen{
         bots = 0;
 
         //other updates
-        updateCollision();
+        if(restartCount == 0) {
+            updateCollision();
+        }
         updateCamera(delta);
         Draw();
         WinOrLose();
@@ -149,7 +152,7 @@ public class PlayScreen implements Screen{
 
     @Override
     public void pause() {
-        saveGame.SaveStage(stage);
+
     }
 
     @Override
@@ -176,7 +179,7 @@ public class PlayScreen implements Screen{
 
     private void updateCamera(float delta){
         //update camera
-        if(!Gesture.zoom) {
+        if(!Gesture.zoom && restartCount == 0) {
 
             if (Gdx.input.isTouched()) {
                 camX -= Gdx.input.getDeltaX() * zoom;
@@ -461,7 +464,9 @@ public class PlayScreen implements Screen{
         {
             if(actor.getClass()== Cell.class) {
                 if (((Cell)actor).actualEnergy == ((Cell)actor).maxEnergy && explosionCount > 60 ){
-                    Explosion((Cell)actor);
+                    if(restartCount == 0) {
+                        Explosion((Cell) actor);
+                    }
                 }
                 if(((Cell)actor).team == Cell.Team.PLAYER){
                     player++;
@@ -470,7 +475,9 @@ public class PlayScreen implements Screen{
                     neutral++;
                 }
                 if(((Cell)actor).team != Cell.Team.PLAYER && ((Cell)actor).team != Cell.Team.NEUTRAL){
-                    BotAction((Cell)actor);
+                    if(restartCount == 0) {
+                        BotAction((Cell) actor);
+                    }
                     bots++;
                 }
                 DrawCell((Cell) actor);

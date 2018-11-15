@@ -133,7 +133,7 @@ public class Attack extends Actor {
         body.setBullet(true);
 
         if(type == Type.EXPLOSION){
-            velocity.set(baseMove*2, baseMove*3).setAngle(angle);
+            velocity.set(baseMove*4, baseMove*4).setAngle(angle);
             body.setLinearVelocity(velocity);
         }else {
             velocity.set(baseMove, baseMove).setAngle(angle);

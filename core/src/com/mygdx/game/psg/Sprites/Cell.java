@@ -26,6 +26,7 @@ public class Cell extends Actor {
 
     public Team team;
     public Body body;
+    public Attribute DNA;
 
     private Vector2 bodyPosition, inputPosition, velocity;
     private float  baseRegeneration;
@@ -37,7 +38,7 @@ public class Cell extends Actor {
         bodyPosition = new Vector2();
         inputPosition = new Vector2();
         velocity = new Vector2(0,0);
-        Attribute DNA = new Attribute();
+        DNA = new Attribute();
 
         baseRadius = 50 + RadiusEnergy(DNA.AttributeCount(Attribute.AttributeType.SIZE)*250f);
         maxEnergy = CircleArea(baseRadius);
@@ -239,7 +240,7 @@ public class Cell extends Actor {
     private void setColor(){
         switch (team){
             case NEUTRAL: setColor(Color.WHITE); break;
-            case PLAYER: setColor(102/255f, 255/255f, 255/255f, 1); break; //blue
+            case PLAYER: setColor(120/255f, 255/255f, 255/255f, 1); break; //blue
             case BOT1: setColor(Color.RED); break; //red
             case BOT2: setColor(Color.GREEN); break; //green
             case BOT3: setColor(Color.PURPLE); break; //purple

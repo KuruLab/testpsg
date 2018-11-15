@@ -90,11 +90,17 @@ public class Gesture implements InputProcessor {
 
     @Override
     public boolean scrolled(int amount) {
-        PlayScreen.zoomFinal = PlayScreen.zoomFinal + 0.25f*amount;
+        if(PlayScreen.restartCount == 0) {
 
-        if(PlayScreen.zoomFinal > 2f/PlayScreen.zoomInit){PlayScreen.zoomFinal = 2f/PlayScreen.zoomInit;}
-        if(PlayScreen.zoomFinal < 0.25f/PlayScreen.zoomInit){PlayScreen.zoomFinal = 0.25f/PlayScreen.zoomInit;}
+            PlayScreen.zoomFinal = PlayScreen.zoomFinal + 0.25f * amount;
 
+            if (PlayScreen.zoomFinal > 2f / PlayScreen.zoomInit) {
+                PlayScreen.zoomFinal = 2f / PlayScreen.zoomInit;
+            }
+            if (PlayScreen.zoomFinal < 0.25f / PlayScreen.zoomInit) {
+                PlayScreen.zoomFinal = 0.25f / PlayScreen.zoomInit;
+            }
+        }
         return false;
     }
 }
