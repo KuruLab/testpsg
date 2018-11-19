@@ -89,9 +89,9 @@ public class Attribute {
         }
     }
 
-    public void setDNA(AttributeType[] attributes){
+    public void setDNA(AttributeType[] DNA){
 
-
+        this.DNA =  DNA;
 
     }
 

@@ -1,7 +1,5 @@
 package com.mygdx.game.psg.Engine;
 
-import com.badlogic.gdx.graphics.g3d.particles.influencers.ColorInfluencer;
-import com.mygdx.game.psg.Screens.PlayScreen;
 import com.mygdx.game.psg.Sprites.Cell;
 
 import java.io.IOException;
@@ -97,9 +95,22 @@ public class Wheel {
         saveGame.SavePopulation(population);
     }
 
-    private Attribute Crossover(Attribute A, Attribute B){
+    private Attribute[] Crossover(Attribute A, Attribute B){
 
-        
-        return  A;
+        //vector crossover
+        Attribute[] par = new Attribute[2];
+
+        par[0] = A;
+        par[1] = B;
+
+        return  par;
+    }
+
+    private Attribute Mutation(Attribute DNA){
+
+        //mutation based on wheel
+        DNA.getDNA()[random(0, DNA.getDNA().length)] = (Attribute.AttributeType) attribute.toArray()[random(0, attribute.toArray().length)];
+
+        return DNA;
     }
 }
