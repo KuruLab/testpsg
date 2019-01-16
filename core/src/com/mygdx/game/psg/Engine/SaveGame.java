@@ -28,30 +28,16 @@ public class SaveGame {
 
     }
 
-
-    public Actions GetActions(){
-
-
-        return myjson.readValue(Actions.class, jsonReader.parse(Gdx.files.local("Save/actions.json").readString()));
-
-    }
-
     public Population GetPopulation(){
 
         return myjson.readValue(Population.class, jsonReader.parse(Gdx.files.local("Save/population.json").readString()));
 
     }
 
+
     public boolean SavePopulation(Population population){
 
         Gdx.files.local("Save/population.json").writeString(myjson.prettyPrint(population), false);
-
-        return true;
-    }
-
-    public  boolean SaveActions(Actions actions){
-
-        Gdx.files.local("Save/actions.json").writeString(myjson.prettyPrint(actions), false);
 
         return true;
     }

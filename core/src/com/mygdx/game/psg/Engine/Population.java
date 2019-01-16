@@ -3,7 +3,7 @@ package com.mygdx.game.psg.Engine;
 
 public class Population {
 
-    public static Attribute[] population = new Attribute[350];
+    public Attribute[] population = new Attribute[350];
 
 
     public Population(){
@@ -20,12 +20,6 @@ public class Population {
             population[i] = new Attribute();
 
         }
-    }
-
-    public void setPopulation(Attribute[] attributes){
-
-        population = attributes;
-
     }
 
     public Attribute[] getPopulation(){

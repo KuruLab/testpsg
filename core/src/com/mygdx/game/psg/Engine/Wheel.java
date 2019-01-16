@@ -26,7 +26,7 @@ public class Wheel {
     private void GetSave() throws IOException {
 
         this.population = saveGame.GetPopulation();
-        this.actions = saveGame.GetActions();
+        //this.actions = saveGame.GetActions();
 
     }
 
@@ -88,11 +88,10 @@ public class Wheel {
                        attribute.add(i-1,population.getPopulation()[random(0,integers.toArray().length)]);
                    }
                }
-
         }
 
-        population.setPopulation((Attribute[]) attribute.toArray());
-        saveGame.SavePopulation(population);
+        //population.setPopulation((Attribute[]) attribute.toArray());
+        //saveGame.SavePopulation(population);
     }
 
     private Attribute[] Crossover(Attribute A, Attribute B){

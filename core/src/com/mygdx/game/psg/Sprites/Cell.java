@@ -38,7 +38,11 @@ public class Cell extends Actor {
         bodyPosition = new Vector2();
         inputPosition = new Vector2();
         velocity = new Vector2(0,0);
-        DNA = new Attribute();
+        if(MainGame.load){
+            DNA = PlayScreen.attribute;
+        }else {
+            DNA = new Attribute();
+        }
 
         baseRadius = 50 + RadiusEnergy(DNA.AttributeCount(Attribute.AttributeType.SIZE)*250f);
         maxEnergy = CircleArea(baseRadius);
@@ -78,6 +82,8 @@ public class Cell extends Actor {
         fixtureDef.restitution = 1f;
         body.createFixture(fixtureDef);
 
+
+
         if(team != Team.PLAYER) {
             body.setLinearVelocity(velocity.setToRandomDirection());
         }
@@ -109,8 +115,6 @@ public class Cell extends Actor {
         MoveOrAttack();
         setColor();
     }
-
-
 
     private Vector2 BodyPosition(Vector2 bodyPosition) {
 
@@ -239,13 +243,13 @@ public class Cell extends Actor {
 
     private void setColor(){
         switch (team){
-            case NEUTRAL: setColor(Color.WHITE); break;
-            case PLAYER: setColor(120/255f, 255/255f, 255/255f, 1); break; //blue
-            case BOT1: setColor(Color.RED); break; //red
-            case BOT2: setColor(Color.GREEN); break; //green
-            case BOT3: setColor(Color.PURPLE); break; //purple
-            case BOT4: setColor(Color.YELLOW); break; //yellow
-            case BOT5: setColor(Color.ORANGE); break; // orange
+            case PLAYER: setColor(MainGame.colors.get(0)); break;
+            case BOT1: setColor(MainGame.colors.get(1)); break;
+            case BOT2: setColor(MainGame.colors.get(2)); break;
+            case BOT3: setColor(MainGame.colors.get(3)); break;
+            case BOT4: setColor(MainGame.colors.get(4)); break;
+            case BOT5: setColor(MainGame.colors.get(5)); break;
+            case NEUTRAL: setColor(MainGame.colors.get(6)); break;
         }
     }
 
