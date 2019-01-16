@@ -35,9 +35,8 @@ public class MenuScreen implements Screen {
     private static Vector2 sizeViewport;
     public static  Vector2 positionCamera;
     private float camX, camY;
-    public static float touchRadius, zoom, zoomInit;
+    public static float touchRadius, zoom;
 
-    private static int initCount;
     public static Button button;
 
     public static boolean oneSelected;
@@ -48,6 +47,18 @@ public class MenuScreen implements Screen {
     private Texture textureSelect = new Texture("select.png");
     private Texture textureAttack = new Texture("attack.png");
     private Texture textureCircle = new Texture("circle.png");
+    private Texture textureTitle = new Texture("title.png");
+
+    private Texture texturePrimum = new Texture("primum.png");
+    private Texture textureWin = new Texture("vitoria.png");
+    private Texture textureLose = new Texture("derrota.png");
+    private Texture textureMenu = new Texture("menu.png");
+    private Texture textureNew = new Texture("novo.png");
+    private Texture textureContinue = new Texture("continuar.png");
+    private Texture textureColors = new Texture("cores.png");
+    private Texture texturePlay = new Texture("jogar.png");
+    private Texture textureTanks = new Texture("obrigado.png");
+
 
     @Override
     public void show() {
@@ -60,19 +71,6 @@ public class MenuScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
-/*
-        if(initCount == 0) {
-            if (Math.abs(zoom - zoomFinal) > 0.005f) {
-                zoom = zoom + (zoomFinal - zoom) * delta*2.5f;
-            } else {
-                zoom = zoomFinal;
-            }
-        }else{
-            zoom = zoom + (zoomFinal - zoom) * delta*0.5f;
-            initCount--;
-        }
-*/
 
         //physics time execute
         world.step(1/60f, 6,2);
@@ -88,7 +86,7 @@ public class MenuScreen implements Screen {
 
         //update players
         stage.act();
-        updateCamera(delta);
+        updateCamera();
         Draw();
     }
 
@@ -120,7 +118,11 @@ public class MenuScreen implements Screen {
         world.dispose();
         stage.dispose();
         box2DDebugRenderer.dispose();
-
+        textureAttack.dispose();
+        textureCell.dispose();
+        textureCircle.dispose();
+        textureSelect.dispose();
+        textureTitle.dispose();
     }
 
     public MenuScreen(MainGame game)throws IOException {
@@ -152,98 +154,54 @@ public class MenuScreen implements Screen {
     }
 
     private void setMenu(){
-        stage.addActor(new Button(MainGame.M_Width/1.5f, -(MainGame.M_Height/2.5f - MainGame.M_Height/6f), Button.TypeButton.CONTINUE, 0));
-        stage.addActor(new Button(MainGame.M_Width/1.5f, -MainGame.M_Height/1.3f, Button.TypeButton.NEW, 6));
+        stage.addActor(new Button(MainGame.M_Width/1.5f, -(MainGame.M_Height/2.5f - MainGame.M_Height/6f), Button.TypeButton.CONTINUE, 0, true));
+        stage.addActor(new Button(MainGame.M_Width/1.5f, -MainGame.M_Height/1.3f, Button.TypeButton.NEW, 6, true));
 
-        stage.addActor(new Button(-MainGame.M_Width/1.5f, -(MainGame.M_Height/2.5f - MainGame.M_Height/6f), Button.TypeButton.START, 0));
-        stage.addActor(new Button(-MainGame.M_Width/1.5f, -MainGame.M_Height/1.3f, Button.TypeButton.CONTINUE, 6));
+        stage.addActor(new Button(-MainGame.M_Width/1.5f, -(MainGame.M_Height/2.5f - MainGame.M_Height/6f), Button.TypeButton.START, 0, true));
+        stage.addActor(new Button(-MainGame.M_Width/1.5f, -MainGame.M_Height/1.3f, Button.TypeButton.MENU, 6, true));
 
         position = new Vector2();
         position.set(0,MainGame.M_Height/2.5f);
         position.setAngle(270);
-        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 0));
+        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 0, false));
         position.setAngle(position.angle() + 360/6);
-        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 1));
+        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 1, false));
         position.setAngle(position.angle() + 360/6);
-        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 2));
+        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 2, false));
         position.setAngle(position.angle() + 360/6);
-        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 3));
+        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 3,true));
         position.setAngle(position.angle() + 360/6);
-        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 4));
+        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 4, false));
         position.setAngle(position.angle() + 360/6);
-        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 5));
+        stage.addActor(new Button(position.x, position.y + MainGame.M_Height/6, Button.TypeButton.COLOR, 5, false));
 
-        stage.addActor(new Button(0, -MainGame.M_Height/1.3f, Button.TypeButton.MENU, 6));
+        stage.addActor(new Button(0, -MainGame.M_Height/1.3f, Button.TypeButton.MENU, 6, true));
 
-        for(int i = 0; i < 30; i++){
+        for(int i = 0; i < 25; i++){
             stage.addActor(
                     new Button(
                             random(-MainGame.M_Width, MainGame.M_Width),
                             random(-MainGame.M_Height, MainGame.M_Height),
-                            Button.TypeButton.EFFECT, random(0,5)));
+                            Button.TypeButton.EFFECT, 0, false));
             stage.addActor(
                     new Button(
                             random(-MainGame.M_Width, MainGame.M_Width),
                             random(-MainGame.M_Height, MainGame.M_Height),
-                            Button.TypeButton.EFFECT, 6));
-
+                            Button.TypeButton.EFFECT, 6, false));
             stage.addActor(
                     new Button(
                             random(-MainGame.M_Width, MainGame.M_Width),
                             random(-MainGame.M_Height, MainGame.M_Height),
-                            Button.TypeButton.EFFECT, 6));
-
-
+                            Button.TypeButton.EFFECT, random(1,5), false));
         }
 
     }
 
-    private void updateCamera(float delta){
+    private void updateCamera(){
+
         //update camera
-
-        /*
-        if (Gdx.input.isTouched()) {
-            camX -= Gdx.input.getDeltaX() * zoom;
-            camY += Gdx.input.getDeltaY() * zoom;
-        }
-
-        if(Math.abs(camera.position.x - camX) > 0.0005f){
-            camera.position.x = camera.position.x  + (camX - camera.position.x)*delta*10f;
-        }else{
-            camera.position.x = camX;
-        }
-
-        if(Math.abs(camera.position.y - camY) > 0.0005f){
-            camera.position.y = camera.position.y  + (camY - camera.position.y)*delta*10f;
-
-        }else{
-            camera.position.y = camY;
-        }
-
-
-        if (camera.position.x < MainGame.W_Width * zoom - MainGame.W_Width * zoom / 2 - MainGame.M_Width) {
-            camera.position.x = MainGame.W_Width * zoom - MainGame.W_Width * zoom / 2 - MainGame.M_Width;
-            camX = camera.position.x;
-        }
-
-        if (camera.position.x > -MainGame.W_Width * zoom + MainGame.W_Width * zoom / 2 + MainGame.M_Width) {
-            camera.position.x = -MainGame.W_Width * zoom + MainGame.W_Width * zoom / 2 + MainGame.M_Width;
-            camX = camera.position.x;
-        }
-
-        if (camera.position.y < MainGame.W_Height * zoom - MainGame.W_Height * zoom / 2 - MainGame.M_Height) {
-            camera.position.y = MainGame.W_Height * zoom - MainGame.W_Height * zoom / 2 - MainGame.M_Height;
-            camY = camera.position.y;
-        }
-
-        if (camera.position.y > -MainGame.W_Height * zoom + MainGame.W_Height * zoom / 2 + MainGame.M_Height) {
-            camera.position.y = -MainGame.W_Height * zoom + MainGame.W_Height * zoom / 2 + MainGame.M_Height;
-            camY = camera.position.y;
-        }
-      */
-
         if(MainGame.controler == MainGame.Controler.MENU){
-            camera.position.x = 1080 + MainGame.W_Width * zoom * 0.5f;
+            camera.position.x = MainGame.W_Width * zoom;
         }
 
         if(MainGame.controler == MainGame.Controler.COLOR){
@@ -251,14 +209,14 @@ public class MenuScreen implements Screen {
         }
 
         if(MainGame.controler == MainGame.Controler.START || MainGame.controler == MainGame.Controler.RESTART){
-            camera.position.x = -1080 - MainGame.W_Width * zoom * 0.5f;
+            camera.position.x = -MainGame.W_Width * zoom;
+
         }
 
 
-        camX = camera.position.x;
-        camY = camera.position.y;
+  //      camX = camera.position.x;
+   //     camY = camera.position.y;
 
-        //positionCamera.set(camera.position.x, camera.position.y);
         sizeViewport.set(viewport.getScreenWidth(),viewport.getScreenHeight());
         positionCamera.set(camera.position.x, camera.position.y);
         camera.zoom = zoom;
@@ -285,6 +243,11 @@ public class MenuScreen implements Screen {
         //draw energy
         for(Actor actor : stage.getActors()) {
             DrawEnergy((Button)actor);
+        }
+
+        //draw energy
+        for(Actor actor : stage.getActors()) {
+            DrawTitle((Button)actor);
         }
 
         game.batch.end();
@@ -332,10 +295,10 @@ public class MenuScreen implements Screen {
         //draw select
         game.batch.draw(
                 textureSelect,
-                button.body.getPosition().x* MainGame.PPM - (button.baseRadius - touchRadius*zoom)*1.15f,
-                button.body.getPosition().y* MainGame.PPM - (button.baseRadius - touchRadius*zoom)*1.15f,
-                (button.baseRadius + touchRadius*zoom) * 2.3f,
-                (button.baseRadius + touchRadius*zoom) * 2.3f);
+                button.body.getPosition().x* MainGame.PPM - (button.baseRadius - touchRadius*zoom)*1.2f,
+                button.body.getPosition().y* MainGame.PPM - (button.baseRadius - touchRadius*zoom)*1.2f,
+                (button.baseRadius + touchRadius*zoom) * 2.4f,
+                (button.baseRadius + touchRadius*zoom) * 2.4f);
     }
 
     private void DrawButton(Button button){
@@ -362,6 +325,111 @@ public class MenuScreen implements Screen {
                 button.radiusEnergy * 2,
                 button.radiusEnergy * 2);
 
+    }
+
+    private void DrawTitle(Button button){
+
+        if(button.title) {
+            if(button.button == Button.TypeButton.COLOR){
+                game.batch.setColor(MainGame.colors.get(0));
+            }else{
+                game.batch.setColor(button.getColor());
+            }
+
+
+            switch (button.button){
+                case NEW:
+                    //draw button
+                    game.batch.draw(
+                            textureNew,
+                            button.body.getPosition().x * MainGame.PPM - button.baseRadius * 2,
+                            button.body.getPosition().y * MainGame.PPM + button.baseRadius * 1.2f,
+                            button.baseRadius * 4,
+                            button.baseRadius * 1f);
+                    break;
+                case CONTINUE:             //draw button
+                    game.batch.draw(
+                            textureContinue,
+                            button.body.getPosition().x * MainGame.PPM - button.baseRadius * 2,
+                            button.body.getPosition().y * MainGame.PPM + button.baseRadius * 1.2f,
+                            button.baseRadius * 4,
+                            button.baseRadius * 1f);
+                    break;
+                case MENU:             //draw button
+                    game.batch.draw(
+                            textureMenu,
+                            button.body.getPosition().x * MainGame.PPM - button.baseRadius * 2,
+                            button.body.getPosition().y * MainGame.PPM + button.baseRadius * 1.2f,
+                            button.baseRadius * 4,
+                            button.baseRadius * 1f);
+                    break;
+                case COLOR:             //draw button
+                    game.batch.draw(
+                            textureColors,
+                            button.body.getPosition().x * MainGame.PPM - button.baseRadius * 2,
+                            button.body.getPosition().y * MainGame.PPM + button.baseRadius * 1.2f,
+                            button.baseRadius * 4,
+                            button.baseRadius * 1f);
+                    break;
+                case START:             //draw button
+                    game.batch.draw(
+                            texturePlay,
+                            button.body.getPosition().x * MainGame.PPM - button.baseRadius * 2,
+                            button.body.getPosition().y * MainGame.PPM + button.baseRadius * 1.2f,
+                            button.baseRadius * 4,
+                            button.baseRadius * 1f);
+                    break;
+            }
+
+            if(button.button == Button.TypeButton.CONTINUE){
+
+                //draw button
+                game.batch.draw(
+                        texturePrimum,
+                        button.body.getPosition().x * MainGame.PPM - button.baseRadius * 2,
+                        button.body.getPosition().y * MainGame.PPM + button.baseRadius * 3f,
+                        button.baseRadius * 4f,
+                        button.baseRadius * 4f);
+
+            }
+
+            if(button.button == Button.TypeButton.START){
+
+                if(MainGame.win) {
+                    //draw button
+                    game.batch.draw(
+                            textureWin,
+                            button.body.getPosition().x * MainGame.PPM - button.baseRadius * 2,
+                            button.body.getPosition().y * MainGame.PPM + button.baseRadius * 3f,
+                            button.baseRadius * 4f,
+                            button.baseRadius * 4f);
+                }else{
+                    if(MainGame.lose){
+                        //draw button
+                        game.batch.draw(
+                                textureLose,
+                                button.body.getPosition().x * MainGame.PPM - button.baseRadius * 2,
+                                button.body.getPosition().y * MainGame.PPM + button.baseRadius * 3f,
+                                button.baseRadius * 4f,
+                                button.baseRadius * 4f);
+
+
+
+                    }else{
+                        //draw button
+                        game.batch.draw(
+                                textureTanks,
+                                button.body.getPosition().x * MainGame.PPM - button.baseRadius * 2,
+                                button.body.getPosition().y * MainGame.PPM + button.baseRadius * 3f,
+                                button.baseRadius * 4f,
+                                button.baseRadius * 4f);
+
+                    }
+                }
+
+            }
+
+        }
     }
 
 }

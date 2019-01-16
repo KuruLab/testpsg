@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.mygdx.game.psg.Engine.Actions;
 import com.mygdx.game.psg.Engine.Attribute;
 import com.mygdx.game.psg.MainGame;
 import com.mygdx.game.psg.Screens.PlayScreen;
@@ -32,9 +33,12 @@ public class Cell extends Actor {
     private float  baseRegeneration;
     public  float baseRadius, radiusEnergy, baseAttack, baseMove, actualEnergy, maxEnergy;
 
+    int size, attack, defense, speed, regen, passive, offensive, defensive, move, select;
+
     private boolean moving;
 
     public Cell(float x, float y, Team team) {
+
         bodyPosition = new Vector2();
         inputPosition = new Vector2();
         velocity = new Vector2(0,0);
@@ -44,23 +48,30 @@ public class Cell extends Actor {
             DNA = new Attribute();
         }
 
-        baseRadius = 50 + RadiusEnergy(DNA.AttributeCount(Attribute.AttributeType.SIZE)*250f);
+        size = DNA.AttributeCount(Attribute.AttributeType.SIZE);
+        attack = DNA.AttributeCount(Attribute.AttributeType.ATTACK);
+        defense = DNA.AttributeCount(Attribute.AttributeType.DEFENSE);
+        speed = DNA.AttributeCount(Attribute.AttributeType.SPEED);
+        regen = DNA.AttributeCount(Attribute.AttributeType.REGEN);
+        passive = DNA.AttributeCount(Attribute.AttributeType.PASSIVE);
+        offensive = DNA.AttributeCount(Attribute.AttributeType.OFFENSIVE);
+        defensive = DNA.AttributeCount(Attribute.AttributeType.DEFENSIVE);
+        move = DNA.AttributeCount(Attribute.AttributeType.MOVE);
+        select = DNA.AttributeCount(Attribute.AttributeType.SELECT);
+
+        baseRadius = 100 + 5f * size;
         maxEnergy = CircleArea(baseRadius);
 
-        baseRegeneration = 5f + DNA.AttributeCount(Attribute.AttributeType.REGEN) * 0.5f;
-        baseAttack = CircleArea(10) + (DNA.AttributeCount(Attribute.AttributeType.ATTACK) * CircleArea(1));
-        baseMove = 1f + (DNA.AttributeCount(Attribute.AttributeType.SPEED) * 0.1f);
+        baseRegeneration = 5f + regen * 0.5f;
+        baseAttack = CircleArea(10) + attack * CircleArea(1);
+        baseMove = 1f + speed * 0.1f;
 
-
-        actualEnergy = maxEnergy *(DNA.AttributeCount(Attribute.AttributeType.DEFENSE) * 0.01f);
+        actualEnergy = maxEnergy * defense * 0.01f;
         radiusEnergy = baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
 
         this.team = team;
-
-
         setX(x);
         setY(y);
-
         setColor();
         setCell();
     }
@@ -81,8 +92,6 @@ public class Cell extends Actor {
         fixtureDef.friction = 1f;
         fixtureDef.restitution = 1f;
         body.createFixture(fixtureDef);
-
-
 
         if(team != Team.PLAYER) {
             body.setLinearVelocity(velocity.setToRandomDirection());
@@ -182,8 +191,10 @@ public class Cell extends Actor {
                 }
                 if (team == Team.NEUTRAL) {
                     PlayScreen.typeAttack = Attack.Type.DOMINATE;
+
                 } else {
                     PlayScreen.typeAttack = Attack.Type.DAMAGED;
+
                 }
             }
         }
@@ -230,8 +241,17 @@ public class Cell extends Actor {
         if(cell.team == Team.PLAYER) {
             Stop(cell);
         }
-        PlayScreen.oneSelected = false;
-        PlayScreen.oneTarget = false;
+
+        switch (PlayScreen.typeAttack){
+            case TRANSFER: PlayScreen.oneSelected = true;
+                PlayScreen.oneTarget = false; break;
+            case MIXER: PlayScreen.oneSelected = false;
+                PlayScreen.oneTarget = false; break;
+            case DAMAGED: PlayScreen.oneSelected = false;
+                PlayScreen.oneTarget = false; break;
+            case DOMINATE: PlayScreen.oneSelected = false;
+                PlayScreen.oneTarget = false; break;
+        }
     }
 
     private void Regeneration(){

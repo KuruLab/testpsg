@@ -31,13 +31,15 @@ public class Button extends Actor {
     private Vector2 bodyPosition, inputPosition, velocity;
     public  float baseRadius, baseMove,actualEnergy, maxEnergy, radiusEnergy;
     private int index;
+    public boolean title;
 
-public Button(float x, float y, Button.TypeButton button, int index){
+public Button(float x, float y, Button.TypeButton button, int index, boolean title){
+    this.title = title;
     baseMove = 100;
     setColor(MainGame.colors.get(index));
 
     if(button == TypeButton.EFFECT){
-        baseRadius = random(25,125);
+        baseRadius = random(10,125);
     }else{
         baseRadius = 300;
     }
@@ -199,7 +201,7 @@ public Button(float x, float y, Button.TypeButton button, int index){
                 actualEnergy += 1000 + actualEnergy*0.01f;
             }
         }else{
-            actualEnergy -= 250 + actualEnergy*0.0025f;
+            actualEnergy -= 500 + actualEnergy*0.0025f;
         }
 
         if(button == EFFECT){
@@ -225,7 +227,6 @@ public Button(float x, float y, Button.TypeButton button, int index){
                 case CONTINUE: MainGame.controler = MainGame.Controler.COLOR; MainGame.load = true; break;
                 case START: MainGame.controler = MainGame.Controler.START;  MainGame.alterated = true; break;
             }
-            System.out.print(MainGame.load);
         }
 
         if(actualEnergy < 0 || (button == COLOR && MainGame.controler != MainGame.Controler.COLOR)){

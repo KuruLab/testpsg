@@ -9,95 +9,46 @@ import static com.badlogic.gdx.math.MathUtils.random;
 
 public class Wheel {
 
-    public SaveGame saveGame = new SaveGame();
-    private ArrayList<Attribute> attribute;
+    Attribute.AttributeType[][] par = new Attribute.AttributeType[100][2];
+    private SaveGame saveGame = new SaveGame();
+    private Attribute[] attribute = new Attribute[350];
+    private Population newPopulation = new Population();
     private Population population;
     private  Actions actions;
 
     private ArrayList<Integer> integers = new ArrayList<Integer>();
 
-    public Wheel() throws IOException {
+    public Wheel(Population population, Actions actions) throws IOException {
 
-        attribute = new ArrayList<Attribute>();
-
-    }
-
-
-    private void GetSave() throws IOException {
-
-        this.population = saveGame.GetPopulation();
-        //this.actions = saveGame.GetActions();
+        this.population = population;
+        this.actions = actions;
 
     }
 
-    private void NewGeration(){
-
-        int i = 0;
-
-        while(i < population.getPopulation().length){
-
-                if(i<50){
-                    for(int aux = 0;aux < actions.FitnessCell(population.getPopulation()[i], Cell.Team.NEUTRAL); aux++){
-                        integers.add(i);
-                    }
-                }else{
-                    if(i<100){
-                        for(int aux = 0;aux < actions.FitnessCell(population.getPopulation()[i], Cell.Team.PLAYER); aux++){
-                            integers.add(i);
-                        }
-                    }else{
-                        if(i<150){
-                            for(int aux = 0;aux < actions.FitnessCell(population.getPopulation()[i], Cell.Team.BOT1); aux++){
-                                integers.add(i);
-                            }
-                        }else{
-                            if(i<200){
-                                for(int aux = 0;aux < actions.FitnessCell(population.getPopulation()[i], Cell.Team.BOT2); aux++){
-                                    integers.add(i);
-                                }
-
-                            }else{
-                                if(i<250){
-                                    for(int aux = 0;aux < actions.FitnessCell(population.getPopulation()[i], Cell.Team.BOT3); aux++){
-                                        integers.add(i);
-                                    }
-
-                                }else{
-                                    if(i<300){
-                                        for(int aux = 0;aux < actions.FitnessCell(population.getPopulation()[i], Cell.Team.BOT4); aux++){
-                                            integers.add(i);
-                                        }
-
-                                    }else{
-                                        for(int aux = 0;aux < actions.FitnessCell(population.getPopulation()[i], Cell.Team.BOT5); aux++){
-                                            integers.add(i);
-                                        }
-
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+    public void NewGeneration(){
 
 
-               i++;
 
-               if(i%50 == 0){
-                   for(int aux = i; aux - i > -50; aux++){
-                       attribute.add(i-1,population.getPopulation()[random(0,integers.toArray().length)]);
-                   }
-               }
-        }
 
-        //population.setPopulation((Attribute[]) attribute.toArray());
-        //saveGame.SavePopulation(population);
+
+
     }
 
-    private Attribute[] Crossover(Attribute A, Attribute B){
+    private Attribute.AttributeType[][] Crossover(Attribute.AttributeType[] A, Attribute.AttributeType[] B){
+
+        Attribute.AttributeType a;
+        Attribute.AttributeType b;
+
+        int onePoint = random(0, 99);
 
         //vector crossover
-        Attribute[] par = new Attribute[2];
+        for(int i = 0; i <= onePoint; i++){
+            a = A[i];
+            b = B[i];
+
+            A[i] = b;
+            B[i] = a;
+        }
 
         par[0] = A;
         par[1] = B;
@@ -105,11 +56,28 @@ public class Wheel {
         return  par;
     }
 
-    private Attribute Mutation(Attribute DNA){
-
+    private Attribute.AttributeType[] Mutation(Attribute.AttributeType[] DNA){
         //mutation based on wheel
-        DNA.getDNA()[random(0, DNA.getDNA().length)] = (Attribute.AttributeType) attribute.toArray()[random(0, attribute.toArray().length)];
-
+        if(random(0,100) <= 5) {
+            DNA[random(0, 99)] = Attribute.AttributeType.values()[random(0,9)];
+        }
         return DNA;
+    }
+
+    public Population genetic(){
+
+
+        for(int i=0; i < 350; i += 2){
+
+            par = Crossover(attribute[i].getDNA(), attribute[i+1].getDNA());
+
+            attribute[i].setDNA(Mutation(par[0]));
+            attribute[i+1].setDNA(Mutation(par[1]));
+
+        }
+
+        newPopulation.setPopulation(attribute);
+
+        return newPopulation;
     }
 }
