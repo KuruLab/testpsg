@@ -123,6 +123,15 @@ public class MenuScreen implements Screen {
         textureCircle.dispose();
         textureSelect.dispose();
         textureTitle.dispose();
+        textureColors.dispose();
+        textureContinue.dispose();
+        textureLose.dispose();
+        textureMenu.dispose();
+        textureNew.dispose();
+        texturePlay.dispose();
+        texturePrimum.dispose();
+        textureTanks.dispose();
+        textureWin.dispose();
     }
 
     public MenuScreen(MainGame game)throws IOException {

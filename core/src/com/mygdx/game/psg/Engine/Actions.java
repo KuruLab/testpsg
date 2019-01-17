@@ -3,52 +3,82 @@ package com.mygdx.game.psg.Engine;
 
 import com.mygdx.game.psg.Sprites.Cell;
 
-import java.util.ArrayList;
+import static com.badlogic.gdx.math.MathUtils.random;
 
 public class Actions {
 
+    enum actionCell{
 
-    public static ArrayList<Attribute.AttributeType>
-            neutral = new ArrayList<Attribute.AttributeType>(),
-            player = new ArrayList<Attribute.AttributeType>(),
-            bot1 = new ArrayList<Attribute.AttributeType>(),
-            bot2 = new ArrayList<Attribute.AttributeType>(),
-            bot3 = new ArrayList<Attribute.AttributeType>(),
-            bot4 = new ArrayList<Attribute.AttributeType>(),
-            bot5 = new ArrayList<Attribute.AttributeType>();
+        MOVE,
+        ATTACK,
+        ENEMY,
+        NEUTRAL,
+        TRANSFER,
+        FIRE,
+        SELECT,
+        TARGET,
+        AVOID,
+        TOUCH
 
+    }
+
+
+    public static Attribute.AttributeType[] actions = new Attribute.AttributeType[25];
+    public int fitness[] = new int[70];
 
     public void AddAction(Cell.Team team, Attribute.AttributeType attributeType){
-        switch (team){
-            case NEUTRAL: neutral.add(attributeType);
-            case PLAYER: player.add(attributeType);
-            case BOT1: bot1.add(attributeType);
-            case BOT2: bot2.add(attributeType);
-            case BOT3: bot3.add(attributeType);
-            case BOT4: bot4.add(attributeType);
-            case BOT5: bot5.add(attributeType);
+
+        actions[random(0,24) + getIndex(team)] = attributeType;
+
+    }
+
+    public void SetFitness(){
+
+        for(int i = 0; i < 7; i++) {
+
+            for (int a = 0; a < 10; a++) {
+
+                int counter = 0;
+
+                for (int b = 0; b < 25; b++) {
+
+                    if (actions[b] == Attribute.AttributeType.values()[a]) {
+
+                        counter++;
+                    }
+                }
+
+                fitness[i + a * 10] = counter;
+            }
         }
     }
 
-    public float FitnessCell(Attribute attribute, Cell.Team team){
+    public int[] getFitness(){
 
-        float actions;
-        float attributes;
+        return this.fitness;
 
-        for(int i=1;i <= 20; i++){
+    }
 
-            attributes = attribute.AttributeCount(Attribute.AttributeType.values()[i]);
+    private int getIndex(Cell.Team team){
 
-            switch (team){
-                case NEUTRAL: actions = attribute.AttributeCount(Attribute.AttributeType.values()[i], neutral); return actions/neutral.toArray().length * attributes;
-                case PLAYER: actions = attribute.AttributeCount(Attribute.AttributeType.values()[i], player);return actions/player.toArray().length * attributes;
-                case BOT1: actions = attribute.AttributeCount(Attribute.AttributeType.values()[i], bot1);return actions/bot1.toArray().length * attributes;
-                case BOT2: actions = attribute.AttributeCount(Attribute.AttributeType.values()[i], bot2);return actions/bot2.toArray().length * attributes;
-                case BOT3: actions = attribute.AttributeCount(Attribute.AttributeType.values()[i], bot3);return actions/bot3.toArray().length * attributes;
-                case BOT4: actions = attribute.AttributeCount(Attribute.AttributeType.values()[i], bot4);return actions/bot4.toArray().length * attributes;
-                case BOT5: actions = attribute.AttributeCount(Attribute.AttributeType.values()[i], bot5);return actions/bot5.toArray().length * attributes;
-            }
+        switch (team){
+            case PLAYER: return 0;
+            case BOT1: return 10;
+            case BOT2: return 20;
+            case BOT3: return 30;
+            case BOT4: return 40;
+            case BOT5: return 50;
+            case NEUTRAL: return 60;
         }
-        return 0;
+
+        return 100;
+    }
+
+    public static void setActions(Attribute.AttributeType[] actions) {
+        Actions.actions = actions;
+    }
+
+    public static Attribute.AttributeType[] getActions() {
+        return actions;
     }
 }

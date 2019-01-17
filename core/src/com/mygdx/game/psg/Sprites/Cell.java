@@ -218,6 +218,7 @@ public class Cell extends Actor {
                         PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
                         PlayScreen.typeAttack = Attack.Type.MIXER;
                         PlayScreen.oneTarget = true;
+                        PlayScreen.targetCell = this;
                         moving = false;
                     }
                 }

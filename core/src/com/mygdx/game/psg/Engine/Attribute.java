@@ -1,6 +1,5 @@
 package com.mygdx.game.psg.Engine;
 
-import java.util.ArrayList;
 
 import static com.badlogic.gdx.math.MathUtils.random;
 
@@ -30,16 +29,6 @@ public class Attribute {
         int count = 0;
         for (int i = 0; i < 25; i ++) {
             if (DNA[i] == type) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    public int AttributeCount(AttributeType type, ArrayList<Attribute.AttributeType> DNA){
-        int count = 0;
-        for (int i = 0; i < DNA.toArray().length; i ++) {
-            if (DNA.toArray()[i] == type) {
                 count++;
             }
         }

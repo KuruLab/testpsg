@@ -5,6 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.psg.Engine.Attribute;
+import com.mygdx.game.psg.Engine.Bot;
+import com.mygdx.game.psg.Engine.History;
 import com.mygdx.game.psg.Engine.Population;
 import com.mygdx.game.psg.Engine.SaveGame;
 import com.mygdx.game.psg.Screens.MenuScreen;
@@ -21,12 +23,27 @@ public class MainGame extends Game{
 	public  static float W_Width, W_Height;
 	private PlayScreen playScreen;
 	private MenuScreen menuScreen;
+
+	//save and load
 	public static boolean load, exists;
-    public Population loadgame = new Population();
-    public Population newGame = new Population();
-    public static Attribute[] attributes = new Attribute[350];
-    public static Attribute[] attributesLoad = new Attribute[350];
-    public static Attribute[] attributesNew = new Attribute[350];
+    public Population loadPopulation = new Population();
+    public Population newPopulation = new Population();
+    public History loadHistory = new History();
+    public History newHistory = new History();
+    public Bot loadBot = new Bot();
+    public Bot newBot = new Bot();
+
+    public static Attribute[] attributes = new Attribute[175];
+    public static Attribute[] attributesLoad = new Attribute[175];
+    public static Attribute[] attributesNew = new Attribute[175];
+
+    public static boolean[] histories = new boolean[10];
+    public static boolean[] historiesLoad = new boolean[10];
+    public static boolean[] historiesNew = new boolean[10];
+
+    public static int[] actions = new int[60];
+    public static int[] actionsLoad = new int[60];
+    public static int[] actionsNew = new int[60];
 
 	public static ArrayList<Color> colors = new ArrayList<Color>();
 
@@ -42,7 +59,9 @@ public class MainGame extends Game{
     }
 
     public static Controler controler = Controler.MENU;
-    File file = new File("Save/population.json");
+    File population = new File("Save/population.json");
+    File bot = new File("Save/bot.json");
+    File history = new File("Save/history.json");
 
 	public static boolean win, lose, restart, menu, color, start;
 
@@ -50,12 +69,12 @@ public class MainGame extends Game{
 	public void create() {
 
         colors.add(0, Color.WHITE);
-        colors.add(0, Color.ROYAL);
-        colors.add(0, Color.RED);
         colors.add(0, Color.GREEN);
-        colors.add(0, Color.YELLOW);
-        colors.add(0, Color.ORANGE);
+        colors.add(0, Color.ROYAL);
         colors.add(0, Color.PURPLE);
+        colors.add(0, Color.RED);
+        colors.add(0, Color.ORANGE);
+        colors.add(0, Color.YELLOW);
 
         win = false;
         lose = false;
@@ -69,22 +88,37 @@ public class MainGame extends Game{
 
         batch = new SpriteBatch();
 
-        if(file.exists()){
+        if(population.exists() && bot.exists() && history.exists()){
             load = true;
             exists = true;
         }
 
         try {
             SaveGame saveGame = new SaveGame();
-            if (!exists) {
-                load = false;
-                loadgame = new Population();
-                saveGame.SavePopulation(loadgame);
-                attributesLoad = loadgame.getPopulation();
+            if (exists) {
+                loadPopulation = saveGame.GetPopulation();
+                attributesLoad = loadPopulation.getPopulation();
+
+                loadBot = saveGame.GetBot();
+                actionsLoad = loadBot.getActions();
+
+                loadHistory = saveGame.GetHistory();
+                historiesLoad = loadHistory.getHistory();
 
             } else {
-                newGame = saveGame.GetPopulation();
-                attributesLoad = newGame.getPopulation();
+                load = false;
+
+                loadPopulation = newPopulation;
+                saveGame.SavePopulation(loadPopulation);
+                attributesLoad = loadPopulation.getPopulation();
+
+                loadBot = newBot;
+                saveGame.SaveBot(loadBot);
+                actionsLoad = loadBot.getActions();
+
+                loadHistory = newHistory;
+                saveGame.SaveHistoy(loadHistory);
+                historiesLoad = loadHistory.getHistory();
             }
 
         } catch (IOException e) {

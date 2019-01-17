@@ -14,9 +14,6 @@ import java.util.ArrayList;
 
 public class SaveGame {
 
-    //public Attribute attribute = new Attribute();
-    //public Population population = new Population();
-
     Json myjson;
     JsonReader jsonReader;
 
@@ -34,10 +31,35 @@ public class SaveGame {
 
     }
 
-
     public boolean SavePopulation(Population population){
 
         Gdx.files.local("Save/population.json").writeString(myjson.prettyPrint(population), false);
+
+        return true;
+    }
+
+    public Bot GetBot(){
+
+        return myjson.readValue(Bot.class, jsonReader.parse(Gdx.files.local("Save/bot.json").readString()));
+
+    }
+
+    public boolean SaveBot(Bot bot){
+
+        Gdx.files.local("Save/bot.json").writeString(myjson.prettyPrint(bot), false);
+
+        return true;
+    }
+
+    public History GetHistory(){
+
+        return myjson.readValue(History.class, jsonReader.parse(Gdx.files.local("Save/history.json").readString()));
+
+    }
+
+    public boolean SaveHistoy(History history){
+
+        Gdx.files.local("Save/history.json").writeString(myjson.prettyPrint(history), false);
 
         return true;
     }

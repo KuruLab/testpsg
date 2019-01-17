@@ -49,7 +49,7 @@ public class PlayScreen implements Screen{
     public Population population = new Population();
 
     //other variables
-    public static boolean oneSelected, oneTarget, oneMove;
+    public static boolean oneSelected, oneTarget, oneMove, preAttack;
     private static Vector2 sizeViewport;
     public static  Vector2 positionCamera;
     public static  Cell selectedCell, targetCell;
@@ -99,6 +99,7 @@ public class PlayScreen implements Screen{
 
         MainGame.lose = false;
         MainGame.win = false;
+        preAttack = false;
     }
 
     @Override
@@ -447,16 +448,16 @@ public class PlayScreen implements Screen{
 
     private void createAttack(){
 
-        if(oneSelected && oneTarget && selectedCell.team == Cell.Team.PLAYER){
+        if(oneSelected && oneTarget && selectedCell.team == Cell.Team.PLAYER && preAttack){
             stage.addActor(new Attack(selectedCell, targetCell, typeAttack, attackDirection));
             Clear(selectedCell);
+            preAttack = false;
+        }else{
+            if(oneSelected && oneTarget && selectedCell.team == Cell.Team.PLAYER ){
+                preAttack = true;
+            }
         }
-/*
-        if(oneMove){
-            oneMove = false;
-            oneSelected = false;
-        }
-*/
+
     }
 
     private void Explosion(Cell cell){
@@ -713,6 +714,9 @@ public class PlayScreen implements Screen{
     }
 
     private void BotAction(Cell bot) {
+
+        Actor target = (stage.getActors().items)[random(0, stage.getActors().size - 1)];
+
 
         if(random(100 ) < 1) {
             if (bot.actualEnergy / bot.maxEnergy * random(100) > 10) {
