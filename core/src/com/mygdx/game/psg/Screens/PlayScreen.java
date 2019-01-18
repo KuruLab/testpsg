@@ -44,22 +44,20 @@ public class PlayScreen implements Screen{
     private Box2DDebugRenderer box2DDebugRenderer;
     public static int player, bots, neutral;
     private Vector2 velocity = new Vector2();
-    public Actions actions = new Actions();
+    public static Actions actions = new Actions();
     public static Attribute attribute;
-    public Population population = new Population();
 
     //other variables
-    public static boolean oneSelected, oneTarget, oneMove, preAttack;
+    public static boolean oneSelected, oneTarget, oneMove;
     private static Vector2 sizeViewport;
     public static  Vector2 positionCamera;
     public static  Cell selectedCell, targetCell;
     public static ArrayList<Body> contact = new ArrayList<Body>();
     public static float touchRadius, zoom, zoomInit, zoomFinal, attackDirection;
-    public static Attack.Type typeAttack;
+    public static Attribute.AttributeType typeAttack;
     private float camX, camY;
     private static int explosionCount, initCount;
     public static int numberAttack, restartCount;
-
 
     //load textures
     private Texture textureCircle = new Texture("circle.png");
@@ -99,7 +97,6 @@ public class PlayScreen implements Screen{
 
         MainGame.lose = false;
         MainGame.win = false;
-        preAttack = false;
     }
 
     @Override
@@ -284,7 +281,7 @@ public class PlayScreen implements Screen{
         if(actorA.getClass() == Cell.class){
 
             if(((Cell) actorA).team == ((Attack) actorB).team ){
-                if( ((Attack) actorB).type != Attack.Type.EXPLOSION){
+                if( ((Attack) actorB).type != Attribute.AttributeType.SIZE){
                 ((Cell)actorA).actualEnergy = ((Cell)actorA).actualEnergy + ((Attack)actorB).actualEnergy*0.75f;
                 }else{
                 ((Cell)actorA).actualEnergy = ((Cell)actorA).actualEnergy + ((Attack)actorB).actualEnergy*0.3f;
@@ -309,7 +306,7 @@ public class PlayScreen implements Screen{
         }else{
 
             if(((Cell)actorB).team == ((Attack)actorA).team) {
-                if(((Attack)actorA).type != Attack.Type.EXPLOSION){
+                if(((Attack)actorA).type != Attribute.AttributeType.SIZE){
                 ((Cell)actorB).actualEnergy = ((Cell)actorB).actualEnergy + ((Attack)actorA).actualEnergy * 0.75f;
                 }else{
                 ((Cell)actorB).actualEnergy = ((Cell)actorB).actualEnergy + ((Attack)actorA).actualEnergy * 0.3f;
@@ -350,11 +347,6 @@ public class PlayScreen implements Screen{
                 MainGame.alterated = true;
                 MainGame.controler = MainGame.Controler.RESTART;
             }
-            if(restartCount == 1){
-
-            }
-
-
         }else{restartCount = 0;}
     }
 
@@ -448,16 +440,10 @@ public class PlayScreen implements Screen{
 
     private void createAttack(){
 
-        if(oneSelected && oneTarget && selectedCell.team == Cell.Team.PLAYER && preAttack){
+        if(oneSelected && oneTarget && selectedCell.team == Cell.Team.PLAYER){
             stage.addActor(new Attack(selectedCell, targetCell, typeAttack, attackDirection));
             Clear(selectedCell);
-            preAttack = false;
-        }else{
-            if(oneSelected && oneTarget && selectedCell.team == Cell.Team.PLAYER ){
-                preAttack = true;
-            }
         }
-
     }
 
     private void Explosion(Cell cell){
@@ -466,7 +452,7 @@ public class PlayScreen implements Screen{
 
         for(int i = 0; i < 20; i++){
 
-            stage.addActor(new Attack(cell, targetCell, Attack.Type.EXPLOSION, angle));
+            stage.addActor(new Attack(cell, targetCell, Attribute.AttributeType.SIZE, angle));
             angle += 18;
 
         }

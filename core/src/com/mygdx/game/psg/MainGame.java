@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.psg.Engine.Attribute;
-import com.mygdx.game.psg.Engine.Bot;
+import com.mygdx.game.psg.Engine.BotAction;
 import com.mygdx.game.psg.Engine.History;
 import com.mygdx.game.psg.Engine.Population;
 import com.mygdx.game.psg.Engine.SaveGame;
@@ -30,8 +30,8 @@ public class MainGame extends Game{
     public Population newPopulation = new Population();
     public History loadHistory = new History();
     public History newHistory = new History();
-    public Bot loadBot = new Bot();
-    public Bot newBot = new Bot();
+    public BotAction loadBot = new BotAction();
+    public BotAction newBot = new BotAction();
 
     public static Attribute[] attributes = new Attribute[175];
     public static Attribute[] attributesLoad = new Attribute[175];
@@ -41,9 +41,9 @@ public class MainGame extends Game{
     public static boolean[] historiesLoad = new boolean[10];
     public static boolean[] historiesNew = new boolean[10];
 
-    public static int[] actions = new int[60];
-    public static int[] actionsLoad = new int[60];
-    public static int[] actionsNew = new int[60];
+    public static int[] actions = new int[30];
+    public static int[] actionsLoad = new int[30];
+    public static int[] actionsNew = new int[30];
 
 	public static ArrayList<Color> colors = new ArrayList<Color>();
 
@@ -100,7 +100,7 @@ public class MainGame extends Game{
                 attributesLoad = loadPopulation.getPopulation();
 
                 loadBot = saveGame.GetBot();
-                actionsLoad = loadBot.getActions();
+                actionsLoad = loadBot.getBotActions();
 
                 loadHistory = saveGame.GetHistory();
                 historiesLoad = loadHistory.getHistory();
@@ -114,7 +114,7 @@ public class MainGame extends Game{
 
                 loadBot = newBot;
                 saveGame.SaveBot(loadBot);
-                actionsLoad = loadBot.getActions();
+                actionsLoad = loadBot.getBotActions();
 
                 loadHistory = newHistory;
                 saveGame.SaveHistoy(loadHistory);

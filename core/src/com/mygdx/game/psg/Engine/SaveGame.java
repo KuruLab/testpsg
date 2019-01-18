@@ -1,16 +1,10 @@
 package com.mygdx.game.psg.Engine;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
-import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.JsonWriter;
 
 import java.io.IOException;
-import java.io.Writer;
-import java.util.ArrayList;
 
 public class SaveGame {
 
@@ -38,13 +32,13 @@ public class SaveGame {
         return true;
     }
 
-    public Bot GetBot(){
+    public BotAction GetBot(){
 
-        return myjson.readValue(Bot.class, jsonReader.parse(Gdx.files.local("Save/bot.json").readString()));
+        return myjson.readValue(BotAction.class, jsonReader.parse(Gdx.files.local("Save/bot.json").readString()));
 
     }
 
-    public boolean SaveBot(Bot bot){
+    public boolean SaveBot(BotAction bot){
 
         Gdx.files.local("Save/bot.json").writeString(myjson.prettyPrint(bot), false);
 

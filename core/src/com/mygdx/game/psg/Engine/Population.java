@@ -1,10 +1,8 @@
 package com.mygdx.game.psg.Engine;
 
-
 public class Population {
 
     public Attribute[] population = new Attribute[175];
-
 
     public Population(){
 

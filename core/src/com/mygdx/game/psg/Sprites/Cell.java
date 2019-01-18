@@ -25,6 +25,12 @@ public class Cell extends Actor {
         BOT5
     }
 
+    public enum Status{
+        LOW,
+        MID,
+        HI
+    }
+
     public Team team;
     public Body body;
     public Attribute DNA;
@@ -33,7 +39,7 @@ public class Cell extends Actor {
     private float  baseRegeneration;
     public  float baseRadius, radiusEnergy, baseAttack, baseMove, actualEnergy, maxEnergy;
 
-    int size, attack, defense, speed, regen, passive, offensive, defensive, move, select;
+    int size, attack, defense, speed, regen;
 
     private boolean moving;
 
@@ -53,11 +59,6 @@ public class Cell extends Actor {
         defense = DNA.AttributeCount(Attribute.AttributeType.DEFENSE);
         speed = DNA.AttributeCount(Attribute.AttributeType.SPEED);
         regen = DNA.AttributeCount(Attribute.AttributeType.REGEN);
-        passive = DNA.AttributeCount(Attribute.AttributeType.PASSIVE);
-        offensive = DNA.AttributeCount(Attribute.AttributeType.OFFENSIVE);
-        defensive = DNA.AttributeCount(Attribute.AttributeType.DEFENSIVE);
-        move = DNA.AttributeCount(Attribute.AttributeType.MOVE);
-        select = DNA.AttributeCount(Attribute.AttributeType.SELECT);
 
         baseRadius = 100 + 5f * size;
         maxEnergy = CircleArea(baseRadius);
@@ -103,16 +104,31 @@ public class Cell extends Actor {
         radiusEnergy = baseRadius * RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
 
         if(PlayScreen.oneSelected && PlayScreen.selectedCell.team != Cell.Team.PLAYER){
+            PlayScreen.oneTarget = true;
             PlayScreen.oneSelected = false;
+            PlayScreen.targetCell = PlayScreen.selectedCell;
         }
 
-        if(PlayScreen.restartCount == 0){
-            DelimiterBorder();
-            SelectOrTarget();
-            Regeneration();
+
+        if(PlayScreen.oneTarget && PlayScreen.oneSelected) {
+
         }else{
-            if(team == Team.PLAYER){
+
+            if(PlayScreen.oneTarget && PlayScreen.targetCell.team == Cell.Team.PLAYER){
+                PlayScreen.oneTarget = false;
+                PlayScreen.oneSelected = true;
+                PlayScreen.selectedCell = PlayScreen.targetCell;
+            }
+
+            if (PlayScreen.restartCount == 0) {
                 DelimiterBorder();
+                MoveOrAttack();
+                SelectOrTarget();
+                Regeneration();
+            } else {
+                if (team == Team.PLAYER) {
+                    DelimiterBorder();
+                }
             }
         }
 
@@ -121,7 +137,6 @@ public class Cell extends Actor {
             body.setLinearVelocity(velocity.setToRandomDirection());
         }
 
-        MoveOrAttack();
         setColor();
     }
 
@@ -185,16 +200,11 @@ public class Cell extends Actor {
         if (Gdx.input.justTouched() && isTouched()){
             Select();
             moving = false;
-            if(PlayScreen.oneSelected) {
+            if(PlayScreen.oneSelected && PlayScreen.selectedCell != this) {
                 if (team == Team.PLAYER) {
-                    PlayScreen.typeAttack = Attack.Type.TRANSFER;
-                }
-                if (team == Team.NEUTRAL) {
-                    PlayScreen.typeAttack = Attack.Type.DOMINATE;
-
-                } else {
-                    PlayScreen.typeAttack = Attack.Type.DAMAGED;
-
+                    PlayScreen.typeAttack = Attribute.AttributeType.REGEN;
+                }else {
+                    PlayScreen.typeAttack = Attribute.AttributeType.ATTACK;
                 }
             }
         }
@@ -210,13 +220,14 @@ public class Cell extends Actor {
                         body.setLinearVelocity(velocity);
                         PlayScreen.oneMove = true;
                         moving = false;
+
                     }
 
                     if (InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) > baseRadius &&
                             InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) < (baseRadius + PlayScreen.touchRadius * PlayScreen.zoom)) {
                         velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle());
                         PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
-                        PlayScreen.typeAttack = Attack.Type.MIXER;
+                        PlayScreen.typeAttack = Attribute.AttributeType.DEFENSE;
                         PlayScreen.oneTarget = true;
                         PlayScreen.targetCell = this;
                         moving = false;
@@ -244,13 +255,12 @@ public class Cell extends Actor {
         }
 
         switch (PlayScreen.typeAttack){
-            case TRANSFER: PlayScreen.oneSelected = true;
+            case REGEN: PlayScreen.oneSelected = true;
+                PlayScreen.selectedCell = PlayScreen.targetCell;
                 PlayScreen.oneTarget = false; break;
-            case MIXER: PlayScreen.oneSelected = false;
+            case DEFENSE: PlayScreen.oneSelected = false;
                 PlayScreen.oneTarget = false; break;
-            case DAMAGED: PlayScreen.oneSelected = false;
-                PlayScreen.oneTarget = false; break;
-            case DOMINATE: PlayScreen.oneSelected = false;
+            case ATTACK: PlayScreen.oneSelected = true;
                 PlayScreen.oneTarget = false; break;
         }
     }
@@ -292,6 +302,8 @@ public class Cell extends Actor {
                 }else{
                     PlayScreen.oneTarget = true;
                     PlayScreen.targetCell = this;
+                    velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle()-180);
+                    PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
                 }
             } else {
 
@@ -300,12 +312,16 @@ public class Cell extends Actor {
                         PlayScreen.oneTarget = false;
                     } else {
                         if (team == Team.PLAYER) {
-                            PlayScreen.attackDirection = (PlayScreen.targetCell.body.getPosition()).sub(this.body.getPosition()).angle();
+                            velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle());
+                            PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
                             PlayScreen.selectedCell = this;
                             PlayScreen.oneSelected = true;
                             }
                         else {
+                            velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle() - 180);
+                            PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
                             PlayScreen.targetCell = this;
+                            PlayScreen.oneTarget = true;
                         }
                     }
                 }
@@ -317,6 +333,19 @@ public class Cell extends Actor {
         if(cell.team == Team.PLAYER)
         cell.body.setLinearVelocity(0,0);
         cell.moving = false;
+    }
+
+    public static Status Status(Cell cell){
+
+        if(cell.actualEnergy < cell.maxEnergy * 0.3f){
+            return Status.LOW;
+        }
+
+        if(cell.actualEnergy > cell.maxEnergy * 0.7f){
+            return Status.HI;
+        }
+
+        return Status.MID;
     }
 }
 

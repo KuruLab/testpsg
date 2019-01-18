@@ -7,24 +7,9 @@ import static com.badlogic.gdx.math.MathUtils.random;
 
 public class Actions {
 
-    enum actionCell{
-
-        MOVE,
-        ATTACK,
-        ENEMY,
-        NEUTRAL,
-        TRANSFER,
-        FIRE,
-        SELECT,
-        TARGET,
-        AVOID,
-        TOUCH
-
-    }
-
 
     public static Attribute.AttributeType[] actions = new Attribute.AttributeType[25];
-    public int fitness[] = new int[70];
+    public int fitness[] = new int[35];
 
     public void AddAction(Cell.Team team, Attribute.AttributeType attributeType){
 
@@ -36,7 +21,7 @@ public class Actions {
 
         for(int i = 0; i < 7; i++) {
 
-            for (int a = 0; a < 10; a++) {
+            for (int a = 0; a < 5; a++) {
 
                 int counter = 0;
 
@@ -48,7 +33,7 @@ public class Actions {
                     }
                 }
 
-                fitness[i + a * 10] = counter;
+                fitness[i + a * 5] = counter;
             }
         }
     }
@@ -63,12 +48,12 @@ public class Actions {
 
         switch (team){
             case PLAYER: return 0;
-            case BOT1: return 10;
-            case BOT2: return 20;
-            case BOT3: return 30;
-            case BOT4: return 40;
-            case BOT5: return 50;
-            case NEUTRAL: return 60;
+            case BOT1: return 5;
+            case BOT2: return 10;
+            case BOT3: return 15;
+            case BOT4: return 20;
+            case BOT5: return 25;
+            case NEUTRAL: return 30;
         }
 
         return 100;

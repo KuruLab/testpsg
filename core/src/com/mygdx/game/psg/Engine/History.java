@@ -4,9 +4,9 @@ import static com.badlogic.gdx.math.MathUtils.randomBoolean;
 
 public class History {
 
-    public boolean[] history = new boolean[10];
+    public boolean[] history = new boolean[60];
 
-    public void History(){
+    public History(){
 
         setHistory();
 
@@ -16,7 +16,7 @@ public class History {
 
         for(int i = 0; i < history.length; i++){
 
-            history[i] = randomBoolean();
+           history[i] = randomBoolean();
 
         }
     }

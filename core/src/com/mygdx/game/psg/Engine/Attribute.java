@@ -1,22 +1,16 @@
 package com.mygdx.game.psg.Engine;
 
-
 import static com.badlogic.gdx.math.MathUtils.random;
 
 public class Attribute {
 
     public enum AttributeType {
-
         SIZE,
         ATTACK,
         DEFENSE,
         SPEED,
-        REGEN,
-        PASSIVE,
-        OFFENSIVE,
-        DEFENSIVE,
-        MOVE,
-        SELECT
+        REGEN
+
     }
 
     private AttributeType[] DNA = new AttributeType[25];
@@ -38,7 +32,7 @@ public class Attribute {
     public void setDNA(){
 
         for(int i = 0; i < 25; i ++) {
-            DNA[i] = AttributeType.values()[random(0,9)];
+            DNA[i] = AttributeType.values()[random(0,4)];
         }
     }
 

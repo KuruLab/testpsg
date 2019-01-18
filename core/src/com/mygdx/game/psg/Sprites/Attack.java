@@ -6,23 +6,18 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.mygdx.game.psg.Engine.Actions;
+import com.mygdx.game.psg.Engine.Attribute;
 import com.mygdx.game.psg.MainGame;
 import com.mygdx.game.psg.Screens.PlayScreen;
 
 public class Attack extends Actor {
 
-    public enum Type{
-        DAMAGED,
-        TRANSFER,
-        MIXER,
-        DOMINATE,
-        EXPLOSION
-    }
 
     public Cell.Team team;
     public Body body;
     private Vector2 velocity = new Vector2(0,0);
-    public Type type;
+    public Attribute.AttributeType type;
 
     public float baseAttack,maxEnergy, actualEnergy, energyRadius, baseRadius, baseMove;
     public boolean remove, modifyEnergy;
@@ -33,7 +28,7 @@ public class Attack extends Actor {
     private CircleShape circleShape = new CircleShape();
     private FixtureDef fixtureDef = new FixtureDef();
 
-    public Attack(Cell cell, Cell target, Type type, float angle){
+    public Attack(Cell cell, Cell target, Attribute.AttributeType type, float angle){
         baseMove = cell.baseMove*2;
         baseAttack = cell.baseAttack;
         baseRadius = cell.baseRadius;
@@ -42,7 +37,7 @@ public class Attack extends Actor {
         this.team = cell.team;
         this.type = type;
 
-        if(type != Type.EXPLOSION) {
+        if(type != Attribute.AttributeType.SIZE) {
 
             actualEnergy = baseAttack + cell.actualEnergy * 0.5f;
             energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);
@@ -57,7 +52,7 @@ public class Attack extends Actor {
 
     private void setAttack(Cell cell, float angle){
 
-        if(type == Type.EXPLOSION){
+        if(type == Attribute.AttributeType.SIZE){
             velocity.set(cell.baseRadius + energyRadius,cell.baseRadius + energyRadius).setAngle(angle);
         }else{
             velocity.set(cell.baseRadius + energyRadius,1).setAngle(angle);
@@ -132,7 +127,7 @@ public class Attack extends Actor {
         body.createFixture(SetFixtureDef());
         body.setBullet(true);
 
-        if(type == Type.EXPLOSION){
+        if(type == Attribute.AttributeType.SIZE){
             velocity.set(baseMove*4, baseMove*4).setAngle(angle);
             body.setLinearVelocity(velocity);
         }else {
@@ -158,7 +153,7 @@ public class Attack extends Actor {
         inativity++;
         resize++;
 
-        if (type == Type.EXPLOSION) {
+        if (type == Attribute.AttributeType.SIZE) {
             actualEnergy = actualEnergy - 10 * PlayScreen.numberAttack * delta;
         }
 
