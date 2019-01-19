@@ -17,8 +17,10 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.psg.Engine.Actions;
 import com.mygdx.game.psg.Engine.Attribute;
+import com.mygdx.game.psg.Engine.BotAction;
 import com.mygdx.game.psg.Engine.Detector;
 import com.mygdx.game.psg.Engine.Gesture;
+import com.mygdx.game.psg.Engine.History;
 import com.mygdx.game.psg.Engine.Population;
 import com.mygdx.game.psg.Engine.SaveGame;
 import com.mygdx.game.psg.Engine.Wheel;
@@ -45,16 +47,23 @@ public class PlayScreen implements Screen{
     public static int player, bots, neutral;
     private Vector2 velocity = new Vector2();
     public static Actions actions = new Actions();
+
+    //load game
     public static Attribute attribute;
+    public BotAction botAction = new BotAction();
+    public History history = new History();
 
     //other variables
-    public static boolean oneSelected, oneTarget, oneMove;
+    public static boolean oneSelected, oneTarget, oneFire;
+    public static boolean botSelected, botTarget;
+    public Actor targetBot = new Actor();
     private static Vector2 sizeViewport;
-    public static  Vector2 positionCamera;
-    public static  Cell selectedCell, targetCell;
+    public static Vector2 positionCamera;
+    public static Cell selectedCell, targetCell;
+    public static Cell[] selectedBots = new Cell[6];
     public static ArrayList<Body> contact = new ArrayList<Body>();
     public static float touchRadius, zoom, zoomInit, zoomFinal, attackDirection;
-    public static Attribute.AttributeType typeAttack;
+    public static Attribute.AttributeType typeAttack, botAttack;
     private float camX, camY;
     private static int explosionCount, initCount;
     public static int numberAttack, restartCount;
@@ -94,6 +103,10 @@ public class PlayScreen implements Screen{
         box2DDebugRenderer = new Box2DDebugRenderer();
 
         world.setContactListener(new Detector());
+
+        //Other
+        botAction.setBotActions(MainGame.actionsLoad);
+        history.setHistory(MainGame.historiesLoad);
 
         MainGame.lose = false;
         MainGame.win = false;
@@ -440,7 +453,7 @@ public class PlayScreen implements Screen{
 
     private void createAttack(){
 
-        if(oneSelected && oneTarget && selectedCell.team == Cell.Team.PLAYER){
+        if(oneSelected && oneTarget && selectedCell.team == Cell.Team.PLAYER || oneFire){
             stage.addActor(new Attack(selectedCell, targetCell, typeAttack, attackDirection));
             Clear(selectedCell);
         }
@@ -701,8 +714,13 @@ public class PlayScreen implements Screen{
 
     private void BotAction(Cell bot) {
 
-        Actor target = (stage.getActors().items)[random(0, stage.getActors().size - 1)];
+        targetBot = (stage.getActors().items)[random(0, stage.getActors().size - 1)];
 
+        if(botSelected && botTarget){
+
+           botAction.getAction(bot, targetBot);
+
+        }
 
         if(random(100 ) < 1) {
             if (bot.actualEnergy / bot.maxEnergy * random(100) > 10) {

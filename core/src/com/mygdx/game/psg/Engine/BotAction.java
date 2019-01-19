@@ -4,7 +4,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.psg.Sprites.Cell;
 
 import static com.badlogic.gdx.math.MathUtils.random;
-import static com.badlogic.gdx.math.MathUtils.randomBoolean;
 
 public class BotAction {
 
@@ -43,27 +42,33 @@ public class BotAction {
 
     public Attribute.AttributeType getAction(Cell selected, Actor target){
 
+        // 0 = size, 1 = attack, 2 = defense, 3 = speed, 4 = regen
         if(target.getClass() == Cell.class){
             if(((Cell)target).team == selected.team){
 
+                switch (random(1,3)){
+                    case 1: if(random(0,100) < botActions[4]){
+                    return Attribute.AttributeType.REGEN;
+                    }break;
 
+                    case 2: if(random(0,100) < botActions[1]){
+                    return Attribute.AttributeType.ATTACK;
+                    }break;
 
-            }else{
-
-                if(((Cell)target).team == Cell.Team.PLAYER){
-                 //player
-
-
-                }else{
-                   //neutral or other bots
-
-
+                    case 3:if(random(0,100) < botActions[0]){
+                    return Attribute.AttributeType.SIZE;
+                    }break;
                 }
-            }
+        }else{
+                switch (random(1,2)){
+                    case 1: if(random(0,100) < botActions[3]){
+                        return Attribute.AttributeType.SPEED;
+                    }break;
 
-            if(random(0,100) > botActions[getIndex(selected.team)]){
-                //aleatory move or attack
-
+                    case 2: if(random(0,100) < botActions[2]){
+                        return Attribute.AttributeType.DEFENSE;
+                    }break;
+                }
             }
         }
 

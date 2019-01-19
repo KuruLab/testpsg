@@ -14,9 +14,11 @@ public class Attribute {
     }
 
     private AttributeType[] DNA = new AttributeType[25];
+    private int[] resume = new int[5];
 
     public Attribute(){
         setDNA();
+        setResume();
     }
 
     public int AttributeCount(AttributeType type){
@@ -42,7 +44,24 @@ public class Attribute {
 
     }
 
+    public void setResume(int[] resume) {
+        this.resume = resume;
+    }
+
+    public int[] getResume() {
+        return resume;
+    }
+
     public AttributeType[] getDNA(){
         return DNA;
+    }
+
+    public void setResume() {
+
+        for(int i = 0; i < 5; i ++) {
+
+            resume[i] = this.AttributeCount(Attribute.AttributeType.values()[i]);
+
+        }
     }
 }

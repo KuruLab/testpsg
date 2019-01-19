@@ -1,17 +1,17 @@
 package com.mygdx.game.psg.Sprites;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.psg.Engine.Actions;
 import com.mygdx.game.psg.Engine.Attribute;
 import com.mygdx.game.psg.MainGame;
 import com.mygdx.game.psg.Screens.PlayScreen;
+
+import static com.badlogic.gdx.math.MathUtils.randomBoolean;
 
 public class Cell extends Actor {
 
@@ -38,10 +38,7 @@ public class Cell extends Actor {
     private Vector2 bodyPosition, inputPosition, velocity;
     private float  baseRegeneration;
     public  float baseRadius, radiusEnergy, baseAttack, baseMove, actualEnergy, maxEnergy;
-
-    int size, attack, defense, speed, regen;
-
-    private boolean moving;
+    public int[] resume = new int[5];
 
     public Cell(float x, float y, Team team) {
 
@@ -54,20 +51,16 @@ public class Cell extends Actor {
             DNA = new Attribute();
         }
 
-        size = DNA.AttributeCount(Attribute.AttributeType.SIZE);
-        attack = DNA.AttributeCount(Attribute.AttributeType.ATTACK);
-        defense = DNA.AttributeCount(Attribute.AttributeType.DEFENSE);
-        speed = DNA.AttributeCount(Attribute.AttributeType.SPEED);
-        regen = DNA.AttributeCount(Attribute.AttributeType.REGEN);
-
-        baseRadius = 100 + 5f * size;
+        // 0 = size, 1 = attack, 2 = defense, 3 = speed, 4 = regen
+        this.resume = DNA.getResume();
+        baseRadius = 100 + 5f * resume[0];
         maxEnergy = CircleArea(baseRadius);
 
-        baseRegeneration = 5f + regen * 0.5f;
-        baseAttack = CircleArea(10) + attack * CircleArea(1);
-        baseMove = 1f + speed * 0.1f;
+        baseRegeneration = 5f + resume[4] * 0.5f;
+        baseAttack = CircleArea(10) + resume[1] * CircleArea(1);
+        baseMove = 1f + resume[4] * 0.1f;
 
-        actualEnergy = maxEnergy * defense * 0.01f;
+        actualEnergy = maxEnergy * resume[2] * 0.01f;
         radiusEnergy = baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
 
         this.team = team;
@@ -104,9 +97,7 @@ public class Cell extends Actor {
         radiusEnergy = baseRadius * RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
 
         if(PlayScreen.oneSelected && PlayScreen.selectedCell.team != Cell.Team.PLAYER){
-            PlayScreen.oneTarget = true;
             PlayScreen.oneSelected = false;
-            PlayScreen.targetCell = PlayScreen.selectedCell;
         }
 
 
@@ -116,8 +107,6 @@ public class Cell extends Actor {
 
             if(PlayScreen.oneTarget && PlayScreen.targetCell.team == Cell.Team.PLAYER){
                 PlayScreen.oneTarget = false;
-                PlayScreen.oneSelected = true;
-                PlayScreen.selectedCell = PlayScreen.targetCell;
             }
 
             if (PlayScreen.restartCount == 0) {
@@ -199,11 +188,16 @@ public class Cell extends Actor {
     private void SelectOrTarget() {
         if (Gdx.input.justTouched() && isTouched()){
             Select();
-            moving = false;
-            if(PlayScreen.oneSelected && PlayScreen.selectedCell != this) {
-                if (team == Team.PLAYER) {
+            if(PlayScreen.oneSelected && PlayScreen.oneTarget && !PlayScreen.oneFire) {
+
+                PlayScreen.attackDirection = PlayScreen.targetCell.body.getPosition().sub(PlayScreen.selectedCell.body.getPosition()).angle();
+
+                if (PlayScreen.targetCell.team == Team.PLAYER) {
+
                     PlayScreen.typeAttack = Attribute.AttributeType.REGEN;
-                }else {
+
+                } else {
+
                     PlayScreen.typeAttack = Attribute.AttributeType.ATTACK;
                 }
             }
@@ -211,30 +205,17 @@ public class Cell extends Actor {
     }
 
     private void MoveOrAttack() {
-        if(PlayScreen.oneSelected && PlayScreen.selectedCell == this) {
-            if (moving) {
-                if (Gdx.input.justTouched()) {
-                    if (team == Team.PLAYER) {
-                        velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle());
-                        PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
-                        body.setLinearVelocity(velocity);
-                        PlayScreen.oneMove = true;
-                        moving = false;
 
-                    }
+        if(Gdx.input.justTouched() && PlayScreen.oneSelected && PlayScreen.selectedCell == this && team == Team.PLAYER) {
+            velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle());
+            body.setLinearVelocity(velocity);
 
-                    if (InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) > baseRadius &&
-                            InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) < (baseRadius + PlayScreen.touchRadius * PlayScreen.zoom)) {
-                        velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle());
-                        PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
-                        PlayScreen.typeAttack = Attribute.AttributeType.DEFENSE;
-                        PlayScreen.oneTarget = true;
-                        PlayScreen.targetCell = this;
-                        moving = false;
-                    }
-                }
-            } else {
-                moving = true;
+            if (InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) > baseRadius &&
+                    InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) < (baseRadius + PlayScreen.touchRadius * PlayScreen.zoom)) {
+                PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
+
+                PlayScreen.typeAttack = Attribute.AttributeType.DEFENSE;
+                PlayScreen.oneFire = true;
             }
         }
     }
@@ -252,16 +233,9 @@ public class Cell extends Actor {
     public static void Clear(Cell cell) {
         if(cell.team == Team.PLAYER) {
             Stop(cell);
-        }
-
-        switch (PlayScreen.typeAttack){
-            case REGEN: PlayScreen.oneSelected = true;
-                PlayScreen.selectedCell = PlayScreen.targetCell;
-                PlayScreen.oneTarget = false; break;
-            case DEFENSE: PlayScreen.oneSelected = false;
-                PlayScreen.oneTarget = false; break;
-            case ATTACK: PlayScreen.oneSelected = true;
-                PlayScreen.oneTarget = false; break;
+            PlayScreen.oneFire = false;
+            PlayScreen.oneSelected = false;
+            PlayScreen.oneTarget = false;
         }
     }
 
@@ -302,8 +276,6 @@ public class Cell extends Actor {
                 }else{
                     PlayScreen.oneTarget = true;
                     PlayScreen.targetCell = this;
-                    velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle()-180);
-                    PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
                 }
             } else {
 
@@ -312,14 +284,10 @@ public class Cell extends Actor {
                         PlayScreen.oneTarget = false;
                     } else {
                         if (team == Team.PLAYER) {
-                            velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle());
-                            PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
                             PlayScreen.selectedCell = this;
                             PlayScreen.oneSelected = true;
                             }
                         else {
-                            velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle() - 180);
-                            PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
                             PlayScreen.targetCell = this;
                             PlayScreen.oneTarget = true;
                         }
@@ -332,7 +300,6 @@ public class Cell extends Actor {
     public static void Stop(Cell cell){
         if(cell.team == Team.PLAYER)
         cell.body.setLinearVelocity(0,0);
-        cell.moving = false;
     }
 
     public static Status Status(Cell cell){
@@ -346,6 +313,20 @@ public class Cell extends Actor {
         }
 
         return Status.MID;
+    }
+
+    public void Avoid(Attack attack){
+        velocity.set(baseMove, baseMove);
+
+        if(randomBoolean()) {
+
+            body.setLinearVelocity(velocity.setAngle(body.getPosition().sub(attack.body.getPosition()).angle() + 90));
+
+        }else{
+
+            body.setLinearVelocity(velocity.setAngle(body.getPosition().sub(attack.body.getPosition()).angle() - 90));
+
+        }
     }
 }
 
