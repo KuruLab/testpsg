@@ -8,7 +8,7 @@ import static com.badlogic.gdx.math.MathUtils.random;
 public class Actions {
 
 
-    public static Attribute.AttributeType[] actions = new Attribute.AttributeType[25];
+    public static Attribute.AttributeType[] actions = new Attribute.AttributeType[175];
     public int fitness[] = new int[35];
 
     public void AddAction(Cell.Team team, Attribute.AttributeType attributeType){
@@ -40,6 +40,8 @@ public class Actions {
 
     public int[] getFitness(){
 
+        SetFitness();
+
         return this.fitness;
 
     }
@@ -48,15 +50,15 @@ public class Actions {
 
         switch (team){
             case PLAYER: return 0;
-            case BOT1: return 5;
-            case BOT2: return 10;
-            case BOT3: return 15;
-            case BOT4: return 20;
-            case BOT5: return 25;
-            case NEUTRAL: return 30;
+            case BOT1: return 24;
+            case BOT2: return 49;
+            case BOT3: return 74;
+            case BOT4: return 99;
+            case BOT5: return 124;
+            case NEUTRAL: return 149;
         }
 
-        return 100;
+        return -1;
     }
 
     public static void setActions(Attribute.AttributeType[] actions) {

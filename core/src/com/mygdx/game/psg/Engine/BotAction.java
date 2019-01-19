@@ -1,6 +1,8 @@
 package com.mygdx.game.psg.Engine;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.mygdx.game.psg.MainGame;
+import com.mygdx.game.psg.Sprites.Attack;
 import com.mygdx.game.psg.Sprites.Cell;
 
 import static com.badlogic.gdx.math.MathUtils.random;
@@ -8,9 +10,10 @@ import static com.badlogic.gdx.math.MathUtils.random;
 public class BotAction {
 
     public int[] botActions = new int[30];
+    public int timeAttack;
 
     public BotAction(){
-
+        setTimeAttack(100);
         setBotActions();
     }
 
@@ -26,12 +29,13 @@ public class BotAction {
 
     public void setBotActions(){
 
+        // 0 = size, 1 = attack, 2 = defense, 3 = speed, 4 = regen
         for(int i = 0; i < 6; i++){
-            this.botActions[0 + i * 5] = random(25, 75);
-            this.botActions[1+ i * 5] = random(25, 75);
-            this.botActions[2 + i * 5] = random(25, 75);
-            this.botActions[3 + i * 5] = random(25, 75);
-            this.botActions[4 + i * 5] = random(25, 75);
+            this.botActions[0 + i * 5] = random(50, 100);
+            this.botActions[1+ i * 5] = random(50, 100);
+            this.botActions[2 + i * 5] = random(50, 100);
+            this.botActions[3 + i * 5] = random(50, 100);
+            this.botActions[4 + i * 5] = random(50, 100);
         }
     }
 
@@ -42,35 +46,35 @@ public class BotAction {
 
     public Attribute.AttributeType getAction(Cell selected, Actor target){
 
-        // 0 = size, 1 = attack, 2 = defense, 3 = speed, 4 = regen
-        if(target.getClass() == Cell.class){
-            if(((Cell)target).team == selected.team){
-
-                switch (random(1,3)){
-                    case 1: if(random(0,100) < botActions[4]){
-                    return Attribute.AttributeType.REGEN;
-                    }break;
-
-                    case 2: if(random(0,100) < botActions[1]){
-                    return Attribute.AttributeType.ATTACK;
-                    }break;
-
-                    case 3:if(random(0,100) < botActions[0]){
-                    return Attribute.AttributeType.SIZE;
-                    }break;
-                }
-        }else{
-                switch (random(1,2)){
-                    case 1: if(random(0,100) < botActions[3]){
-                        return Attribute.AttributeType.SPEED;
-                    }break;
-
-                    case 2: if(random(0,100) < botActions[2]){
+            switch (random(1, 6)) {
+                case 1:
+                    if (random(0, 15000) < botActions[0 + getIndex(selected.team)]) {
+                        return Attribute.AttributeType.SIZE;
+                    }
+                    break;
+                case 2:
+                    if (random(0, 15000) < botActions[1 + getIndex(selected.team)]) {
+                        return Attribute.AttributeType.ATTACK;
+                    }
+                    break;
+                case 3:
+                    if (random(0, 15000) < botActions[2 + getIndex(selected.team)]) {
                         return Attribute.AttributeType.DEFENSE;
-                    }break;
+                    }
+                    break;
+                case 4:
+                    if (random(0, 15000) < botActions[3 + getIndex(selected.team)]) {
+                        return Attribute.AttributeType.SPEED;
+                    }
+                    break;
+                case 5: if (random(0, 15000) < botActions[4 + getIndex(selected.team)]) {
+                    if(((Cell)target).team == selected.team){
+                    return Attribute.AttributeType.REGEN;
+                    }
+                    break;
                 }
             }
-        }
+
 
         return null;
     }
@@ -87,5 +91,26 @@ public class BotAction {
         }
 
         return -1;
+    }
+
+    public int getTimeAttack() {
+        return timeAttack;
+    }
+
+    public void setTimeAttack(int timeAttack) {
+        this.timeAttack = timeAttack;
+    }
+
+    public void Adjust(){
+
+        for(int i = 1; i <= MainGame.wins; i++){
+            botActions[random(0,29)] += i;
+        }
+
+        for(int i = 1; i <= MainGame.loses; i++){
+            botActions[random(0,29)] -= i;
+        }
+
+        timeAttack = timeAttack - MainGame.wins + MainGame.loses;
     }
 }

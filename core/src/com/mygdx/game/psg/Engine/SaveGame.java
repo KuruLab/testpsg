@@ -51,7 +51,7 @@ public class SaveGame {
 
     }
 
-    public boolean SaveHistoy(History history){
+    public boolean SaveHistory(History history){
 
         Gdx.files.local("Save/history.json").writeString(myjson.prettyPrint(history), false);
 

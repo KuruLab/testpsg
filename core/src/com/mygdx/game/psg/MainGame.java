@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+
 public class MainGame extends Game{
 
 	public SpriteBatch batch;
@@ -33,6 +35,8 @@ public class MainGame extends Game{
     public BotAction loadBot = new BotAction();
     public BotAction newBot = new BotAction();
 
+    public SaveGame saveGame = new SaveGame();
+
     public static Attribute[] attributes = new Attribute[175];
     public static Attribute[] attributesLoad = new Attribute[175];
     public static Attribute[] attributesNew = new Attribute[175];
@@ -40,16 +44,22 @@ public class MainGame extends Game{
     public static boolean[] histories = new boolean[10];
     public static boolean[] historiesLoad = new boolean[10];
     public static boolean[] historiesNew = new boolean[10];
+    public static int wins, loses;
 
     public static int[] actions = new int[30];
     public static int[] actionsLoad = new int[30];
     public static int[] actionsNew = new int[30];
+    public static int timeAttack;
 
 	public static ArrayList<Color> colors = new ArrayList<Color>();
 
 	public static float M_Width = 3*1080, M_Height = 1920;
 
 	public static boolean alterated = true;
+
+    public MainGame() throws IOException {
+
+    }
 
     public enum Controler{
         MENU,
@@ -93,52 +103,52 @@ public class MainGame extends Game{
             exists = true;
         }
 
-        try {
-            SaveGame saveGame = new SaveGame();
-            if (exists) {
-                loadPopulation = saveGame.GetPopulation();
-                attributesLoad = loadPopulation.getPopulation();
+        if (exists) {
+            loadPopulation = saveGame.GetPopulation();
+            attributesLoad = loadPopulation.getPopulation();
 
-                loadBot = saveGame.GetBot();
-                actionsLoad = loadBot.getBotActions();
+            loadBot = saveGame.GetBot();
+            actionsLoad = loadBot.getBotActions();
+            timeAttack = loadBot.timeAttack;
 
-                loadHistory = saveGame.GetHistory();
-                historiesLoad = loadHistory.getHistory();
+            loadHistory = saveGame.GetHistory();
+            historiesLoad = loadHistory.getHistory();
 
-            } else {
-                load = false;
+        } else {
+            load = false;
 
-                loadPopulation = newPopulation;
-                saveGame.SavePopulation(loadPopulation);
-                attributesLoad = loadPopulation.getPopulation();
+            loadPopulation = newPopulation;
+            saveGame.SavePopulation(loadPopulation);
+            attributesLoad = loadPopulation.getPopulation();
 
-                loadBot = newBot;
-                saveGame.SaveBot(loadBot);
-                actionsLoad = loadBot.getBotActions();
+            loadBot = newBot;
+            saveGame.SaveBot(loadBot);
+            actionsLoad = loadBot.getBotActions();
+            timeAttack = loadBot.timeAttack;
 
-                loadHistory = newHistory;
-                saveGame.SaveHistoy(loadHistory);
-                historiesLoad = loadHistory.getHistory();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            loadHistory = newHistory;
+            saveGame.SaveHistory(loadHistory);
+            historiesLoad = loadHistory.getHistory();
         }
-	}
+
+    }
 
 	@Override
 	public void render() {
 
         if(alterated) {
 
+            loadHistory.setHistory(historiesLoad);
+            saveGame.SaveHistory(loadHistory);
+
             if (win) {
-                V_Width += 1080 * 0.01f;
-                V_Height += 1920 * 0.01f;
+                V_Width += 1080 * 0.001f * wins;
+                V_Height += 1920 * 0.001f * wins;
             }
 
             if (lose) {
-                V_Width -= 1080 * 0.01f;
-                V_Height -= 1920 * 0.01f;
+                V_Width -= 1080 * 0.001f * loses;
+                V_Height -= 1920 * 0.001f * loses;
             }
 
             if (V_Width < 1080 / 2 || V_Height < 1920 / 2) {

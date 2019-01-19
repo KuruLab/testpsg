@@ -34,6 +34,7 @@ public class Cell extends Actor {
     public Team team;
     public Body body;
     public Attribute DNA;
+    public static Status status;
 
     private Vector2 bodyPosition, inputPosition, velocity;
     private float  baseRegeneration;
@@ -64,6 +65,7 @@ public class Cell extends Actor {
         radiusEnergy = baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
 
         this.team = team;
+        this.status = Status(this);
         setX(x);
         setY(y);
         setColor();
@@ -199,6 +201,11 @@ public class Cell extends Actor {
                 } else {
 
                     PlayScreen.typeAttack = Attribute.AttributeType.ATTACK;
+
+                    }
+
+                if(PlayScreen.targetCell.status == Status.LOW && PlayScreen.targetCell.body.getPosition().dst(PlayScreen.selectedCell.body.getPosition()) > MainGame.V_Width/2){
+                    PlayScreen.typeAttack = Attribute.AttributeType.SPEED;
                 }
             }
         }
@@ -209,6 +216,7 @@ public class Cell extends Actor {
         if(Gdx.input.justTouched() && PlayScreen.oneSelected && PlayScreen.selectedCell == this && team == Team.PLAYER) {
             velocity.set(baseMove, baseMove).setAngle(InputPosition(inputPosition).sub(bodyPosition).angle());
             body.setLinearVelocity(velocity);
+            PlayScreen.move = true;
 
             if (InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) > baseRadius &&
                     InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) < (baseRadius + PlayScreen.touchRadius * PlayScreen.zoom)) {
