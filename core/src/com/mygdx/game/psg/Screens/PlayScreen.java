@@ -552,7 +552,7 @@ public class PlayScreen implements Screen{
                     stage.addActor(new Attack(selectedCell, targetCell, Attribute.AttributeType.DEFENSE, angle2));
 
                 }
-                selectedCell.actualEnergy = 1;
+                selectedCell.actualEnergy = selectedCell.actualEnergy * 0.3f;
                 Clear(selectedCell);
             }else{
                 stage.addActor(new Attack(selectedCell, targetCell, typeAttack, attackDirection));
@@ -861,7 +861,7 @@ public class PlayScreen implements Screen{
                             }
                             stage.addActor(new Attack(bot, bot, botAttack, (((Cell) targetBot).body.getPosition()).sub(bot.body.getPosition()).angle()));
                             actions.AddAction(bot.team, botAttack);
-                            bot.actualEnergy = 1;
+                            bot.actualEnergy = bot.actualEnergy * 0.3f;
                         }
                         break;
                 }
