@@ -45,17 +45,17 @@ public class Attack extends Actor {
             case REGEN:
                 energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);
                 cell.actualEnergy = cell.actualEnergy * 0.9f;
-                actualEnergy = 6f * baseAttack + cell.actualEnergy * 0.2f;break;
+                actualEnergy = 8f * baseAttack + cell.actualEnergy * 0.2f;break;
             case SPEED:
                 energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);
                 cell.actualEnergy = cell.actualEnergy * 0.4f;
-                actualEnergy = baseAttack + cell.actualEnergy * 0.6f;break;
+                actualEnergy = 6f * baseAttack + cell.actualEnergy * 0.6f;break;
             case ATTACK:
                 energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);
                 cell.actualEnergy = cell.actualEnergy * 0.5f;
-                actualEnergy = 8f * baseAttack + cell.actualEnergy * 0.5f;break;
+                actualEnergy = 10f * baseAttack + cell.actualEnergy * 0.5f;break;
             case DEFENSE:
-                actualEnergy = baseAttack;
+                actualEnergy = 2 * baseAttack;
                 energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);break;
         }
 

@@ -833,7 +833,7 @@ public class PlayScreen implements Screen{
                         }
                         break;
                     case SIZE:
-                        selectedBots[botIndex(bot.team)] = bot;
+                            selectedBots[botIndex(bot.team)] = bot;
                         break;
                     case REGEN:
                         if (bot.team != Cell.Team.NEUTRAL) {
@@ -842,24 +842,25 @@ public class PlayScreen implements Screen{
                         }
                         break;
                     case SPEED:
-                        velocity.set(bot.baseMove, bot.baseMove).setAngle(random(0, 360));
-                        bot.body.setLinearVelocity(velocity);
-                        actions.AddAction(bot.team, botAttack);
+                        if (bot.team != Cell.Team.NEUTRAL) {
+                            velocity.set(bot.baseMove, bot.baseMove).setAngle(random(0, 360));
+                            bot.body.setLinearVelocity(velocity);
+                            actions.AddAction(bot.team, botAttack);
+                        }
                         break;
                     case DEFENSE:
                         if (bot.team != Cell.Team.NEUTRAL) {
-                            int angle1 = 0;
-                            int angle2 = 0;
-                            stage.addActor(new Attack(bot, targetCell, Attribute.AttributeType.DEFENSE, 0));
+                            float angle1 = (((Cell) targetBot).body.getPosition()).sub(bot.body.getPosition()).angle();
+                            float angle2 = (((Cell) targetBot).body.getPosition()).sub(bot.body.getPosition()).angle();
+                            stage.addActor(new Attack(bot, (Cell) targetBot, Attribute.AttributeType.DEFENSE, (((Cell) targetBot).body.getPosition()).sub(bot.body.getPosition()).angle()));
                             for(int i = 0; i < 2; i++){
 
                                 angle1 += 15;
-                                stage.addActor(new Attack(bot, targetCell, Attribute.AttributeType.DEFENSE, angle1));
+                                stage.addActor(new Attack(bot, (Cell) targetBot, Attribute.AttributeType.DEFENSE, angle1));
                                 angle2 -= 15;
-                                stage.addActor(new Attack(bot, targetCell, Attribute.AttributeType.DEFENSE, angle2));
+                                stage.addActor(new Attack(bot, (Cell) targetBot, Attribute.AttributeType.DEFENSE, angle2));
 
                             }
-                            stage.addActor(new Attack(bot, bot, botAttack, (((Cell) targetBot).body.getPosition()).sub(bot.body.getPosition()).angle()));
                             actions.AddAction(bot.team, botAttack);
                             bot.actualEnergy = bot.actualEnergy * 0.8f;
                         }
@@ -869,8 +870,10 @@ public class PlayScreen implements Screen{
                 if(timeAttack < MainGame.timeAttack){
                     timeAttack++;
                 }else{
-                    stage.addActor(new Attack(bot, (Cell) targetBot, Attribute.AttributeType.ATTACK, random(0,360)));
-                    timeAttack = 0;
+                    if(bot.team != Cell.Team.NEUTRAL){
+                        stage.addActor(new Attack(bot, (Cell) targetBot, Attribute.AttributeType.ATTACK, random(0, 360)));
+                        timeAttack = 0;
+                    }
                 }
             }
         }
