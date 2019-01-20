@@ -57,9 +57,9 @@ public class Cell extends Actor {
         baseRadius = 100 + 5f * resume[0];
         maxEnergy = CircleArea(baseRadius);
 
-        baseRegeneration = 5f + resume[4] * 0.5f;
-        baseAttack = CircleArea(10) + resume[1] * CircleArea(1);
-        baseMove = 1f + resume[4] * 0.1f;
+        baseRegeneration = 5f + resume[4] * 0.05f;
+        baseAttack = CircleArea(10) + resume[1] * CircleArea(5);
+        baseMove = 1f + resume[4] * 0.25f;
 
         actualEnergy = maxEnergy * resume[2] * 0.01f;
         radiusEnergy = baseRadius*RadiusEnergy(actualEnergy)/RadiusEnergy(maxEnergy);
@@ -204,7 +204,7 @@ public class Cell extends Actor {
 
                     }
 
-                if(PlayScreen.targetCell.status == Status.LOW && PlayScreen.targetCell.body.getPosition().dst(PlayScreen.selectedCell.body.getPosition()) > MainGame.V_Width/2){
+                if(PlayScreen.targetCell.status == Status.LOW){
                     PlayScreen.typeAttack = Attribute.AttributeType.SPEED;
                 }
             }
@@ -312,11 +312,11 @@ public class Cell extends Actor {
 
     public static Status Status(Cell cell){
 
-        if(cell.actualEnergy < cell.maxEnergy * 0.3f){
+        if(cell.actualEnergy < cell.maxEnergy * 0.01f){
             return Status.LOW;
         }
 
-        if(cell.actualEnergy > cell.maxEnergy * 0.7f){
+        if(cell.actualEnergy > cell.maxEnergy * 0.8f){
             return Status.HI;
         }
 

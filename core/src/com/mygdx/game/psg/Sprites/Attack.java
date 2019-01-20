@@ -44,7 +44,7 @@ public class Attack extends Actor {
                 energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);break;
             case REGEN:
                 energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);
-                cell.actualEnergy = cell.actualEnergy * 0.8f;
+                cell.actualEnergy = cell.actualEnergy * 0.9f;
                 actualEnergy = 6f * baseAttack + cell.actualEnergy * 0.2f;break;
             case SPEED:
                 energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);
@@ -126,19 +126,19 @@ public class Attack extends Actor {
 
         switch (type){
             case REGEN:
-                fixtureDef.density = 0.1f;
-                fixtureDef.friction = 0.1f;
-                fixtureDef.restitution = 1.5f;break;
+                fixtureDef.density = 0.001f;
+                fixtureDef.friction = 0.001f;
+                fixtureDef.restitution = 0.001f;break;
             case ATTACK:
                 fixtureDef.density = 5f;
                 fixtureDef.friction = 0.1f;
-                fixtureDef.restitution = 0.1f;break;
+                fixtureDef.restitution = 1.5f;break;
             case SPEED:
-                fixtureDef.density = 0.001f;
-                fixtureDef.friction = 0.1f;
-                fixtureDef.restitution = 0.1f;break;
-            case DEFENSE:
                 fixtureDef.density = 1f;
+                fixtureDef.friction = 2f;
+                fixtureDef.restitution = 1.1f;break;
+            case DEFENSE:
+                fixtureDef.density = 10000f;
                 fixtureDef.friction = 1f;
                 fixtureDef.restitution = 0.1f;break;
             case SIZE:
@@ -171,7 +171,7 @@ public class Attack extends Actor {
                 velocity.set(baseMove/8, baseMove/8).setAngle(angle);
                 body.setLinearVelocity(velocity);break;
             case SPEED:
-                velocity.set(baseMove*8, baseMove*8).setAngle(angle);
+                velocity.set(baseMove*4, baseMove*4).setAngle(angle);
                 body.setLinearVelocity(velocity);break;
             case ATTACK:
                 velocity.set(baseMove, baseMove).setAngle(angle);
@@ -200,17 +200,16 @@ public class Attack extends Actor {
         resize++;
 
         switch (type){
-            case REGEN:
+            case SPEED:
                 actualEnergy = actualEnergy + PlayScreen.numberAttack * delta;break;
             case ATTACK:
                 if (energyRadius > 70) {
                     actualEnergy = actualEnergy - 40*PlayScreen.numberAttack*delta;}break;
-            case SPEED:
-                if (inativity > 60) {
-                    actualEnergy = actualEnergy - 20*PlayScreen.numberAttack*delta; }break;
+            case REGEN:
+                    actualEnergy = actualEnergy + 40*PlayScreen.numberAttack*delta; break;
             case DEFENSE:
-                if (inativity > 180) {
-                    actualEnergy = actualEnergy + 40*PlayScreen.numberAttack*delta; }break;
+                if (inativity > 60) {
+                    actualEnergy = actualEnergy + 20*PlayScreen.numberAttack*delta; }break;
             case SIZE:
                 actualEnergy = actualEnergy - 10 * PlayScreen.numberAttack * delta;break;
         }
@@ -219,6 +218,10 @@ public class Attack extends Actor {
 
         if (inativity > 180) {
             actualEnergy = actualEnergy - 20*PlayScreen.numberAttack*delta;
+        }
+
+        if (inativity > 360) {
+            actualEnergy = actualEnergy - 40*PlayScreen.numberAttack*delta;
         }
 
         if (energyRadius > 35) {
