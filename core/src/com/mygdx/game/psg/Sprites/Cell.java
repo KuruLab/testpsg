@@ -200,12 +200,15 @@ public class Cell extends Actor {
 
                 } else {
 
-                    PlayScreen.typeAttack = Attribute.AttributeType.ATTACK;
+                    if (PlayScreen.targetCell.team == Team.NEUTRAL) {
+
+                        PlayScreen.typeAttack = Attribute.AttributeType.SPEED;
+
+                    } else {
+
+                        PlayScreen.typeAttack = Attribute.AttributeType.ATTACK;
 
                     }
-
-                if(PlayScreen.targetCell.status == Status.LOW){
-                    PlayScreen.typeAttack = Attribute.AttributeType.SPEED;
                 }
             }
         }

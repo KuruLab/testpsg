@@ -43,19 +43,20 @@ public class Attack extends Actor {
                 actualEnergy = 4f * cell.baseAttack + cell.maxEnergy/20;
                 energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);break;
             case REGEN:
-                energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);
-                cell.actualEnergy = cell.actualEnergy * 0.9f;
-                actualEnergy = 8f * baseAttack + cell.actualEnergy * 0.2f;break;
-            case SPEED:
-                energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);
                 cell.actualEnergy = cell.actualEnergy * 0.4f;
-                actualEnergy = 6f * baseAttack + cell.actualEnergy * 0.6f;break;
-            case ATTACK:
-                energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);
+                actualEnergy = 2f * baseAttack + cell.actualEnergy * 0.2f;
+                energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy); break;
+            case SPEED:
                 cell.actualEnergy = cell.actualEnergy * 0.5f;
-                actualEnergy = 10f * baseAttack + cell.actualEnergy * 0.5f;break;
+                actualEnergy = 3f * baseAttack + cell.actualEnergy * 0.6f;
+                energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);break;
+            case ATTACK:
+                cell.actualEnergy = cell.actualEnergy * 0.6f;
+                actualEnergy = 5f * baseAttack + cell.actualEnergy * 0.5f;
+                energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy); break;
             case DEFENSE:
-                actualEnergy = 2 * baseAttack;
+                actualEnergy = 3 * baseAttack;
+                cell.actualEnergy = cell.actualEnergy * 0.7f;
                 energyRadius = baseRadius * RadiusEnergy(actualEnergy) / RadiusEnergy(maxEnergy);break;
         }
 
@@ -69,7 +70,7 @@ public class Attack extends Actor {
             case DEFENSE: velocity.set(cell.baseRadius + energyRadius,1).setAngle(angle);break;
             case SPEED: velocity.set(cell.baseRadius + energyRadius,1).setAngle(angle);break;
             case ATTACK: velocity.set(cell.baseRadius + energyRadius,1).setAngle(angle);break;
-            case REGEN: velocity.set(cell.baseRadius + energyRadius, 1).setAngle(angle);break;
+            case REGEN: velocity.set(cell.baseRadius + energyRadius, energyRadius).setAngle(angle);break;
 
 
         }
@@ -126,25 +127,23 @@ public class Attack extends Actor {
 
         switch (type){
             case REGEN:
-                fixtureDef.density = 0.001f;
-                fixtureDef.friction = 0.001f;
-                fixtureDef.restitution = 0.001f;break;
+                fixtureDef.isSensor = true;
             case ATTACK:
                 fixtureDef.density = 5f;
-                fixtureDef.friction = 0.1f;
-                fixtureDef.restitution = 1.5f;break;
+                fixtureDef.friction = 0.5f;
+                fixtureDef.restitution = 0.5f;break;
             case SPEED:
-                fixtureDef.density = 1f;
-                fixtureDef.friction = 2f;
-                fixtureDef.restitution = 1.1f;break;
+                fixtureDef.density = 0.01f;
+                fixtureDef.friction = 0.5f;
+                fixtureDef.restitution = 0.5f;break;
             case DEFENSE:
-                fixtureDef.density = 10000f;
-                fixtureDef.friction = 1f;
-                fixtureDef.restitution = 0.1f;break;
+                fixtureDef.density = 10000000f;
+                fixtureDef.friction = 0.000001f;
+                fixtureDef.restitution = 0.0000001f;break;
             case SIZE:
-                fixtureDef.density = 0.4f;
-                fixtureDef.friction = 0.4f;
-                fixtureDef.restitution = 0.4f;break;
+                fixtureDef.density = 1f;
+                fixtureDef.friction = 1f;
+                fixtureDef.restitution = 1f;break;
         }
 
         return fixtureDef;
@@ -168,16 +167,16 @@ public class Attack extends Actor {
                 velocity.set(baseMove*4, baseMove*4).setAngle(angle);
                 body.setLinearVelocity(velocity);break;
             case DEFENSE:
-                velocity.set(baseMove/8, baseMove/8).setAngle(angle);
+                velocity.set(baseMove/4, baseMove/4).setAngle(angle);
                 body.setLinearVelocity(velocity);break;
             case SPEED:
-                velocity.set(baseMove*4, baseMove*4).setAngle(angle);
+                velocity.set(baseMove*2, baseMove*2).setAngle(angle);
                 body.setLinearVelocity(velocity);break;
             case ATTACK:
                 velocity.set(baseMove, baseMove).setAngle(angle);
                 body.setLinearVelocity(velocity);break;
             case REGEN:
-                velocity.set(baseMove*2, baseMove*2).setAngle(angle);
+                velocity.set(baseMove/2, baseMove/2).setAngle(angle);
                 body.setLinearVelocity(velocity);break;
         }
     }
@@ -201,38 +200,39 @@ public class Attack extends Actor {
 
         switch (type){
             case SPEED:
-                actualEnergy = actualEnergy + PlayScreen.numberAttack * delta;break;
+                actualEnergy = actualEnergy + 20f * baseMove * (body.getLinearVelocity().x + body.getLinearVelocity().x) * delta ; break;
             case ATTACK:
                 if (energyRadius > 70) {
-                    actualEnergy = actualEnergy - 40*PlayScreen.numberAttack*delta;}break;
+                    actualEnergy = actualEnergy + 20 * PlayScreen.numberAttack * delta; } break;
             case REGEN:
-                    actualEnergy = actualEnergy + 40*PlayScreen.numberAttack*delta; break;
+                    actualEnergy = actualEnergy + 0.01f * maxEnergy * delta; break;
             case DEFENSE:
                 if (inativity > 60) {
-                    actualEnergy = actualEnergy + 20*PlayScreen.numberAttack*delta; }break;
+                    actualEnergy = actualEnergy - 0.001f * maxEnergy * delta; } break;
             case SIZE:
-                actualEnergy = actualEnergy - 10 * PlayScreen.numberAttack * delta;break;
+                actualEnergy = actualEnergy - 20 * PlayScreen.numberAttack * delta; break;
         }
 
 
 
         if (inativity > 180) {
-            actualEnergy = actualEnergy - 20*PlayScreen.numberAttack*delta;
+            actualEnergy = actualEnergy - 10*PlayScreen.numberAttack*delta;
         }
 
         if (inativity > 360) {
-            actualEnergy = actualEnergy - 40*PlayScreen.numberAttack*delta;
+            actualEnergy = actualEnergy - 10*PlayScreen.numberAttack*delta;
         }
 
         if (energyRadius > 35) {
-            actualEnergy = actualEnergy - 30*PlayScreen.numberAttack*delta;
+            actualEnergy = actualEnergy - 10*PlayScreen.numberAttack*delta;
         }
 
         if (energyRadius > 70) {
-            actualEnergy = actualEnergy - 40*PlayScreen.numberAttack*delta;
+            actualEnergy = actualEnergy - 10*PlayScreen.numberAttack*delta;
         }
 
-        if(actualEnergy < baseAttack){
+        if(actualEnergy < PlayScreen.numberAttack*delta){
+            actualEnergy = 1;
             remove = true;
         }
     }
