@@ -2,239 +2,30 @@
 population: [
 	{
 		DNA: [
-			DEFENSE
-			REGEN
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			REGEN
-			ATTACK
-			REGEN
-			SIZE
-			REGEN
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			ATTACK
-			SIZE
-			DEFENSE
-			REGEN
-			REGEN
-			REGEN
-			DEFENSE
-			ATTACK
-			SIZE
-			SIZE
-			REGEN
-			SIZE
-			ATTACK
-			DEFENSE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
 			SIZE
 			SIZE
 			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			SIZE
-			ATTACK
-			ATTACK
-			SIZE
-			DEFENSE
-			SIZE
-			REGEN
-			SIZE
-			REGEN
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			REGEN
-			SPEED
-			ATTACK
-			REGEN
-			SPEED
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
 			DEFENSE
 			SIZE
 			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
 			REGEN
-			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
 			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			SPEED
 			SPEED
 			ATTACK
-			REGEN
-			DEFENSE
-			ATTACK
-			ATTACK
 			SIZE
+			REGEN
 			REGEN
 			ATTACK
-			ATTACK
-			SIZE
-			REGEN
-			ATTACK
-			SIZE
-			DEFENSE
-			SIZE
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			SIZE
-			ATTACK
-			REGEN
-			SIZE
-			REGEN
-			ATTACK
-			REGEN
-			SIZE
-			SIZE
-			SIZE
-			SIZE
-			ATTACK
-			DEFENSE
-			DEFENSE
-			SIZE
-			SIZE
-			SPEED
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			SPEED
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			REGEN
-			SPEED
-			SPEED
-			SPEED
 			DEFENSE
 			REGEN
 			ATTACK
 			SIZE
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			DEFENSE
 			REGEN
-			DEFENSE
+			SPEED
 			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			SIZE
-			ATTACK
-			ATTACK
-			SIZE
-			DEFENSE
-			SIZE
-			REGEN
-			SIZE
-			REGEN
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
 			ATTACK
 		]
 		resume: [ 3, 5, 8, 6, 3 ]
@@ -243,117 +34,27 @@ population: [
 		DNA: [
 			SIZE
 			REGEN
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			ATTACK
-			REGEN
-			ATTACK
-			ATTACK
-			REGEN
-			SIZE
-			ATTACK
-			ATTACK
 			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			SPEED
-			SIZE
-			ATTACK
-			SIZE
-			ATTACK
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			SPEED
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			SPEED
-			REGEN
 			ATTACK
 			DEFENSE
 			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			REGEN
-			REGEN
 			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
 			ATTACK
 			REGEN
+			REGEN
+			SPEED
+			SPEED
+			ATTACK
 			REGEN
 			SIZE
 			REGEN
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			DEFENSE
-			REGEN
-			ATTACK
-			SPEED
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			SPEED
-			DEFENSE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			ATTACK
-			REGEN
 			SIZE
-			ATTACK
-			SIZE
-			SPEED
-			SPEED
-			SPEED
-			SIZE
-			REGEN
 			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
 			REGEN
 			ATTACK
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			DEFENSE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
 			SPEED
 			ATTACK
 		]
@@ -361,448 +62,28 @@ population: [
 	}
 	{
 		DNA: [
-			SIZE
-			REGEN
-			SIZE
-			REGEN
-			REGEN
-			REGEN
-			DEFENSE
-			ATTACK
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			SIZE
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			SIZE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			SPEED
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			REGEN
-			SPEED
-			SPEED
-			SPEED
-			DEFENSE
-			REGEN
-			ATTACK
-			SIZE
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			DEFENSE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			SIZE
-			REGEN
-			SIZE
-			REGEN
-			REGEN
-			REGEN
-			DEFENSE
-			ATTACK
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			SIZE
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			SIZE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			ATTACK
-			ATTACK
-			SPEED
-			SIZE
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			SIZE
-		]
-		resume: [ 3, 4, 11, 4, 3 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			REGEN
-			SPEED
-			ATTACK
-			REGEN
-			SPEED
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			DEFENSE
-			SIZE
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			SPEED
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			SPEED
-			REGEN
-			ATTACK
-			SPEED
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
 			ATTACK
 			SIZE
 			SIZE
+			ATTACK
 			SIZE
 			SPEED
-			ATTACK
-			SPEED
-			DEFENSE
-			REGEN
-			ATTACK
-			SPEED
-			ATTACK
-			ATTACK
-			DEFENSE
-			DEFENSE
 			SIZE
-			REGEN
-			SPEED
-			REGEN
-			REGEN
-			SIZE
-			REGEN
 			DEFENSE
 			SPEED
 			DEFENSE
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			ATTACK
-			ATTACK
-			SPEED
-			SIZE
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			SIZE
-		]
-		resume: [ 3, 4, 11, 4, 3 ]
-	}
-	{
-		DNA: [
-			SIZE
-			REGEN
-			SIZE
-			SPEED
-			REGEN
-			REGEN
-			SPEED
-			SPEED
-			SPEED
-			ATTACK
-			REGEN
-			REGEN
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			SIZE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			DEFENSE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			SIZE
-		]
-		resume: [ 3, 4, 11, 4, 3 ]
-	}
-	{
-		DNA: [
-			SPEED
-			REGEN
-			ATTACK
-			SPEED
-			SPEED
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			DEFENSE
-			SPEED
-			DEFENSE
-			REGEN
-			SPEED
-			SIZE
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			REGEN
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
 			DEFENSE
 			SIZE
-			ATTACK
-			SIZE
-			REGEN
-			ATTACK
-			REGEN
 			DEFENSE
 			SPEED
-			DEFENSE
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
 			SPEED
 			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			SPEED
 			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			SPEED
-			REGEN
-			ATTACK
-			SPEED
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			SIZE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			DEFENSE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			SIZE
-		]
-		resume: [ 3, 4, 11, 4, 3 ]
-	}
-	{
-		DNA: [
 			DEFENSE
 			DEFENSE
 			REGEN
-			SPEED
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			SPEED
-			REGEN
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			SIZE
-			SPEED
-			SIZE
-			ATTACK
 			DEFENSE
-			REGEN
-			SIZE
-			REGEN
+			DEFENSE
 			DEFENSE
 			SPEED
 			SIZE
@@ -812,25 +93,55 @@ population: [
 	{
 		DNA: [
 			ATTACK
-			ATTACK
-			REGEN
 			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
 			SIZE
 			ATTACK
-			REGEN
-			REGEN
+			SIZE
 			SPEED
+			DEFENSE
+			SIZE
 			REGEN
 			SIZE
 			ATTACK
 			DEFENSE
+			ATTACK
+			SIZE
 			REGEN
+			ATTACK
+			DEFENSE
+			ATTACK
+			SPEED
+			SPEED
+			DEFENSE
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			REGEN
+			SIZE
+			REGEN
+			DEFENSE
+			SPEED
+			SIZE
+			REGEN
+			SPEED
+			SPEED
+			REGEN
+			DEFENSE
+			SIZE
+			SPEED
+			SPEED
+			SPEED
+			REGEN
+			SIZE
+			DEFENSE
+			SPEED
+			ATTACK
 			DEFENSE
 			REGEN
 			SPEED
@@ -842,26 +153,86 @@ population: [
 	{
 		DNA: [
 			SIZE
+			REGEN
 			DEFENSE
-			REGEN
-			REGEN
-			ATTACK
 			ATTACK
 			DEFENSE
-			SPEED
-			ATTACK
-			REGEN
-			REGEN
-			ATTACK
-			SPEED
-			DEFENSE
-			DEFENSE
-			REGEN
 			SIZE
 			ATTACK
+			ATTACK
+			REGEN
+			REGEN
+			SPEED
+			SPEED
+			ATTACK
+			REGEN
+			SIZE
+			REGEN
+			SIZE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
+			REGEN
+			ATTACK
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SIZE
+			SPEED
+			DEFENSE
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+			ATTACK
 			DEFENSE
 			REGEN
 			ATTACK
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			REGEN
+			REGEN
+			ATTACK
+			SPEED
+			SPEED
+			SIZE
+			DEFENSE
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			DEFENSE
+			DEFENSE
+			ATTACK
+			REGEN
+			ATTACK
+			DEFENSE
+			ATTACK
+			SPEED
+			SPEED
+			DEFENSE
 			REGEN
 			DEFENSE
 			SPEED
@@ -871,26 +242,146 @@ population: [
 	}
 	{
 		DNA: [
-			SPEED
-			SIZE
-			ATTACK
-			SIZE
-			ATTACK
 			SIZE
 			SIZE
-			REGEN
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
 			ATTACK
 			SPEED
-			REGEN
-			SIZE
 			ATTACK
 			REGEN
 			REGEN
+			DEFENSE
+			REGEN
+			SPEED
+			DEFENSE
+			SIZE
+			ATTACK
+			REGEN
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
+			DEFENSE
+			REGEN
+			REGEN
+			DEFENSE
+			SPEED
+			SIZE
+		]
+		resume: [ 3, 4, 11, 4, 3 ]
+	}
+	{
+		DNA: [
+			REGEN
+			REGEN
+			SPEED
+			DEFENSE
+			SPEED
+			REGEN
+			REGEN
+			SPEED
+			ATTACK
+			SPEED
+			SPEED
+			SPEED
+			ATTACK
+			REGEN
+			REGEN
+			REGEN
+			SIZE
+			DEFENSE
+			DEFENSE
+			SPEED
+			DEFENSE
+			REGEN
+			DEFENSE
+			SPEED
+			SIZE
+		]
+		resume: [ 3, 4, 11, 4, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SIZE
+			SPEED
+			DEFENSE
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+			ATTACK
+			DEFENSE
+			REGEN
+			ATTACK
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			SIZE
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			DEFENSE
+			SIZE
+			REGEN
+			SIZE
+			ATTACK
+			DEFENSE
+			ATTACK
+			SIZE
+			REGEN
+			ATTACK
+			DEFENSE
+			ATTACK
+			SPEED
+			SPEED
+			DEFENSE
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			REGEN
+			REGEN
+			ATTACK
+			SPEED
+			SPEED
+			SIZE
+			DEFENSE
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			DEFENSE
+			ATTACK
+			SIZE
+			REGEN
+			ATTACK
+			DEFENSE
+			ATTACK
+			SPEED
+			SPEED
 			DEFENSE
 			REGEN
 			DEFENSE
@@ -903,54 +394,204 @@ population: [
 		DNA: [
 			ATTACK
 			REGEN
-			ATTACK
 			REGEN
-			ATTACK
-			REGEN
+			DEFENSE
 			SPEED
+			SIZE
+			SIZE
+			DEFENSE
 			SPEED
-			ATTACK
-			ATTACK
 			SIZE
 			ATTACK
-			SPEED
+			DEFENSE
 			DEFENSE
 			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
+			DEFENSE
 			REGEN
 			REGEN
 			DEFENSE
+			SPEED
+			SIZE
+		]
+		resume: [ 3, 4, 11, 4, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			SIZE
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			SIZE
+			DEFENSE
+			SPEED
+			SIZE
+			ATTACK
+			DEFENSE
+			ATTACK
 			SIZE
 			REGEN
-			DEFENSE
 			REGEN
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
+			SPEED
+			SPEED
 			DEFENSE
 			SPEED
 			ATTACK
 		]
-		resume: [ 6, 6, 6, 5, 2 ]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SIZE
+			SPEED
+			DEFENSE
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+			ATTACK
+			DEFENSE
+			REGEN
+			ATTACK
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			SPEED
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			REGEN
+			ATTACK
+			REGEN
+			SPEED
+			REGEN
+			SIZE
+			SPEED
+			SPEED
+			ATTACK
+			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
+			DEFENSE
+			DEFENSE
+			SPEED
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			DEFENSE
+			SIZE
+			ATTACK
+			ATTACK
+			REGEN
+			REGEN
+			SPEED
+			SPEED
+			ATTACK
+			REGEN
+			SIZE
+			REGEN
+			SIZE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
+			REGEN
+			ATTACK
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
 	}
 	{
 		DNA: [
 			REGEN
 			SIZE
-			SIZE
-			SPEED
-			SIZE
+			REGEN
+			ATTACK
+			ATTACK
+			REGEN
 			ATTACK
 			SPEED
 			DEFENSE
+			REGEN
+			SPEED
 			SIZE
+			SPEED
 			REGEN
+			SPEED
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
 			SIZE
-			REGEN
-			REGEN
 			REGEN
 			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SPEED
 			REGEN
 			ATTACK
+			SIZE
 			REGEN
+			DEFENSE
+			ATTACK
 			REGEN
-			REGEN
+			ATTACK
+			SPEED
+			SPEED
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+			DEFENSE
 			SIZE
 			REGEN
 			DEFENSE
@@ -962,266 +603,26 @@ population: [
 	{
 		DNA: [
 			SIZE
-			DEFENSE
 			REGEN
-			REGEN
-			ATTACK
-			ATTACK
 			DEFENSE
 			SPEED
-			ATTACK
-			REGEN
-			REGEN
-			ATTACK
-			SPEED
-			DEFENSE
-			DEFENSE
-			REGEN
 			SIZE
-			ATTACK
-			DEFENSE
-			REGEN
-			ATTACK
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			SIZE
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			DEFENSE
-			REGEN
-			ATTACK
-			SPEED
-			ATTACK
-			ATTACK
 			DEFENSE
 			DEFENSE
 			SIZE
 			REGEN
+			ATTACK
 			SPEED
-			REGEN
-			REGEN
+			SPEED
+			ATTACK
 			SIZE
+			SPEED
 			REGEN
 			DEFENSE
-			SPEED
-			DEFENSE
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			ATTACK
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			ATTACK
-			ATTACK
-			SPEED
-			SIZE
-			SIZE
 			ATTACK
 			DEFENSE
-			REGEN
-			SIZE
-			DEFENSE
-			REGEN
-			SIZE
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			REGEN
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
 			DEFENSE
 			SIZE
-			ATTACK
-			SIZE
-			REGEN
-			ATTACK
-			REGEN
-			DEFENSE
-			SPEED
-			DEFENSE
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			ATTACK
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			REGEN
-			SPEED
-			SPEED
-			SIZE
-			ATTACK
-			ATTACK
-			REGEN
-			SPEED
-			REGEN
-			ATTACK
-			DEFENSE
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			REGEN
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			DEFENSE
-			REGEN
-			SIZE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			SPEED
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			SPEED
-			REGEN
-			ATTACK
-			SPEED
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			REGEN
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			DEFENSE
-			SIZE
-			ATTACK
-			SIZE
-			REGEN
-			ATTACK
-			REGEN
-			DEFENSE
-			SPEED
-			DEFENSE
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			SPEED
-			SIZE
-			ATTACK
-			SIZE
-			ATTACK
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			DEFENSE
 			REGEN
 			DEFENSE
 			SPEED
@@ -1231,57 +632,57 @@ population: [
 	}
 	{
 		DNA: [
-			ATTACK
-			REGEN
 			SIZE
 			SIZE
-			REGEN
-			ATTACK
-			REGEN
 			SPEED
-			ATTACK
-			ATTACK
+			DEFENSE
 			SIZE
+			ATTACK
+			ATTACK
 			ATTACK
 			REGEN
 			REGEN
 			SPEED
+			SPEED
+			ATTACK
 			REGEN
-			SIZE
+			SPEED
+			ATTACK
+			REGEN
 			ATTACK
 			DEFENSE
-			REGEN
+			DEFENSE
 			SIZE
 			REGEN
 			DEFENSE
 			SPEED
 			ATTACK
 		]
-		resume: [ 6, 6, 6, 5, 2 ]
+		resume: [ 3, 5, 8, 6, 3 ]
 	}
 	{
 		DNA: [
 			SIZE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
 			SPEED
 			REGEN
-			SIZE
 			ATTACK
-			DEFENSE
+			SIZE
 			REGEN
 			DEFENSE
+			ATTACK
+			REGEN
+			ATTACK
+			SPEED
+			SPEED
+			ATTACK
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
+			SIZE
 			REGEN
 			DEFENSE
 			SPEED
@@ -1291,27 +692,27 @@ population: [
 	}
 	{
 		DNA: [
-			SPEED
+			REGEN
+			SIZE
+			REGEN
+			ATTACK
+			ATTACK
 			REGEN
 			ATTACK
 			SPEED
-			SPEED
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			DEFENSE
-			SPEED
 			DEFENSE
 			REGEN
 			SPEED
 			SIZE
+			SPEED
+			REGEN
+			SPEED
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
 			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			REGEN
-			DEFENSE
 			REGEN
 			DEFENSE
 			SPEED
@@ -1321,117 +722,237 @@ population: [
 	}
 	{
 		DNA: [
-			DEFENSE
-			REGEN
 			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			REGEN
 			REGEN
 			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			DEFENSE
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			SIZE
-			ATTACK
-			SIZE
 			ATTACK
 			DEFENSE
-			SPEED
-			REGEN
-			SPEED
-			SPEED
 			SIZE
 			ATTACK
 			ATTACK
 			REGEN
+			REGEN
 			SPEED
+			SPEED
+			ATTACK
 			REGEN
 			SIZE
-			ATTACK
-			DEFENSE
 			REGEN
 			SIZE
 			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
 			REGEN
-			SIZE
+			ATTACK
+			SPEED
 			ATTACK
 		]
 		resume: [ 3, 5, 8, 6, 3 ]
 	}
 	{
 		DNA: [
-			ATTACK
-			REGEN
 			SIZE
-			SIZE
-			REGEN
 			ATTACK
-			REGEN
 			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
+			SPEED
 			SPEED
 			REGEN
-			SIZE
-			ATTACK
+			DEFENSE
 			DEFENSE
 			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			SIZE
+			REGEN
+			SIZE
+			SPEED
 			SIZE
 			REGEN
 			DEFENSE
 			SPEED
 			ATTACK
 		]
-		resume: [ 6, 6, 6, 5, 2 ]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			ATTACK
+			SPEED
+			SPEED
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			SIZE
+			REGEN
+			SIZE
+			SPEED
+			SIZE
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			DEFENSE
+			SIZE
+			REGEN
+			SPEED
+			DEFENSE
+			ATTACK
+			SPEED
+			SPEED
+			ATTACK
+			SIZE
+			REGEN
+			ATTACK
+			SIZE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			SPEED
+			DEFENSE
+			SIZE
+			DEFENSE
+			REGEN
+			SPEED
+			ATTACK
+			REGEN
+			REGEN
+			SIZE
+			ATTACK
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			SIZE
+			DEFENSE
+			SPEED
+			DEFENSE
+			DEFENSE
+			SPEED
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
 	}
 	{
 		DNA: [
 			DEFENSE
-			ATTACK
+			DEFENSE
 			REGEN
-			SIZE
+			REGEN
 			REGEN
 			ATTACK
 			REGEN
 			SPEED
-			REGEN
-			REGEN
+			SPEED
 			SIZE
+			SIZE
+			REGEN
+			SPEED
+			SIZE
+			SIZE
+			SIZE
+			SPEED
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			SPEED
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SIZE
+			DEFENSE
+			REGEN
+			REGEN
+			ATTACK
+			REGEN
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SPEED
+			REGEN
+			ATTACK
+			ATTACK
+			REGEN
+			ATTACK
+			ATTACK
+			REGEN
+			REGEN
+			SPEED
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			SPEED
 			SIZE
 			ATTACK
 			ATTACK
-			SIZE
-			DEFENSE
-			SIZE
-			DEFENSE
-			SIZE
+			ATTACK
 			REGEN
-			DEFENSE
 			REGEN
 			DEFENSE
 			SPEED
@@ -1441,206 +962,26 @@ population: [
 	}
 	{
 		DNA: [
-			DEFENSE
-			REGEN
 			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			SPEED
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
 			SPEED
 			REGEN
 			ATTACK
-			SPEED
 			SIZE
 			REGEN
 			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
 			ATTACK
-		]
-		resume: [ 6, 6, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			SPEED
 			REGEN
 			ATTACK
 			SPEED
 			SPEED
-			SIZE
-			SIZE
-			SPEED
 			ATTACK
-			DEFENSE
-			SPEED
-			DEFENSE
-			REGEN
-			SPEED
-			SIZE
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			SPEED
-			REGEN
-			ATTACK
-			SPEED
-			SPEED
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			DEFENSE
-			SPEED
-			DEFENSE
-			REGEN
-			SPEED
-			SIZE
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			ATTACK
-			REGEN
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			DEFENSE
-			REGEN
-			DEFENSE
-			REGEN
-			SPEED
-			SPEED
-			SIZE
-		]
-		resume: [ 3, 4, 11, 4, 3 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			DEFENSE
-			SPEED
-			SIZE
-			REGEN
-			ATTACK
-			DEFENSE
-			REGEN
-			ATTACK
-			REGEN
-			DEFENSE
-			REGEN
-			ATTACK
-			ATTACK
-			REGEN
-			DEFENSE
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			ATTACK
-			ATTACK
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			DEFENSE
-			SIZE
-			SPEED
-			SIZE
-			ATTACK
-			DEFENSE
-			REGEN
-			ATTACK
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 3, 5, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			SIZE
-			ATTACK
-			SPEED
-			DEFENSE
-			SIZE
-			REGEN
-			SIZE
 			REGEN
 			REGEN
 			REGEN
 			DEFENSE
-			REGEN
-			ATTACK
-			REGEN
-			REGEN
-			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
 			SIZE
 			REGEN
 			DEFENSE
@@ -1652,512 +993,122 @@ population: [
 	{
 		DNA: [
 			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			DEFENSE
 			DEFENSE
 			REGEN
 			REGEN
-			SIZE
+			REGEN
 			ATTACK
+			REGEN
+			SPEED
+			SPEED
 			SIZE
-			ATTACK
+			SIZE
+			REGEN
+			SPEED
+			SIZE
+			SIZE
+			SIZE
+			SPEED
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
 			DEFENSE
 			SPEED
+			ATTACK
 		]
-		resume: [ 7, 3, 5, 3, 7 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SPEED
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SIZE
-			REGEN
-			SPEED
-			SIZE
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			SPEED
-			DEFENSE
-			SIZE
-			SIZE
-			ATTACK
-			SPEED
-			SIZE
-			SPEED
-			SPEED
-			REGEN
-			DEFENSE
-		]
-		resume: [ 8, 3, 5, 6, 3 ]
-	}
-	{
-		DNA: [
-			REGEN
-			ATTACK
-			SIZE
-			SIZE
-			DEFENSE
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			REGEN
-			DEFENSE
-			REGEN
-			ATTACK
-			SIZE
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			SPEED
-			ATTACK
-			SIZE
-			REGEN
-			REGEN
-			ATTACK
-			SPEED
-		]
-		resume: [ 7, 6, 1, 5, 6 ]
-	}
-	{
-		DNA: [
-			SPEED
-			SPEED
-			SPEED
-			SIZE
-			SPEED
-			REGEN
-			REGEN
-			ATTACK
-			SIZE
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			REGEN
-			ATTACK
-			SIZE
-			SPEED
-			SPEED
-			ATTACK
-			DEFENSE
-			ATTACK
-			SIZE
-			SIZE
-			DEFENSE
-			SPEED
-		]
-		resume: [ 8, 8, 3, 4, 2 ]
+		resume: [ 3, 5, 8, 6, 3 ]
 	}
 	{
 		DNA: [
 			SIZE
 			SPEED
-			REGEN
-			SIZE
-			SIZE
-			SIZE
-			SIZE
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SIZE
-			REGEN
-			SPEED
-			ATTACK
-			REGEN
-			DEFENSE
-			SPEED
-			REGEN
-			REGEN
-			DEFENSE
-			SPEED
-			DEFENSE
-			SIZE
-			REGEN
-		]
-		resume: [ 3, 2, 4, 8, 8 ]
-	}
-	{
-		DNA: [
-			SPEED
-			SPEED
-			SIZE
-			DEFENSE
-			DEFENSE
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			SIZE
-			SIZE
-			REGEN
-			SIZE
-			SPEED
-			REGEN
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SIZE
-			ATTACK
-			SPEED
-			DEFENSE
-			SIZE
-			REGEN
-			SIZE
-		]
-		resume: [ 9, 4, 6, 3, 3 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SIZE
-			REGEN
-			SPEED
-			ATTACK
-			SIZE
-			SIZE
-			DEFENSE
-			SPEED
-			SIZE
-			DEFENSE
-			SIZE
-			ATTACK
-			DEFENSE
-			REGEN
-			SIZE
 			DEFENSE
 			REGEN
 			ATTACK
+			DEFENSE
 			SIZE
-			REGEN
-			REGEN
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 7, 4, 4, 5, 5 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SIZE
-			SPEED
-			SPEED
-			SIZE
-			DEFENSE
-			SPEED
-			ATTACK
-			SPEED
-			DEFENSE
-			DEFENSE
-			DEFENSE
 			ATTACK
 			REGEN
 			REGEN
 			SPEED
 			SIZE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SIZE
-			ATTACK
-			ATTACK
-			SIZE
-			SPEED
-		]
-		resume: [ 7, 4, 5, 3, 6 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SIZE
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SIZE
-			SPEED
-			DEFENSE
-			SPEED
-			REGEN
-			ATTACK
 			ATTACK
 			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			DEFENSE
 			DEFENSE
 			SPEED
-			REGEN
+			DEFENSE
+			DEFENSE
+			DEFENSE
 			SPEED
-			SIZE
-			REGEN
-			REGEN
-			SPEED
-			REGEN
 			ATTACK
 		]
-		resume: [ 4, 5, 6, 6, 4 ]
-	}
-	{
-		DNA: [
-			SPEED
-			ATTACK
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			REGEN
-			ATTACK
-			DEFENSE
-			SIZE
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			REGEN
-			SIZE
-			ATTACK
-			ATTACK
-			REGEN
-			REGEN
-			REGEN
-			DEFENSE
-			ATTACK
-			SPEED
-			REGEN
-		]
-		resume: [ 4, 6, 8, 2, 5 ]
+		resume: [ 3, 5, 8, 6, 3 ]
 	}
 	{
 		DNA: [
 			SIZE
 			SPEED
-			SPEED
-			REGEN
-			DEFENSE
 			DEFENSE
 			REGEN
 			ATTACK
 			DEFENSE
 			SIZE
-			SPEED
+			ATTACK
+			ATTACK
+			ATTACK
+			SIZE
 			SIZE
 			SPEED
+			REGEN
 			SIZE
 			REGEN
 			SIZE
 			DEFENSE
 			ATTACK
-			SIZE
-			SIZE
 			SPEED
-			SIZE
-			SIZE
+			SPEED
+			REGEN
+			DEFENSE
 			SPEED
 			ATTACK
 		]
-		resume: [ 7, 3, 3, 4, 8 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			SIZE
-			SIZE
-			SIZE
-			REGEN
-			REGEN
-			REGEN
-			SIZE
-			DEFENSE
-			REGEN
-			SPEED
-			DEFENSE
-			DEFENSE
-			SIZE
-			ATTACK
-			ATTACK
-			REGEN
-			SIZE
-			SPEED
-			SPEED
-			SIZE
-			DEFENSE
-			SIZE
-			SIZE
-			SIZE
-		]
-		resume: [ 10, 2, 4, 5, 4 ]
+		resume: [ 3, 5, 8, 6, 3 ]
 	}
 	{
 		DNA: [
 			SIZE
+			REGEN
+			DEFENSE
 			SPEED
-			SIZE
-			ATTACK
-			SIZE
-			SIZE
-			ATTACK
-			SIZE
-			ATTACK
-			ATTACK
 			SIZE
 			DEFENSE
 			DEFENSE
 			SIZE
+			REGEN
 			ATTACK
-			DEFENSE
 			SPEED
-			REGEN
-			REGEN
-			SIZE
-			REGEN
 			SPEED
-			ATTACK
-			SIZE
-			SIZE
-		]
-		resume: [ 9, 4, 4, 3, 5 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			ATTACK
-			SIZE
-			REGEN
-			REGEN
-			SPEED
-			SIZE
-			DEFENSE
-			SPEED
-			REGEN
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-			ATTACK
-			REGEN
-			ATTACK
-			REGEN
-			SIZE
-			REGEN
-			DEFENSE
-			SIZE
-			SPEED
-			SIZE
-			SPEED
-		]
-		resume: [ 5, 4, 4, 5, 7 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			ATTACK
-			SIZE
 			ATTACK
 			SIZE
 			SPEED
 			REGEN
+			DEFENSE
 			ATTACK
-			ATTACK
 			DEFENSE
-			DEFENSE
-			DEFENSE
-			REGEN
-			REGEN
-			SPEED
 			DEFENSE
 			SIZE
+			REGEN
 			DEFENSE
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			ATTACK
+			SPEED
 			ATTACK
 		]
-		resume: [ 3, 5, 10, 4, 3 ]
-	}
-	{
-		DNA: [
-			SIZE
-			SIZE
-			SPEED
-			SPEED
-			SIZE
-			DEFENSE
-			SIZE
-			ATTACK
-			SPEED
-			SIZE
-			SPEED
-			DEFENSE
-			DEFENSE
-			SIZE
-			SIZE
-			SIZE
-			REGEN
-			SPEED
-			SIZE
-			REGEN
-			ATTACK
-			DEFENSE
-			SPEED
-			DEFENSE
-			REGEN
-		]
-		resume: [ 8, 5, 4, 4, 4 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			SPEED
-			SIZE
-			REGEN
-			SPEED
-			SIZE
-			ATTACK
-			DEFENSE
-			ATTACK
-			ATTACK
-			REGEN
-			DEFENSE
-			SPEED
-			SPEED
-			SIZE
-			SPEED
-			SPEED
-			SPEED
-			SIZE
-			SPEED
-			REGEN
-			DEFENSE
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 6, 5, 1, 6, 7 ]
+		resume: [ 3, 5, 8, 6, 3 ]
 	}
 	{
 		DNA: [
@@ -2165,749 +1116,1559 @@ population: [
 			SIZE
 			DEFENSE
 			ATTACK
-			ATTACK
-			SIZE
-			REGEN
-			ATTACK
-			SIZE
-			SIZE
-			SIZE
-			REGEN
-			SPEED
 			SPEED
 			REGEN
 			ATTACK
+			DEFENSE
 			REGEN
 			REGEN
 			SPEED
+			SIZE
+			ATTACK
 			REGEN
 			REGEN
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
+			SPEED
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			REGEN
+			DEFENSE
+			SPEED
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			REGEN
+			SPEED
+			ATTACK
+			SIZE
+			DEFENSE
+			REGEN
+			REGEN
+			SPEED
+			SIZE
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			REGEN
+			SIZE
+			SPEED
+			ATTACK
+			ATTACK
+			SIZE
+			ATTACK
+			REGEN
+			SPEED
+			DEFENSE
+			SPEED
+			SIZE
+			ATTACK
+			DEFENSE
 			ATTACK
 			SPEED
+			REGEN
+			SPEED
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
 			SPEED
 			SIZE
 		]
-		resume: [ 5, 5, 3, 8, 4 ]
+		resume: [ 3, 4, 11, 4, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			REGEN
+			DEFENSE
+			SPEED
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			REGEN
+			SPEED
+			ATTACK
+			SIZE
+			SPEED
+			SPEED
+			ATTACK
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			ATTACK
+			REGEN
+			REGEN
+			DEFENSE
+			SPEED
+			SIZE
+		]
+		resume: [ 3, 4, 11, 4, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SPEED
+			REGEN
+			ATTACK
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			REGEN
+			ATTACK
+			SPEED
+			SPEED
+			ATTACK
+			SIZE
+			REGEN
+			ATTACK
+			SIZE
+			DEFENSE
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SPEED
+			DEFENSE
+			REGEN
+			ATTACK
+			DEFENSE
+			SIZE
+			ATTACK
+			ATTACK
+			ATTACK
+			SIZE
+			SIZE
+			SPEED
+			REGEN
+			SIZE
+			REGEN
+			SIZE
+			DEFENSE
+			ATTACK
+			SPEED
+			SPEED
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			SPEED
+			DEFENSE
+			SIZE
+			DEFENSE
+			REGEN
+			SPEED
+			ATTACK
+			REGEN
+			REGEN
+			SIZE
+			ATTACK
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			SIZE
+			DEFENSE
+			SPEED
+			DEFENSE
+			DEFENSE
+			SPEED
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			REGEN
+			DEFENSE
+			SPEED
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			REGEN
+			SPEED
+			ATTACK
+			SIZE
+			DEFENSE
+			REGEN
+			REGEN
+			SPEED
+			SIZE
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SIZE
+			ATTACK
+			DEFENSE
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			REGEN
+			SPEED
+			DEFENSE
+			REGEN
+			SPEED
+			SIZE
+			SPEED
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			SPEED
+			SPEED
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			ATTACK
+			SPEED
+			SPEED
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			SIZE
+			REGEN
+			SIZE
+			SPEED
+			SIZE
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			SPEED
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			REGEN
+			ATTACK
+			REGEN
+			SPEED
+			REGEN
+			SIZE
+			SPEED
+			SPEED
+			ATTACK
+			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
+			DEFENSE
+			DEFENSE
+			SPEED
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			SPEED
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SIZE
+			DEFENSE
+			REGEN
+			REGEN
+			ATTACK
+			REGEN
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			REGEN
+			SIZE
+			SPEED
+			ATTACK
+			ATTACK
+			SIZE
+			ATTACK
+			REGEN
+			SPEED
+			DEFENSE
+			SPEED
+			SIZE
+			ATTACK
+			DEFENSE
+			ATTACK
+			SPEED
+			REGEN
+			SPEED
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
+			SIZE
+		]
+		resume: [ 3, 4, 11, 4, 3 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			DEFENSE
+			REGEN
+			REGEN
+			REGEN
+			ATTACK
+			REGEN
+			SPEED
+			SPEED
+			SIZE
+			SIZE
+			REGEN
+			SPEED
+			SIZE
+			SIZE
+			SIZE
+			SPEED
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SIZE
+			ATTACK
+			DEFENSE
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			REGEN
+			SPEED
+			DEFENSE
+			REGEN
+			SPEED
+			SIZE
+			SPEED
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			SPEED
+			SPEED
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			REGEN
+			SIZE
+			DEFENSE
+			ATTACK
+			SPEED
+			REGEN
+			ATTACK
+			DEFENSE
+			REGEN
+			REGEN
+			SPEED
+			SIZE
+			ATTACK
+			REGEN
+			REGEN
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
+			SPEED
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			ATTACK
+			SPEED
+			SPEED
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			SIZE
+			REGEN
+			SIZE
+			SPEED
+			SIZE
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			SIZE
+			REGEN
+			SIZE
+			REGEN
+			SIZE
+			SIZE
+			SIZE
+			DEFENSE
+			SPEED
+			DEFENSE
+			SIZE
+			SPEED
+			REGEN
+			SPEED
+			SPEED
+			DEFENSE
+			DEFENSE
+			SIZE
+			DEFENSE
+			SIZE
+			SIZE
+			DEFENSE
+			SPEED
+			ATTACK
+		]
+		resume: [ 3, 5, 8, 6, 3 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			DEFENSE
+			SIZE
+			ATTACK
+			REGEN
+			SPEED
+			SIZE
+			SPEED
+			SIZE
+			SPEED
+			ATTACK
+			ATTACK
+			DEFENSE
+			SIZE
+			SIZE
+			REGEN
+			SPEED
+			SPEED
+			ATTACK
+			DEFENSE
+			SIZE
+			DEFENSE
+			ATTACK
+			REGEN
+			REGEN
+		]
+		resume: [ 9, 5, 4, 2, 5 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			ATTACK
+			DEFENSE
+			REGEN
+			ATTACK
+			ATTACK
+			REGEN
+			ATTACK
+			SIZE
+			ATTACK
+			DEFENSE
+			SPEED
+			SIZE
+			ATTACK
+			REGEN
+			REGEN
+			ATTACK
+			REGEN
+			REGEN
+			DEFENSE
+			REGEN
+			ATTACK
+			ATTACK
+			REGEN
+			SPEED
+		]
+		resume: [ 6, 6, 3, 6, 4 ]
+	}
+	{
+		DNA: [
+			REGEN
+			ATTACK
+			SPEED
+			ATTACK
+			REGEN
+			SPEED
+			SIZE
+			REGEN
+			DEFENSE
+			SIZE
+			ATTACK
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+			SIZE
+			SIZE
+			SIZE
+			SPEED
+			REGEN
+			SPEED
+			REGEN
+			SIZE
+			SPEED
+			SIZE
+		]
+		resume: [ 4, 7, 3, 3, 8 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			REGEN
+			SPEED
+			ATTACK
+			SPEED
+			REGEN
+			REGEN
+			DEFENSE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+			SIZE
+			ATTACK
+			SPEED
+			REGEN
+			SPEED
+			SPEED
+			ATTACK
+			REGEN
+			SPEED
+		]
+		resume: [ 3, 6, 3, 6, 7 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SPEED
+			SIZE
+			SPEED
+			ATTACK
+			REGEN
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			SPEED
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			SIZE
+			DEFENSE
+			REGEN
+			SIZE
+			SPEED
+			ATTACK
+			SPEED
+		]
+		resume: [ 4, 5, 4, 6, 6 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SIZE
+			DEFENSE
+			SPEED
+			ATTACK
+			SPEED
+			DEFENSE
+			SPEED
+			DEFENSE
+			SIZE
+			ATTACK
+			ATTACK
+			ATTACK
+			DEFENSE
+			REGEN
+			DEFENSE
+			DEFENSE
+			SIZE
+			ATTACK
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			ATTACK
+		]
+		resume: [ 3, 8, 6, 6, 2 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			SIZE
+			DEFENSE
+			REGEN
+			SPEED
+			ATTACK
+			SIZE
+			ATTACK
+			ATTACK
+			SPEED
+			SIZE
+			REGEN
+			SPEED
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+			SIZE
+			SPEED
+			DEFENSE
+			SPEED
+			SIZE
+			REGEN
+			ATTACK
+			REGEN
+		]
+		resume: [ 9, 2, 4, 4, 6 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			REGEN
+			SPEED
+			SIZE
+			SIZE
+			SIZE
+			SIZE
+			ATTACK
+			SIZE
+			DEFENSE
+			ATTACK
+			ATTACK
+			SPEED
+			ATTACK
+			DEFENSE
+			ATTACK
+			ATTACK
+			DEFENSE
+			SPEED
+			ATTACK
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			SIZE
+		]
+		resume: [ 5, 11, 3, 5, 1 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SIZE
+			ATTACK
+			SPEED
+			DEFENSE
+			REGEN
+			DEFENSE
+			REGEN
+			SPEED
+			DEFENSE
+			ATTACK
+			ATTACK
+			DEFENSE
+			SIZE
+			SPEED
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			DEFENSE
+			SIZE
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+		]
+		resume: [ 10, 5, 5, 3, 2 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SPEED
+			REGEN
+			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			ATTACK
+			ATTACK
+			REGEN
+			REGEN
+			REGEN
+			SPEED
+			ATTACK
+			DEFENSE
+			SIZE
+			REGEN
+			SIZE
+			REGEN
+			DEFENSE
+			SIZE
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+		]
+		resume: [ 4, 3, 10, 4, 4 ]
+	}
+	{
+		DNA: [
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			SIZE
+			REGEN
+			DEFENSE
+			REGEN
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			SPEED
+			SIZE
+			REGEN
+			REGEN
+			SIZE
+			REGEN
+			SPEED
+			DEFENSE
+			ATTACK
+			REGEN
+			REGEN
+			DEFENSE
+			REGEN
+		]
+		resume: [ 2, 5, 4, 4, 10 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SPEED
+			SPEED
+			SPEED
+			REGEN
+			SIZE
+			SIZE
+			REGEN
+			REGEN
+			SIZE
+			DEFENSE
+			SIZE
+			DEFENSE
+			SPEED
+			ATTACK
+			ATTACK
+			DEFENSE
+			ATTACK
+			REGEN
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			DEFENSE
+			SPEED
+		]
+		resume: [ 4, 5, 3, 4, 9 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SIZE
+			SIZE
+			SIZE
+			DEFENSE
+			ATTACK
+			SIZE
+			REGEN
+			SIZE
+			DEFENSE
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+			SPEED
+			REGEN
+			SPEED
+			REGEN
+			ATTACK
+			SIZE
+			REGEN
+			SPEED
+			ATTACK
+			DEFENSE
+			SPEED
+		]
+		resume: [ 5, 7, 2, 8, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			REGEN
+			SIZE
+			SPEED
+			DEFENSE
+			REGEN
+			SPEED
+			ATTACK
+			ATTACK
+			DEFENSE
+			DEFENSE
+			REGEN
+			REGEN
+			SIZE
+			DEFENSE
+			REGEN
+			ATTACK
+			SIZE
+			SIZE
+			DEFENSE
+			SPEED
+			REGEN
+			REGEN
+			DEFENSE
+			ATTACK
+		]
+		resume: [ 8, 3, 6, 4, 4 ]
+	}
+	{
+		DNA: [
+			REGEN
+			REGEN
+			SPEED
+			SPEED
+			SPEED
+			SIZE
+			SIZE
+			REGEN
+			SPEED
+			SIZE
+			ATTACK
+			ATTACK
+			SIZE
+			SPEED
+			SPEED
+			ATTACK
+			SPEED
+			SIZE
+			SPEED
+			SPEED
+			SIZE
+			DEFENSE
+			SIZE
+			SIZE
+			SIZE
+		]
+		resume: [ 8, 3, 5, 4, 5 ]
+	}
+	{
+		DNA: [
+			SIZE
+			DEFENSE
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			SPEED
+			SIZE
+			SPEED
+			DEFENSE
+			ATTACK
+			REGEN
+			ATTACK
+			SIZE
+			SPEED
+			REGEN
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			ATTACK
+			DEFENSE
+			DEFENSE
+			DEFENSE
+		]
+		resume: [ 4, 6, 4, 5, 6 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SIZE
+			REGEN
+			ATTACK
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			ATTACK
+			DEFENSE
+			REGEN
+			REGEN
+			DEFENSE
+			SPEED
+			REGEN
+			DEFENSE
+			REGEN
+			SIZE
+			REGEN
+			SIZE
+			REGEN
+			DEFENSE
+			SIZE
+			ATTACK
+			SIZE
+		]
+		resume: [ 6, 3, 5, 1, 10 ]
+	}
+	{
+		DNA: [
+			SPEED
+			ATTACK
+			SIZE
+			DEFENSE
+			ATTACK
+			DEFENSE
+			REGEN
+			REGEN
+			SPEED
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+			ATTACK
+			DEFENSE
+			REGEN
+			SIZE
+			ATTACK
+			DEFENSE
+			SIZE
+			SIZE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SPEED
+		]
+		resume: [ 4, 4, 7, 2, 8 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SPEED
+			REGEN
+			ATTACK
+			DEFENSE
+			SIZE
+			REGEN
+			ATTACK
+			SPEED
+			ATTACK
+			REGEN
+			SIZE
+			ATTACK
+			ATTACK
+			ATTACK
+			REGEN
+			DEFENSE
+			SPEED
+			SPEED
+			SIZE
+			DEFENSE
+			DEFENSE
+			SIZE
+			ATTACK
+			ATTACK
+		]
+		resume: [ 8, 5, 2, 8, 2 ]
 	}
 	{
 		DNA: [
 			REGEN
 			SPEED
-			ATTACK
-			DEFENSE
-			SPEED
-			SIZE
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			DEFENSE
-			SIZE
-			SPEED
-			DEFENSE
-			SPEED
-			REGEN
-			ATTACK
-			DEFENSE
-			SPEED
-			ATTACK
-			SPEED
-			DEFENSE
-			DEFENSE
 			SIZE
 			REGEN
+			ATTACK
+			SIZE
+			DEFENSE
+			SPEED
+			DEFENSE
+			SPEED
+			DEFENSE
+			REGEN
+			SPEED
+			SIZE
+			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
+			SPEED
+			SPEED
+			SIZE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
 		]
-		resume: [ 5, 4, 5, 5, 6 ]
+		resume: [ 5, 7, 5, 4, 4 ]
+	}
+	{
+		DNA: [
+			SPEED
+			REGEN
+			SIZE
+			SPEED
+			ATTACK
+			ATTACK
+			DEFENSE
+			SIZE
+			ATTACK
+			ATTACK
+			DEFENSE
+			DEFENSE
+			REGEN
+			REGEN
+			REGEN
+			ATTACK
+			SPEED
+			DEFENSE
+			SIZE
+			ATTACK
+			SPEED
+			DEFENSE
+			REGEN
+			SPEED
+			SPEED
+		]
+		resume: [ 1, 6, 7, 7, 4 ]
+	}
+	{
+		DNA: [
+			SPEED
+			DEFENSE
+			SIZE
+			DEFENSE
+			REGEN
+			SIZE
+			SIZE
+			REGEN
+			REGEN
+			SPEED
+			SIZE
+			SIZE
+			SIZE
+			SIZE
+			SPEED
+			SIZE
+			REGEN
+			SPEED
+			SPEED
+			ATTACK
+			ATTACK
+			SIZE
+			DEFENSE
+			REGEN
+			SIZE
+		]
+		resume: [ 8, 8, 4, 2, 3 ]
+	}
+	{
+		DNA: [
+			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
+			REGEN
+			SPEED
+			SPEED
+			ATTACK
+			REGEN
+			SIZE
+			ATTACK
+			ATTACK
+			REGEN
+			DEFENSE
+			REGEN
+			DEFENSE
+			REGEN
+			SPEED
+			DEFENSE
+			SIZE
+			ATTACK
+			SPEED
+			REGEN
+			SPEED
+			ATTACK
+		]
+		resume: [ 9, 3, 2, 6, 5 ]
 	}
 	{
 		DNA: [
 			DEFENSE
 			DEFENSE
-			REGEN
-			SPEED
-			REGEN
-			REGEN
-			SIZE
 			ATTACK
 			SPEED
-			REGEN
-			SIZE
-			SIZE
-			REGEN
+			DEFENSE
 			ATTACK
-			SPEED
-			REGEN
-			ATTACK
-			REGEN
 			DEFENSE
 			ATTACK
 			ATTACK
+			SIZE
+			ATTACK
+			REGEN
+			SIZE
+			REGEN
+			ATTACK
+			DEFENSE
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+			SPEED
+			DEFENSE
+		]
+		resume: [ 2, 4, 7, 6, 6 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			REGEN
+			ATTACK
+			DEFENSE
+			REGEN
+			ATTACK
+			REGEN
+			SIZE
+			ATTACK
+			SIZE
+			REGEN
+			SIZE
+			SPEED
 			DEFENSE
 			SPEED
 			REGEN
+			SPEED
+			SPEED
+			SIZE
+			DEFENSE
+			REGEN
+			DEFENSE
+			SIZE
+			SPEED
 			SIZE
 		]
-		resume: [ 4, 5, 5, 8, 3 ]
+		resume: [ 4, 10, 6, 2, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			REGEN
+			SPEED
+			SPEED
+			SIZE
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			ATTACK
+			SIZE
+			SIZE
+			ATTACK
+			ATTACK
+			SIZE
+			ATTACK
+			ATTACK
+			DEFENSE
+			SIZE
+			ATTACK
+			SPEED
+		]
+		resume: [ 5, 4, 4, 6, 6 ]
+	}
+	{
+		DNA: [
+			SIZE
+			DEFENSE
+			ATTACK
+			ATTACK
+			ATTACK
+			ATTACK
+			DEFENSE
+			SPEED
+			DEFENSE
+			REGEN
+			ATTACK
+			SIZE
+			SPEED
+			SIZE
+			REGEN
+			REGEN
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			DEFENSE
+			REGEN
+			ATTACK
+			SIZE
+		]
+		resume: [ 5, 5, 6, 5, 4 ]
+	}
+	{
+		DNA: [
+			SIZE
+			DEFENSE
+			DEFENSE
+			ATTACK
+			SPEED
+			ATTACK
+			ATTACK
+			DEFENSE
+			SPEED
+			SIZE
+			DEFENSE
+			DEFENSE
+			SPEED
+			SIZE
+			SPEED
+			SIZE
+			SIZE
+			ATTACK
+			ATTACK
+			SPEED
+			SIZE
+			SIZE
+			REGEN
+			SIZE
+			SIZE
+		]
+		resume: [ 9, 9, 3, 3, 1 ]
 	}
 	{
 		DNA: [
 			REGEN
-			REGEN
-			REGEN
-			ATTACK
-			DEFENSE
-			DEFENSE
-			REGEN
-			DEFENSE
 			SIZE
-			SPEED
+			REGEN
 			ATTACK
 			SPEED
-			SIZE
 			ATTACK
 			ATTACK
-			DEFENSE
-			ATTACK
-			SPEED
 			SIZE
 			ATTACK
 			SIZE
+			DEFENSE
+			ATTACK
 			SPEED
+			SPEED
+			SIZE
+			ATTACK
+			SPEED
+			ATTACK
+			SIZE
+			ATTACK
 			REGEN
 			ATTACK
-			DEFENSE
+			ATTACK
+			REGEN
+			ATTACK
 		]
-		resume: [ 7, 7, 3, 3, 5 ]
+		resume: [ 5, 8, 5, 5, 2 ]
 	}
 	{
 		DNA: [
+			ATTACK
+			DEFENSE
 			SPEED
-			SIZE
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			ATTACK
-			ATTACK
-			SPEED
-			ATTACK
-			ATTACK
-			REGEN
 			ATTACK
 			DEFENSE
 			ATTACK
+			SPEED
+			SPEED
+			SPEED
+			SPEED
+			SPEED
+			ATTACK
+			ATTACK
+			REGEN
+			SIZE
+			ATTACK
+			ATTACK
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			REGEN
 			DEFENSE
+			SPEED
+		]
+		resume: [ 4, 9, 1, 7, 4 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			SPEED
+			SIZE
+			SPEED
+			ATTACK
+			REGEN
+			SIZE
+			SPEED
+			SPEED
+			SPEED
+			SPEED
+			SIZE
+			SIZE
+			SIZE
+			ATTACK
 			SIZE
 			SPEED
 			SPEED
 			ATTACK
 			ATTACK
-			SIZE
 			DEFENSE
 			SPEED
+			SIZE
+			REGEN
+			DEFENSE
 		]
 		resume: [ 4, 4, 5, 8, 4 ]
 	}
 	{
 		DNA: [
-			DEFENSE
-			SIZE
-			SIZE
-			SIZE
 			ATTACK
-			SPEED
 			REGEN
-			SIZE
-			ATTACK
-			DEFENSE
 			REGEN
-			SPEED
 			DEFENSE
 			REGEN
 			DEFENSE
+			ATTACK
 			DEFENSE
-			SPEED
+			ATTACK
+			REGEN
 			REGEN
 			SIZE
-			SIZE
 			ATTACK
 			ATTACK
-			SPEED
 			DEFENSE
+			REGEN
+			SIZE
+			REGEN
 			SPEED
+			SIZE
+			SIZE
+			REGEN
+			SPEED
+			ATTACK
+			REGEN
 		]
-		resume: [ 5, 9, 3, 5, 3 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SIZE
-			ATTACK
-			SPEED
-			SIZE
-			DEFENSE
-			ATTACK
-			ATTACK
-			DEFENSE
-			SPEED
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			REGEN
-			SPEED
-			SPEED
-			ATTACK
-			DEFENSE
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			DEFENSE
-			DEFENSE
-		]
-		resume: [ 3, 5, 5, 7, 5 ]
-	}
-	{
-		DNA: [
-			SIZE
-			SPEED
-			SIZE
-			SIZE
-			DEFENSE
-			SIZE
-			REGEN
-			REGEN
-			SPEED
-			DEFENSE
-			ATTACK
-			REGEN
-			DEFENSE
-			REGEN
-			SIZE
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			SIZE
-			ATTACK
-			SPEED
-			SPEED
-			SPEED
-			REGEN
-			SPEED
-		]
-		resume: [ 4, 4, 6, 6, 5 ]
-	}
-	{
-		DNA: [
-			SPEED
-			SPEED
-			REGEN
-			REGEN
-			DEFENSE
-			DEFENSE
-			REGEN
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			DEFENSE
-			SPEED
-			SIZE
-			SPEED
-			DEFENSE
-			SIZE
-			REGEN
-			REGEN
-			REGEN
-			ATTACK
-			ATTACK
-			SIZE
-			SIZE
-			DEFENSE
-		]
-		resume: [ 5, 4, 5, 7, 4 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SPEED
-			SIZE
-			SPEED
-			DEFENSE
-			DEFENSE
-			SIZE
-			SPEED
-			SIZE
-			ATTACK
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			REGEN
-			ATTACK
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			SIZE
-			ATTACK
-			ATTACK
-			SPEED
-			REGEN
-			ATTACK
-		]
-		resume: [ 1, 7, 4, 6, 7 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			ATTACK
-			SPEED
-			SPEED
-			REGEN
-			DEFENSE
-			DEFENSE
-			REGEN
-			SPEED
-			ATTACK
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			SPEED
-			ATTACK
-			DEFENSE
-			ATTACK
-			ATTACK
-			ATTACK
-			SPEED
-			SIZE
-			SIZE
-			SIZE
-			SPEED
-		]
-		resume: [ 8, 4, 6, 5, 2 ]
+		resume: [ 7, 5, 0, 10, 3 ]
 	}
 	{
 		DNA: [
 			SPEED
 			ATTACK
 			SIZE
-			SPEED
 			REGEN
-			SIZE
-			SPEED
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			SIZE
 			DEFENSE
 			ATTACK
 			ATTACK
+			SPEED
 			SIZE
+			REGEN
+			REGEN
+			DEFENSE
+			SPEED
 			SPEED
 			SIZE
 			SPEED
-			REGEN
-			REGEN
 			ATTACK
 			SPEED
+			SIZE
+			SPEED
 			DEFENSE
+			SIZE
+			SPEED
+			SIZE
 			ATTACK
 		]
-		resume: [ 5, 5, 3, 5, 7 ]
-	}
-	{
-		DNA: [
-			SIZE
-			DEFENSE
-			ATTACK
-			ATTACK
-			ATTACK
-			REGEN
-			SIZE
-			SPEED
-			SIZE
-			SIZE
-			ATTACK
-			DEFENSE
-			SIZE
-			ATTACK
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			SPEED
-			SPEED
-			DEFENSE
-			ATTACK
-			SPEED
-			REGEN
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 5, 6, 6, 6, 2 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SPEED
-			REGEN
-			ATTACK
-			REGEN
-			REGEN
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			REGEN
-			SPEED
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			SIZE
-			SPEED
-			REGEN
-			SPEED
-			ATTACK
-			DEFENSE
-			ATTACK
-		]
-		resume: [ 4, 6, 3, 5, 7 ]
-	}
-	{
-		DNA: [
-			SIZE
-			SIZE
-			SPEED
-			REGEN
-			REGEN
-			REGEN
-			SPEED
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			ATTACK
-			ATTACK
-			REGEN
-			SPEED
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			SIZE
-			REGEN
-			SPEED
-			REGEN
-			SPEED
-			DEFENSE
-		]
-		resume: [ 3, 5, 2, 5, 10 ]
-	}
-	{
-		DNA: [
-			SIZE
-			SIZE
-			SPEED
-			REGEN
-			SIZE
-			SPEED
-			SPEED
-			SIZE
-			REGEN
-			SPEED
-			ATTACK
-			ATTACK
-			DEFENSE
-			SPEED
-			REGEN
-			SIZE
-			DEFENSE
-			SPEED
-			ATTACK
-			DEFENSE
-			ATTACK
-			ATTACK
-			ATTACK
-			SPEED
-			ATTACK
-		]
-		resume: [ 5, 7, 3, 7, 3 ]
-	}
-	{
-		DNA: [
-			SIZE
-			SIZE
-			SIZE
-			SIZE
-			ATTACK
-			SIZE
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			SPEED
-			DEFENSE
-			ATTACK
-			DEFENSE
-			REGEN
-			SIZE
-			ATTACK
-			SIZE
-			REGEN
-			ATTACK
-			DEFENSE
-			REGEN
-			SIZE
-			DEFENSE
-			REGEN
-		]
-		resume: [ 9, 4, 6, 0, 6 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			ATTACK
-			DEFENSE
-			SPEED
-			REGEN
-			ATTACK
-			ATTACK
-			DEFENSE
-			REGEN
-			REGEN
-			SIZE
-			DEFENSE
-			SPEED
-			ATTACK
-			REGEN
-			SIZE
-			SPEED
-			SIZE
-			SPEED
-			REGEN
-			SPEED
-			DEFENSE
-			SIZE
-			REGEN
-			DEFENSE
-		]
-		resume: [ 7, 7, 4, 3, 4 ]
+		resume: [ 5, 6, 5, 2, 7 ]
 	}
 	{
 		DNA: [
 			SPEED
-			SPEED
-			SPEED
-			SPEED
-			REGEN
-			SPEED
-			REGEN
-			REGEN
-			REGEN
-			SIZE
 			DEFENSE
+			ATTACK
 			REGEN
 			ATTACK
+			SPEED
+			REGEN
 			SIZE
-			SIZE
+			REGEN
 			REGEN
 			SPEED
+			SIZE
+			SPEED
 			ATTACK
-			REGEN
+			SPEED
 			ATTACK
 			ATTACK
 			DEFENSE
-			REGEN
+			ATTACK
+			ATTACK
+			SIZE
+			ATTACK
 			SPEED
 			ATTACK
+			SPEED
 		]
-		resume: [ 3, 6, 4, 6, 6 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			ATTACK
-			SIZE
-			SIZE
-			SPEED
-			ATTACK
-			SIZE
-			SIZE
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			REGEN
-			SPEED
-			ATTACK
-			SPEED
-			DEFENSE
-			SPEED
-			DEFENSE
-			SIZE
-			SPEED
-			REGEN
-			SPEED
-			SIZE
-			DEFENSE
-			SIZE
-		]
-		resume: [ 4, 1, 4, 10, 6 ]
-	}
-	{
-		DNA: [
-			SIZE
-			REGEN
-			DEFENSE
-			ATTACK
-			SPEED
-			SIZE
-			REGEN
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			SPEED
-			ATTACK
-			DEFENSE
-			SPEED
-			SPEED
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			SPEED
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-		]
-		resume: [ 3, 5, 10, 4, 3 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			DEFENSE
-			DEFENSE
-			SPEED
-			REGEN
-			SPEED
-			REGEN
-			DEFENSE
-			REGEN
-			SPEED
-			DEFENSE
-			SIZE
-			DEFENSE
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			SPEED
-			SIZE
-			DEFENSE
-			REGEN
-			SIZE
-			DEFENSE
-			DEFENSE
-		]
-		resume: [ 6, 5, 5, 5, 4 ]
-	}
-	{
-		DNA: [
-			SIZE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-			SPEED
-			DEFENSE
-			REGEN
-			DEFENSE
-			ATTACK
-			REGEN
-			SPEED
-			SPEED
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			ATTACK
-			SPEED
-			DEFENSE
-			REGEN
-			SPEED
-			SPEED
-			REGEN
-			SIZE
-		]
-		resume: [ 2, 3, 6, 9, 5 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SPEED
-			DEFENSE
-			SPEED
-			SPEED
-			SIZE
-			REGEN
-			ATTACK
-			DEFENSE
-			DEFENSE
-			ATTACK
-			DEFENSE
-			DEFENSE
-			SIZE
-			DEFENSE
-			REGEN
-			ATTACK
-			ATTACK
-			SPEED
-			SPEED
-			DEFENSE
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-		]
-		resume: [ 2, 6, 4, 6, 7 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			ATTACK
-			ATTACK
-			ATTACK
-			ATTACK
-			SIZE
-			DEFENSE
-			DEFENSE
-			SPEED
-			SPEED
-			ATTACK
-			ATTACK
-			DEFENSE
-			ATTACK
-			SIZE
-			SPEED
-			SPEED
-			SPEED
-			SPEED
-			SIZE
-			ATTACK
-			SIZE
-			DEFENSE
-			DEFENSE
-			DEFENSE
-		]
-		resume: [ 4, 5, 6, 8, 2 ]
+		resume: [ 4, 9, 2, 8, 2 ]
 	}
 	{
 		DNA: [
@@ -2915,1949 +2676,1978 @@ population: [
 			ATTACK
 			REGEN
 			DEFENSE
-			SIZE
 			DEFENSE
-			ATTACK
-			ATTACK
-			DEFENSE
-			SPEED
-			SPEED
-			DEFENSE
-			DEFENSE
-			ATTACK
 			ATTACK
 			ATTACK
 			SIZE
-			SPEED
+			ATTACK
+			DEFENSE
+			DEFENSE
 			ATTACK
 			SPEED
+			SIZE
+			ATTACK
 			REGEN
 			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
 			SPEED
 			SIZE
-			ATTACK
+			SPEED
+			DEFENSE
+			SIZE
 		]
-		resume: [ 3, 11, 4, 5, 2 ]
+		resume: [ 4, 6, 4, 6, 5 ]
+	}
+	{
+		DNA: [
+			REGEN
+			SPEED
+			ATTACK
+			DEFENSE
+			SPEED
+			SIZE
+			ATTACK
+			REGEN
+			SPEED
+			SIZE
+			ATTACK
+			ATTACK
+			DEFENSE
+			REGEN
+			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			REGEN
+			DEFENSE
+			REGEN
+			REGEN
+			DEFENSE
+			REGEN
+			SIZE
+		]
+		resume: [ 3, 7, 7, 1, 7 ]
 	}
 	{
 		DNA: [
 			DEFENSE
-			ATTACK
-			DEFENSE
-			REGEN
+			SIZE
 			SPEED
 			SIZE
-			DEFENSE
-			SIZE
-			SIZE
-			REGEN
-			DEFENSE
 			ATTACK
-			ATTACK
-			SPEED
-			ATTACK
-			REGEN
-			REGEN
-			DEFENSE
 			SPEED
 			SIZE
 			REGEN
+			SIZE
+			SIZE
+			REGEN
+			DEFENSE
+			DEFENSE
 			DEFENSE
 			REGEN
 			ATTACK
 			REGEN
+			SIZE
+			SIZE
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			REGEN
+			SIZE
 		]
-		resume: [ 4, 6, 6, 4, 5 ]
-	}
-	{
-		DNA: [
-			SPEED
-			SPEED
-			SIZE
-			SIZE
-			REGEN
-			REGEN
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			SPEED
-			DEFENSE
-			REGEN
-			ATTACK
-			SPEED
-			DEFENSE
-			SIZE
-			SIZE
-			REGEN
-			SPEED
-		]
-		resume: [ 4, 5, 6, 4, 6 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
-			SIZE
-			DEFENSE
-			SIZE
-			ATTACK
-			SPEED
-			SPEED
-			ATTACK
-			SIZE
-			ATTACK
-			DEFENSE
-			SIZE
-			ATTACK
-			SPEED
-			REGEN
-			SIZE
-			REGEN
-			ATTACK
-			ATTACK
-			REGEN
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 6, 4, 6, 5, 4 ]
-	}
-	{
-		DNA: [
-			SPEED
-			SPEED
-			REGEN
-			ATTACK
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SPEED
-			SPEED
-			DEFENSE
-			ATTACK
-			DEFENSE
-			ATTACK
-			SPEED
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			SIZE
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			ATTACK
-		]
-		resume: [ 7, 6, 5, 3, 4 ]
+		resume: [ 8, 3, 3, 3, 8 ]
 	}
 	{
 		DNA: [
 			SIZE
 			DEFENSE
-			SPEED
-			REGEN
-			DEFENSE
-			SPEED
-			REGEN
-			SPEED
-			DEFENSE
-			REGEN
-			REGEN
 			ATTACK
 			SIZE
+			SIZE
+			DEFENSE
+			REGEN
+			ATTACK
+			SPEED
 			SPEED
 			ATTACK
 			SIZE
 			REGEN
-			DEFENSE
-			REGEN
-			SIZE
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			ATTACK
-		]
-		resume: [ 2, 5, 7, 5, 6 ]
-	}
-	{
-		DNA: [
-			SIZE
 			SPEED
-			ATTACK
-			SIZE
-			DEFENSE
-			DEFENSE
 			SPEED
 			REGEN
-			DEFENSE
 			SIZE
-			SPEED
-			SIZE
-			SIZE
-			DEFENSE
-			SIZE
-			SPEED
-			REGEN
-			DEFENSE
-			ATTACK
 			ATTACK
 			REGEN
-			DEFENSE
-			REGEN
-			REGEN
+			SPEED
+			ATTACK
+			ATTACK
+			SPEED
+			ATTACK
 			REGEN
 		]
-		resume: [ 3, 4, 5, 3, 10 ]
-	}
-	{
-		DNA: [
-			SIZE
-			SPEED
-			SPEED
-			REGEN
-			ATTACK
-			DEFENSE
-			SIZE
-			DEFENSE
-			DEFENSE
-			SIZE
-			DEFENSE
-			ATTACK
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			ATTACK
-			SPEED
-			SIZE
-			ATTACK
-			SIZE
-			SPEED
-		]
-		resume: [ 8, 4, 4, 7, 2 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			REGEN
-			REGEN
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			ATTACK
-			SIZE
-			SPEED
-			SPEED
-			REGEN
-			SPEED
-			SIZE
-			DEFENSE
-			SIZE
-			ATTACK
-			ATTACK
-			DEFENSE
-			SIZE
-			ATTACK
-			SPEED
-			SIZE
-		]
-		resume: [ 7, 5, 2, 6, 5 ]
+		resume: [ 5, 7, 2, 6, 5 ]
 	}
 	{
 		DNA: [
 			SIZE
 			ATTACK
 			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
-			ATTACK
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			DEFENSE
-			ATTACK
-			SPEED
-			SIZE
-			SPEED
 			SPEED
 			DEFENSE
 			SIZE
-			SPEED
-			DEFENSE
-			REGEN
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 6, 5, 6, 4, 4 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			SIZE
-			SIZE
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			REGEN
-			DEFENSE
-			DEFENSE
-			SPEED
-			SIZE
-			SIZE
 			SIZE
 			ATTACK
-			ATTACK
-			SIZE
-			REGEN
-			REGEN
-			SIZE
-			SPEED
-			SIZE
-			DEFENSE
-			SIZE
-			ATTACK
-		]
-		resume: [ 5, 6, 5, 8, 1 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			SIZE
-			REGEN
-			ATTACK
-			SPEED
-			ATTACK
-			SIZE
-			DEFENSE
-			SPEED
-			SIZE
-			SIZE
-			SPEED
-			REGEN
-			SPEED
-			REGEN
-			REGEN
 			SPEED
 			SPEED
 			SPEED
 			REGEN
+			REGEN
+			DEFENSE
 			ATTACK
+			REGEN
+			SPEED
+			REGEN
+			REGEN
 			SIZE
 			SIZE
-			SIZE
+			SPEED
+			ATTACK
+			REGEN
 			SPEED
 		]
-		resume: [ 10, 4, 3, 5, 3 ]
-	}
-	{
-		DNA: [
-			SIZE
-			ATTACK
-			ATTACK
-			DEFENSE
-			ATTACK
-			REGEN
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			DEFENSE
-			DEFENSE
-			SPEED
-			REGEN
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			DEFENSE
-			DEFENSE
-		]
-		resume: [ 2, 6, 8, 4, 5 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			REGEN
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			SIZE
-			SIZE
-			DEFENSE
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			DEFENSE
-			ATTACK
-			SPEED
-			SIZE
-			SIZE
-			SIZE
-			DEFENSE
-			SIZE
-			SIZE
-			DEFENSE
-		]
-		resume: [ 8, 2, 5, 5, 5 ]
-	}
-	{
-		DNA: [
-			SIZE
-			SPEED
-			ATTACK
-			SIZE
-			DEFENSE
-			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			REGEN
-			ATTACK
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
-			REGEN
-			REGEN
-			ATTACK
-			ATTACK
-			REGEN
-			SIZE
-			ATTACK
-			SIZE
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 7, 3, 10, 1, 4 ]
-	}
-	{
-		DNA: [
-			REGEN
-			ATTACK
-			REGEN
-			ATTACK
-			SIZE
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			REGEN
-			SIZE
-			DEFENSE
-			REGEN
-			ATTACK
-			SPEED
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-			SIZE
-			SPEED
-			SPEED
-			REGEN
-			SIZE
-			REGEN
-		]
-		resume: [ 5, 9, 3, 2, 6 ]
-	}
-	{
-		DNA: [
-			SPEED
-			REGEN
-			ATTACK
-			SIZE
-			SPEED
-			SPEED
-			SPEED
-			REGEN
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SPEED
-			REGEN
-			ATTACK
-			SIZE
-			DEFENSE
-			SPEED
-			SPEED
-			SPEED
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-		]
-		resume: [ 6, 7, 2, 2, 8 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SPEED
-			DEFENSE
-			DEFENSE
-			REGEN
-			DEFENSE
-			DEFENSE
-			SIZE
-			REGEN
-			SPEED
-			REGEN
-			DEFENSE
-			ATTACK
-			ATTACK
-			ATTACK
-			REGEN
-			SIZE
-			SIZE
-			ATTACK
-			DEFENSE
-			SIZE
-			SIZE
-			SPEED
-			REGEN
-			REGEN
-		]
-		resume: [ 4, 4, 4, 8, 5 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SPEED
-			SPEED
-			REGEN
-			SIZE
-			SPEED
-			DEFENSE
-			REGEN
-			SIZE
-			DEFENSE
-			SIZE
-			REGEN
-			DEFENSE
-			SPEED
-			DEFENSE
-			ATTACK
-			SIZE
-			DEFENSE
-			DEFENSE
-			REGEN
-			REGEN
-			ATTACK
-			ATTACK
-			SIZE
-			REGEN
-		]
-		resume: [ 4, 3, 8, 3, 7 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			DEFENSE
-			REGEN
-			DEFENSE
-			REGEN
-			ATTACK
-			REGEN
-			DEFENSE
-			DEFENSE
-			SPEED
-			ATTACK
-			SPEED
-			DEFENSE
-			REGEN
-			SPEED
-			DEFENSE
-			DEFENSE
-			SIZE
-			SIZE
-			SPEED
-			SPEED
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			SIZE
-		]
-		resume: [ 4, 4, 8, 6, 3 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SIZE
-			SIZE
-			SIZE
-			DEFENSE
-			SPEED
-			DEFENSE
-			REGEN
-			ATTACK
-			SPEED
-			ATTACK
-			DEFENSE
-			DEFENSE
-			SIZE
-			ATTACK
-			SPEED
-			ATTACK
-			DEFENSE
-			SIZE
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			SPEED
-			SIZE
-		]
-		resume: [ 3, 2, 9, 6, 5 ]
-	}
-	{
-		DNA: [
-			SPEED
-			REGEN
-			SPEED
-			DEFENSE
-			SPEED
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
-			DEFENSE
-			SIZE
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			SIZE
-			REGEN
-			DEFENSE
-			ATTACK
-			ATTACK
-			SIZE
-			SIZE
-			DEFENSE
-			SPEED
-			REGEN
-		]
-		resume: [ 5, 6, 2, 6, 6 ]
-	}
-	{
-		DNA: [
-			REGEN
-			REGEN
-			REGEN
-			SIZE
-			SPEED
-			REGEN
-			SIZE
-			REGEN
-			SIZE
-			SPEED
-			SPEED
-			REGEN
-			ATTACK
-			ATTACK
-			SPEED
-			ATTACK
-			SPEED
-			SIZE
-			ATTACK
-			DEFENSE
-			ATTACK
-			SIZE
-			SPEED
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 4, 5, 6, 6, 4 ]
-	}
-	{
-		DNA: [
-			REGEN
-			REGEN
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			ATTACK
-			SPEED
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			ATTACK
-			SIZE
-			ATTACK
-			SIZE
-			SIZE
-			SPEED
-			SPEED
-			ATTACK
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			DEFENSE
-		]
-		resume: [ 6, 2, 3, 7, 7 ]
+		resume: [ 5, 5, 0, 5, 10 ]
 	}
 	{
 		DNA: [
 			SIZE
 			REGEN
-			SIZE
-			SIZE
 			DEFENSE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
 			SIZE
-			ATTACK
-			REGEN
-			ATTACK
-			ATTACK
-			SPEED
+			SIZE
 			ATTACK
 			DEFENSE
+			SPEED
+			SPEED
+			SIZE
+			REGEN
+			SPEED
 			REGEN
 			ATTACK
 			ATTACK
+			REGEN
+			SIZE
+			SIZE
+			ATTACK
+			DEFENSE
+			REGEN
+			DEFENSE
+			REGEN
+			REGEN
+			SIZE
+		]
+		resume: [ 5, 4, 5, 5, 6 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			ATTACK
+			REGEN
+			SPEED
+			SPEED
+			REGEN
+			REGEN
+			REGEN
+			ATTACK
+			SIZE
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+			REGEN
+			SIZE
+			DEFENSE
+			REGEN
+			SIZE
+			SPEED
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			DEFENSE
+		]
+		resume: [ 8, 2, 4, 4, 7 ]
+	}
+	{
+		DNA: [
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+			ATTACK
+			SPEED
+			ATTACK
+			ATTACK
+			SPEED
+			SPEED
+			DEFENSE
+			SIZE
+			ATTACK
+			REGEN
+			SPEED
+			SPEED
+			SIZE
 			SPEED
 			SIZE
 			REGEN
 			SPEED
 			REGEN
 		]
-		resume: [ 4, 7, 2, 5, 7 ]
+		resume: [ 5, 5, 3, 8, 4 ]
 	}
 	{
 		DNA: [
 			ATTACK
-			REGEN
-			REGEN
-			ATTACK
-			SIZE
-			SPEED
-			REGEN
-			SIZE
-			SPEED
-			REGEN
-			REGEN
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
-			SPEED
-			ATTACK
-			DEFENSE
-			SIZE
-			SIZE
-			DEFENSE
-			SPEED
-			REGEN
-			DEFENSE
-			SPEED
-		]
-		resume: [ 5, 8, 3, 4, 5 ]
-	}
-	{
-		DNA: [
-			SIZE
-			SPEED
-			REGEN
-			SPEED
-			SIZE
-			ATTACK
-			SPEED
-			SIZE
-			SPEED
-			REGEN
-			SPEED
-			REGEN
-			REGEN
-			DEFENSE
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			SIZE
-			SPEED
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-		]
-		resume: [ 5, 6, 2, 6, 6 ]
-	}
-	{
-		DNA: [
-			SPEED
 			SIZE
 			SIZE
 			SPEED
 			DEFENSE
+			SPEED
+			ATTACK
+			SPEED
+			SPEED
+			ATTACK
 			DEFENSE
 			SPEED
-			SPEED
-			SIZE
-			REGEN
-			SPEED
+			ATTACK
 			REGEN
 			DEFENSE
 			SIZE
 			ATTACK
 			DEFENSE
 			SIZE
+			DEFENSE
 			SPEED
-			REGEN
-			REGEN
 			DEFENSE
 			SIZE
-			SIZE
-			REGEN
+			DEFENSE
 			REGEN
 		]
-		resume: [ 5, 7, 4, 4, 5 ]
+		resume: [ 5, 4, 7, 6, 3 ]
 	}
 	{
 		DNA: [
+			REGEN
 			SPEED
-			SPEED
-			SIZE
-			SPEED
+			REGEN
 			SPEED
 			DEFENSE
 			SPEED
-			SIZE
+			SPEED
 			DEFENSE
+			REGEN
+			ATTACK
+			SPEED
+			SIZE
+			SPEED
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			SPEED
+			SIZE
+			SPEED
+			REGEN
+			DEFENSE
+		]
+		resume: [ 5, 9, 3, 4, 4 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			DEFENSE
+			SIZE
+			ATTACK
+			DEFENSE
+			SIZE
+			REGEN
+			REGEN
+			ATTACK
+			DEFENSE
+			SIZE
+			SPEED
+			SIZE
+			ATTACK
+			ATTACK
+			ATTACK
+			ATTACK
 			ATTACK
 			REGEN
 			DEFENSE
+			SIZE
+			SPEED
+			SIZE
+			SPEED
+			REGEN
+		]
+		resume: [ 3, 3, 5, 9, 5 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			REGEN
+			SIZE
+			DEFENSE
+			SPEED
+			REGEN
+			ATTACK
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+			SPEED
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			SIZE
+			SPEED
+			SIZE
+			DEFENSE
+			SPEED
+			SIZE
 			ATTACK
 			REGEN
-			SIZE
-			REGEN
 			SPEED
-			SPEED
-			SPEED
-			SPEED
-			SIZE
-			SIZE
-			SIZE
-			SIZE
-			REGEN
 		]
 		resume: [ 7, 4, 4, 5, 5 ]
 	}
 	{
 		DNA: [
+			SPEED
+			SIZE
+			DEFENSE
+			ATTACK
+			SIZE
+			SIZE
+			SPEED
+			SPEED
+			SPEED
 			REGEN
 			DEFENSE
-			REGEN
-			REGEN
-			ATTACK
-			ATTACK
-			SPEED
+			DEFENSE
 			REGEN
 			DEFENSE
-			SIZE
-			ATTACK
-			ATTACK
-			ATTACK
-			REGEN
 			DEFENSE
-			SPEED
-			SPEED
-			SPEED
+			SIZE
 			REGEN
-			SIZE
-			SIZE
-			SIZE
 			ATTACK
+			SIZE
 			SPEED
 			ATTACK
+			ATTACK
+			REGEN
+			ATTACK
+			REGEN
 		]
-		resume: [ 9, 5, 4, 6, 1 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			REGEN
-			ATTACK
-			DEFENSE
-			SIZE
-			SIZE
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			SIZE
-			SIZE
-			REGEN
-			SIZE
-			SPEED
-			SIZE
-			DEFENSE
-			SPEED
-			ATTACK
-			DEFENSE
-			DEFENSE
-			REGEN
-			DEFENSE
-			ATTACK
-		]
-		resume: [ 1, 7, 6, 4, 7 ]
-	}
-	{
-		DNA: [
-			SPEED
-			SPEED
-			REGEN
-			REGEN
-			SPEED
-			SPEED
-			REGEN
-			SPEED
-			SPEED
-			REGEN
-			SPEED
-			ATTACK
-			SIZE
-			SPEED
-			REGEN
-			REGEN
-			SIZE
-			DEFENSE
-			SIZE
-			SPEED
-			SPEED
-			SIZE
-			SIZE
-			REGEN
-			SIZE
-		]
-		resume: [ 10, 3, 4, 1, 7 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			ATTACK
-			SIZE
-			REGEN
-			SPEED
-			REGEN
-			SPEED
-			DEFENSE
-			ATTACK
-			SIZE
-			SIZE
-			ATTACK
-			SPEED
-			ATTACK
-			REGEN
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			DEFENSE
-			DEFENSE
-			SPEED
-			REGEN
-			ATTACK
-			SIZE
-		]
-		resume: [ 4, 2, 1, 11, 7 ]
+		resume: [ 7, 5, 6, 5, 2 ]
 	}
 	{
 		DNA: [
 			ATTACK
 			SPEED
+			REGEN
+			REGEN
+			SPEED
+			SPEED
+			DEFENSE
+			SIZE
 			ATTACK
+			SIZE
 			DEFENSE
+			SPEED
+			SIZE
+			SPEED
+			REGEN
 			DEFENSE
+			SPEED
+			SPEED
+			SPEED
+			SIZE
 			SPEED
 			ATTACK
 			DEFENSE
-			SIZE
-			DEFENSE
-			DEFENSE
-			REGEN
-			SPEED
 			ATTACK
-			SIZE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SIZE
 			REGEN
-			REGEN
-			REGEN
-			ATTACK
-			DEFENSE
-			SIZE
 		]
-		resume: [ 5, 7, 4, 3, 6 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			SIZE
-			REGEN
-			SPEED
-			DEFENSE
-			DEFENSE
-			ATTACK
-			ATTACK
-			DEFENSE
-			SPEED
-			SPEED
-			DEFENSE
-			SIZE
-			ATTACK
-			ATTACK
-			DEFENSE
-			REGEN
-			REGEN
-			DEFENSE
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			SPEED
-			DEFENSE
-		]
-		resume: [ 3, 5, 9, 5, 3 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			SIZE
-			DEFENSE
-			SIZE
-			ATTACK
-			DEFENSE
-			SIZE
-			SIZE
-			SPEED
-			DEFENSE
-			SIZE
-			REGEN
-			DEFENSE
-			ATTACK
-			SPEED
-			ATTACK
-			ATTACK
-			DEFENSE
-			SIZE
-			SIZE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SPEED
-			DEFENSE
-		]
-		resume: [ 6, 5, 8, 4, 2 ]
-	}
-	{
-		DNA: [
-			REGEN
-			REGEN
-			REGEN
-			ATTACK
-			SIZE
-			SPEED
-			REGEN
-			SIZE
-			SIZE
-			DEFENSE
-			DEFENSE
-			SIZE
-			DEFENSE
-			DEFENSE
-			REGEN
-			REGEN
-			SIZE
-			DEFENSE
-			SPEED
-			REGEN
-			ATTACK
-			REGEN
-			SPEED
-			DEFENSE
-			ATTACK
-		]
-		resume: [ 4, 4, 9, 3, 5 ]
-	}
-	{
-		DNA: [
-			REGEN
-			ATTACK
-			SPEED
-			ATTACK
-			SIZE
-			ATTACK
-			SIZE
-			ATTACK
-			SIZE
-			DEFENSE
-			SIZE
-			SIZE
-			SIZE
-			ATTACK
-			SIZE
-			SIZE
-			SPEED
-			SPEED
-			SIZE
-			REGEN
-			DEFENSE
-			SPEED
-			SPEED
-			DEFENSE
-			SPEED
-		]
-		resume: [ 9, 2, 3, 6, 5 ]
-	}
-	{
-		DNA: [
-			SIZE
-			ATTACK
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			DEFENSE
-			DEFENSE
-			REGEN
-			ATTACK
-			SIZE
-			DEFENSE
-			REGEN
-			DEFENSE
-			SIZE
-			SPEED
-			SIZE
-			DEFENSE
-			ATTACK
-			SIZE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 7, 8, 6, 2, 2 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			DEFENSE
-			SPEED
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			ATTACK
-			SPEED
-			ATTACK
-			DEFENSE
-			SPEED
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			SPEED
-			ATTACK
-			ATTACK
-			SPEED
-			DEFENSE
-			DEFENSE
-			ATTACK
-			REGEN
-			DEFENSE
-			SPEED
-		]
-		resume: [ 6, 5, 7, 1, 6 ]
-	}
-	{
-		DNA: [
-			REGEN
-			DEFENSE
-			SIZE
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SIZE
-			SIZE
-			REGEN
-			REGEN
-			ATTACK
-			ATTACK
-			ATTACK
-			SIZE
-			DEFENSE
-			REGEN
-			ATTACK
-			REGEN
-			ATTACK
-			DEFENSE
-			DEFENSE
-		]
-		resume: [ 1, 7, 9, 5, 3 ]
-	}
-	{
-		DNA: [
-			REGEN
-			DEFENSE
-			REGEN
-			REGEN
-			DEFENSE
-			ATTACK
-			SPEED
-			REGEN
-			SPEED
-			REGEN
-			DEFENSE
-			ATTACK
-			DEFENSE
-			ATTACK
-			ATTACK
-			SPEED
-			DEFENSE
-			SIZE
-			REGEN
-			DEFENSE
-			DEFENSE
-			ATTACK
-			ATTACK
-			SPEED
-			ATTACK
-		]
-		resume: [ 5, 8, 5, 1, 6 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			REGEN
-			SIZE
-			REGEN
-			DEFENSE
-			SIZE
-			REGEN
-			DEFENSE
-			DEFENSE
-			ATTACK
-			REGEN
-			ATTACK
-			SIZE
-			REGEN
-			REGEN
-			SIZE
-			SIZE
-			SIZE
-			REGEN
-			DEFENSE
-			DEFENSE
-			SPEED
-			REGEN
-			ATTACK
-		]
-		resume: [ 1, 5, 7, 4, 8 ]
+		resume: [ 5, 5, 5, 5, 5 ]
 	}
 	{
 		DNA: [
 			SIZE
 			REGEN
-			REGEN
-			SPEED
-			ATTACK
-			ATTACK
-			SIZE
-			DEFENSE
-			SIZE
-			DEFENSE
-			REGEN
-			SIZE
-			SPEED
-			SPEED
-			DEFENSE
-			DEFENSE
-			REGEN
-			ATTACK
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			REGEN
-			SPEED
-			SPEED
-		]
-		resume: [ 2, 5, 7, 6, 5 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			ATTACK
-			ATTACK
-			SIZE
-			REGEN
-			SIZE
-			REGEN
-			DEFENSE
-			SPEED
-			SPEED
-			REGEN
-			SIZE
-			SPEED
-			DEFENSE
-			DEFENSE
-			REGEN
-			ATTACK
-			ATTACK
-			SIZE
-			ATTACK
-			REGEN
-			REGEN
-			REGEN
-			SPEED
-		]
-		resume: [ 5, 5, 4, 4, 7 ]
-	}
-	{
-		DNA: [
-			SIZE
-			DEFENSE
-			DEFENSE
-			SPEED
-			DEFENSE
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			SPEED
-			DEFENSE
-			ATTACK
-			DEFENSE
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			REGEN
-			SPEED
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 2, 5, 6, 3, 9 ]
-	}
-	{
-		DNA: [
-			SPEED
-			DEFENSE
-			DEFENSE
-			ATTACK
-			ATTACK
-			ATTACK
-			SIZE
-			SPEED
-			SIZE
-			ATTACK
-			SPEED
-			DEFENSE
-			SIZE
-			SPEED
-			REGEN
-			ATTACK
-			ATTACK
-			ATTACK
-			DEFENSE
-			SIZE
-			SIZE
-			ATTACK
-			ATTACK
-			DEFENSE
-			SPEED
-		]
-		resume: [ 4, 7, 6, 4, 4 ]
-	}
-	{
-		DNA: [
-			SIZE
-			SIZE
-			DEFENSE
-			SPEED
-			ATTACK
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			REGEN
-			DEFENSE
-			DEFENSE
-			ATTACK
-			REGEN
-			SIZE
-			REGEN
-			ATTACK
-			REGEN
-			ATTACK
-			DEFENSE
-			REGEN
-			SIZE
-			SPEED
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 4, 8, 6, 5, 2 ]
-	}
-	{
-		DNA: [
-			REGEN
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
-			DEFENSE
-			DEFENSE
-			SPEED
-			SPEED
-			REGEN
-			SPEED
-			REGEN
-			REGEN
-			ATTACK
-			SIZE
-			SPEED
-			SIZE
-			DEFENSE
-			ATTACK
-			REGEN
-			DEFENSE
-			SIZE
-			SIZE
-			SIZE
-			ATTACK
-		]
-		resume: [ 7, 3, 4, 7, 4 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			ATTACK
-			DEFENSE
-			ATTACK
-			DEFENSE
-			REGEN
-			REGEN
-			DEFENSE
-			ATTACK
-			SIZE
-			ATTACK
-			SPEED
-			DEFENSE
-			REGEN
-			SIZE
-			ATTACK
-			SPEED
-			ATTACK
-			SIZE
-			DEFENSE
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			ATTACK
-		]
-		resume: [ 3, 5, 6, 7, 4 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			SIZE
-			SIZE
-			DEFENSE
-			REGEN
-			REGEN
-			SPEED
-			SIZE
-			ATTACK
-			ATTACK
-			SIZE
-			REGEN
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SIZE
-			SPEED
-			DEFENSE
-			SIZE
-			REGEN
-			SPEED
-			REGEN
-			REGEN
-			SPEED
-			REGEN
-		]
-		resume: [ 4, 7, 6, 3, 5 ]
-	}
-	{
-		DNA: [
-			SPEED
-			SIZE
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			SPEED
-			SPEED
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			SIZE
-			ATTACK
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			SPEED
-			DEFENSE
-			SPEED
-			REGEN
-			SPEED
-			ATTACK
-			DEFENSE
-		]
-		resume: [ 5, 5, 5, 4, 6 ]
-	}
-	{
-		DNA: [
-			SIZE
-			DEFENSE
-			ATTACK
-			REGEN
-			SPEED
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			ATTACK
-			ATTACK
-			ATTACK
-			SIZE
-			SIZE
-			ATTACK
-			SIZE
-			SIZE
-			REGEN
-			REGEN
-			ATTACK
-			SPEED
-			ATTACK
-			SIZE
-			SIZE
-			SIZE
-		]
-		resume: [ 10, 7, 1, 5, 2 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			SIZE
-			SPEED
-			SPEED
-			SPEED
-			REGEN
-			DEFENSE
-			REGEN
-			SIZE
-			REGEN
-			ATTACK
-			SPEED
-			SPEED
-			SPEED
-			REGEN
-			SPEED
-			SIZE
-			REGEN
-			ATTACK
-			REGEN
-			DEFENSE
-			ATTACK
-			SPEED
-			SIZE
-			REGEN
-		]
-		resume: [ 3, 4, 5, 8, 5 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			DEFENSE
-			SPEED
-			SPEED
-			SPEED
-			ATTACK
-			SIZE
-			REGEN
-			DEFENSE
-			DEFENSE
-			REGEN
-			DEFENSE
-			ATTACK
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			SIZE
-			DEFENSE
-			SIZE
-			SPEED
-			ATTACK
-			SPEED
-			SPEED
-			REGEN
-		]
-		resume: [ 4, 3, 3, 8, 7 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			SIZE
-			REGEN
-			ATTACK
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			SPEED
-			DEFENSE
-			SIZE
-			DEFENSE
-			ATTACK
-			SPEED
-			ATTACK
-			SIZE
-			REGEN
-			DEFENSE
-			REGEN
-			ATTACK
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-		]
-		resume: [ 4, 5, 8, 4, 4 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			DEFENSE
-			SPEED
-			REGEN
-			REGEN
-			REGEN
-			SIZE
-			ATTACK
-			SPEED
-			DEFENSE
-			REGEN
-			SPEED
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SIZE
-			DEFENSE
-			SPEED
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			SPEED
-			SIZE
-			SIZE
-			DEFENSE
-		]
-		resume: [ 5, 3, 12, 3, 2 ]
-	}
-	{
-		DNA: [
-			SPEED
-			ATTACK
-			ATTACK
-			ATTACK
-			SPEED
-			DEFENSE
-			SIZE
-			ATTACK
-			REGEN
-			SPEED
-			DEFENSE
-			REGEN
-			REGEN
-			REGEN
-			SPEED
-			ATTACK
-			ATTACK
-			DEFENSE
-			DEFENSE
-			REGEN
-			SIZE
-			SPEED
-			SIZE
-			DEFENSE
-			SPEED
-		]
-		resume: [ 3, 5, 6, 6, 5 ]
-	}
-	{
-		DNA: [
-			REGEN
-			ATTACK
-			ATTACK
-			SPEED
-			ATTACK
-			REGEN
-			REGEN
-			DEFENSE
-			SIZE
-			ATTACK
-			DEFENSE
-			REGEN
-			ATTACK
-			ATTACK
-			REGEN
-			REGEN
-			ATTACK
-			SPEED
-			DEFENSE
-			ATTACK
-			ATTACK
-			DEFENSE
-			ATTACK
-			DEFENSE
-			ATTACK
-		]
-		resume: [ 2, 9, 4, 4, 6 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			DEFENSE
-			REGEN
-			DEFENSE
-			ATTACK
-			SPEED
-			SIZE
-			SPEED
-			SPEED
-			ATTACK
-			SIZE
-			REGEN
-			REGEN
-			REGEN
-			DEFENSE
-			SPEED
-			SIZE
-			ATTACK
-			ATTACK
-			REGEN
-			ATTACK
-			SPEED
-			SIZE
-			ATTACK
-		]
-		resume: [ 2, 10, 4, 3, 6 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			ATTACK
-			DEFENSE
-			SPEED
-			SPEED
-			REGEN
-			SIZE
-			SPEED
 			DEFENSE
-			REGEN
-			SPEED
 			REGEN
-			SPEED
 			REGEN
-			ATTACK
-			DEFENSE
-			ATTACK
 			SPEED
-			SPEED
 			DEFENSE
-			REGEN
-			REGEN
 			SIZE
-			ATTACK
-			SIZE
-		]
-		resume: [ 5, 3, 5, 7, 5 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			REGEN
-			ATTACK
 			SIZE
-			DEFENSE
 			DEFENSE
-			SIZE
-			ATTACK
-			REGEN
-			SIZE
-			SPEED
 			SIZE
-			DEFENSE
 			SPEED
-			SPEED
-			SPEED
-			SPEED
 			ATTACK
-			SPEED
 			DEFENSE
-			DEFENSE
-			SPEED
-			ATTACK
-			REGEN
 			REGEN
-		]
-		resume: [ 1, 4, 6, 8, 6 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SPEED
 			DEFENSE
-			REGEN
-			SPEED
-			REGEN
-			SIZE
-			ATTACK
-			SIZE
-			ATTACK
-			SPEED
 			SIZE
-			SPEED
-			DEFENSE
 			ATTACK
-			DEFENSE
-			SIZE
-			DEFENSE
-			SPEED
 			DEFENSE
-			SPEED
-			REGEN
-			SPEED
-			REGEN
-			SPEED
-		]
-		resume: [ 5, 5, 4, 3, 8 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			DEFENSE
-			SIZE
-			SPEED
-			REGEN
-			REGEN
-			SPEED
 			REGEN
-			SPEED
-			SPEED
 			DEFENSE
 			SIZE
-			DEFENSE
-			SPEED
-			ATTACK
 			DEFENSE
-			ATTACK
 			SPEED
-			SIZE
-			DEFENSE
-			SIZE
-			REGEN
-			ATTACK
-			DEFENSE
 			SPEED
 		]
 		resume: [ 4, 3, 6, 8, 4 ]
 	}
 	{
 		DNA: [
-			REGEN
-			SIZE
-			SIZE
 			SIZE
 			REGEN
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			REGEN
+			REGEN
 			DEFENSE
-			DEFENSE
+			SPEED
 			ATTACK
 			REGEN
+			SIZE
+			DEFENSE
+			ATTACK
+			SPEED
+			SIZE
+			DEFENSE
 			REGEN
+			REGEN
+			DEFENSE
+			SIZE
+			ATTACK
+			SPEED
+			SPEED
+		]
+		resume: [ 6, 2, 8, 4, 5 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SIZE
+			REGEN
+			SIZE
+			DEFENSE
+			ATTACK
+			SPEED
+			ATTACK
+			ATTACK
+			SPEED
+			SPEED
+			ATTACK
+			ATTACK
+			DEFENSE
 			SIZE
 			REGEN
 			SPEED
+			ATTACK
+			ATTACK
+			ATTACK
+			SPEED
 			REGEN
 			SPEED
-			DEFENSE
+		]
+		resume: [ 4, 6, 2, 6, 7 ]
+	}
+	{
+		DNA: [
 			SIZE
+			REGEN
 			SIZE
 			ATTACK
 			DEFENSE
+			REGEN
+			REGEN
+			REGEN
+			SIZE
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			ATTACK
 			DEFENSE
+			SPEED
 			SIZE
 			DEFENSE
+			DEFENSE
+			ATTACK
+			ATTACK
 			REGEN
+			ATTACK
+			ATTACK
 			REGEN
 		]
-		resume: [ 4, 2, 8, 6, 5 ]
+		resume: [ 3, 9, 7, 3, 3 ]
+	}
+	{
+		DNA: [
+			SIZE
+			DEFENSE
+			ATTACK
+			REGEN
+			ATTACK
+			ATTACK
+			SPEED
+			SIZE
+			DEFENSE
+			REGEN
+			DEFENSE
+			REGEN
+			REGEN
+			SPEED
+			REGEN
+			REGEN
+			SPEED
+			SIZE
+			SIZE
+			ATTACK
+			SIZE
+			DEFENSE
+			DEFENSE
+			ATTACK
+			SIZE
+		]
+		resume: [ 7, 6, 3, 3, 6 ]
+	}
+	{
+		DNA: [
+			SIZE
+			DEFENSE
+			DEFENSE
+			SIZE
+			DEFENSE
+			REGEN
+			DEFENSE
+			DEFENSE
+			REGEN
+			ATTACK
+			REGEN
+			REGEN
+			SPEED
+			ATTACK
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+			DEFENSE
+			ATTACK
+			SPEED
+		]
+		resume: [ 4, 5, 8, 3, 5 ]
+	}
+	{
+		DNA: [
+			SIZE
+			REGEN
+			SIZE
+			SIZE
+			DEFENSE
+			ATTACK
+			SIZE
+			SIZE
+			REGEN
+			SPEED
+			DEFENSE
+			SPEED
+			ATTACK
+			REGEN
+			ATTACK
+			REGEN
+			ATTACK
+			SPEED
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			ATTACK
+			REGEN
+			SIZE
+		]
+		resume: [ 3, 4, 7, 2, 9 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SPEED
+			REGEN
+			REGEN
+			SIZE
+			SIZE
+			DEFENSE
+			REGEN
+			ATTACK
+			ATTACK
+			DEFENSE
+			ATTACK
+			REGEN
+			SIZE
+			REGEN
+			DEFENSE
+			REGEN
+			REGEN
+			ATTACK
+			SIZE
+			SIZE
+			ATTACK
+			ATTACK
+			DEFENSE
+			SIZE
+		]
+		resume: [ 7, 6, 4, 1, 7 ]
+	}
+	{
+		DNA: [
+			SPEED
+			SPEED
+			REGEN
+			SIZE
+			ATTACK
+			SIZE
+			SIZE
+			ATTACK
+			ATTACK
+			REGEN
+			ATTACK
+			SPEED
+			SPEED
+			SPEED
+			DEFENSE
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			SPEED
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SIZE
+			DEFENSE
+		]
+		resume: [ 4, 5, 6, 6, 4 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SIZE
+			SIZE
+			DEFENSE
+			REGEN
+			DEFENSE
+			ATTACK
+			SIZE
+			REGEN
+			ATTACK
+			DEFENSE
+			REGEN
+			SIZE
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			SPEED
+			SPEED
+			ATTACK
+			SPEED
+			REGEN
+		]
+		resume: [ 4, 4, 6, 5, 6 ]
+	}
+	{
+		DNA: [
+			SPEED
+			ATTACK
+			SPEED
+			REGEN
+			SPEED
+			SIZE
+			SIZE
+			REGEN
+			ATTACK
+			ATTACK
+			REGEN
+			ATTACK
+			SIZE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SIZE
+			REGEN
+			REGEN
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+			ATTACK
+		]
+		resume: [ 7, 5, 5, 3, 5 ]
+	}
+	{
+		DNA: [
+			REGEN
+			DEFENSE
+			REGEN
+			ATTACK
+			SPEED
+			DEFENSE
+			DEFENSE
+			SPEED
+			SPEED
+			DEFENSE
+			SPEED
+			SIZE
+			REGEN
+			SIZE
+			SIZE
+			ATTACK
+			DEFENSE
+			SIZE
+			ATTACK
+			REGEN
+			SPEED
+			ATTACK
+			DEFENSE
+			REGEN
+			SIZE
+		]
+		resume: [ 8, 4, 2, 4, 7 ]
+	}
+	{
+		DNA: [
+			SIZE
+			DEFENSE
+			ATTACK
+			SPEED
+			SIZE
+			ATTACK
+			ATTACK
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			REGEN
+			SIZE
+			REGEN
+			REGEN
+			ATTACK
+			SIZE
+			SIZE
+			SIZE
+			REGEN
+			SPEED
+			DEFENSE
+			ATTACK
+			SIZE
+			REGEN
+			SIZE
+		]
+		resume: [ 6, 4, 5, 5, 5 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			SIZE
+			SIZE
+			DEFENSE
+			REGEN
+			ATTACK
+			DEFENSE
+			REGEN
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			SPEED
+			ATTACK
+			ATTACK
+			DEFENSE
+			SIZE
+			REGEN
+			REGEN
+			DEFENSE
+			SIZE
+			ATTACK
+			ATTACK
+			DEFENSE
+			SPEED
+		]
+		resume: [ 5, 8, 5, 6, 1 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SIZE
+			SIZE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SPEED
+			REGEN
+			SIZE
+			REGEN
+			SPEED
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			DEFENSE
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+			SIZE
+			SIZE
+			SIZE
+			ATTACK
+			DEFENSE
+		]
+		resume: [ 5, 8, 4, 2, 6 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SPEED
+			ATTACK
+			ATTACK
+			REGEN
+			DEFENSE
+			SIZE
+			ATTACK
+			REGEN
+			SPEED
+			SPEED
+			SPEED
+			DEFENSE
+			SPEED
+			REGEN
+			DEFENSE
+			SPEED
+			SPEED
+			ATTACK
+			SIZE
+			SIZE
+			REGEN
+			ATTACK
+			ATTACK
+			REGEN
+		]
+		resume: [ 8, 4, 5, 4, 4 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SPEED
+			SIZE
+			DEFENSE
+			ATTACK
+			ATTACK
+			SIZE
+			DEFENSE
+			ATTACK
+			REGEN
+			SPEED
+			ATTACK
+			ATTACK
+			SIZE
+			REGEN
+			DEFENSE
+			SPEED
+			DEFENSE
+			DEFENSE
+			REGEN
+			SIZE
+			SIZE
+			REGEN
+			REGEN
+			SPEED
+		]
+		resume: [ 3, 4, 7, 6, 5 ]
+	}
+	{
+		DNA: [
+			SPEED
+			REGEN
+			SPEED
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			SPEED
+			DEFENSE
+			SPEED
+			DEFENSE
+			SIZE
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			REGEN
+			DEFENSE
+			REGEN
+			REGEN
+			SPEED
+		]
+		resume: [ 3, 5, 7, 4, 6 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SIZE
+			ATTACK
+			DEFENSE
+			SIZE
+			SIZE
+			DEFENSE
+			SIZE
+			SPEED
+			DEFENSE
+			ATTACK
+			REGEN
+			ATTACK
+			DEFENSE
+			SIZE
+			DEFENSE
+			REGEN
+			DEFENSE
+			REGEN
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			ATTACK
+			SPEED
+		]
+		resume: [ 4, 9, 4, 4, 4 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			DEFENSE
+			ATTACK
+			SPEED
+			DEFENSE
+			SIZE
+			SPEED
+			ATTACK
+			ATTACK
+			ATTACK
+			ATTACK
+			DEFENSE
+			ATTACK
+			SIZE
+			DEFENSE
+			ATTACK
+			REGEN
+			ATTACK
+			DEFENSE
+			REGEN
+			ATTACK
+			SIZE
+			SIZE
+			DEFENSE
+			ATTACK
+		]
+		resume: [ 7, 6, 8, 1, 3 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			REGEN
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			SPEED
+			REGEN
+			REGEN
+			DEFENSE
+			SIZE
+			SPEED
+			REGEN
+			SPEED
+			SPEED
+			REGEN
+			ATTACK
+			DEFENSE
+			SIZE
+			SIZE
+			SPEED
+			DEFENSE
+			SIZE
+		]
+		resume: [ 5, 5, 5, 7, 3 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			DEFENSE
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			SPEED
+			SPEED
+			ATTACK
+			ATTACK
+			ATTACK
+			REGEN
+			DEFENSE
+			SPEED
+			SPEED
+			REGEN
+			REGEN
+			DEFENSE
+			DEFENSE
+			SIZE
+			ATTACK
+			SPEED
+		]
+		resume: [ 1, 8, 3, 6, 7 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			DEFENSE
+			SPEED
+			SPEED
+			DEFENSE
+			SPEED
+			SPEED
+			ATTACK
+			SPEED
+			DEFENSE
+			REGEN
+			REGEN
+			SPEED
+			DEFENSE
+			ATTACK
+			REGEN
+			ATTACK
+			SIZE
+			SPEED
+			DEFENSE
+			ATTACK
+			ATTACK
+			DEFENSE
+			DEFENSE
+			REGEN
+		]
+		resume: [ 4, 6, 7, 4, 4 ]
+	}
+	{
+		DNA: [
+			REGEN
+			SIZE
+			SIZE
+			SPEED
+			SIZE
+			DEFENSE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+			ATTACK
+			REGEN
+			SPEED
+			DEFENSE
+			DEFENSE
+			REGEN
+			SIZE
+			REGEN
+			SPEED
+			SIZE
+			ATTACK
+			SPEED
+			SIZE
+			DEFENSE
+			DEFENSE
+		]
+		resume: [ 3, 2, 8, 6, 6 ]
+	}
+	{
+		DNA: [
+			SPEED
+			REGEN
+			SIZE
+			REGEN
+			SIZE
+			DEFENSE
+			SIZE
+			REGEN
+			SPEED
+			ATTACK
+			SPEED
+			DEFENSE
+			REGEN
+			DEFENSE
+			REGEN
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			SPEED
+			ATTACK
+			REGEN
+			SIZE
+			REGEN
+			SIZE
+		]
+	}
+	{
+		DNA: [
+			DEFENSE
+			ATTACK
+			ATTACK
+			SIZE
+			ATTACK
+			REGEN
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			ATTACK
+			DEFENSE
+			SIZE
+			SIZE
+			ATTACK
+			SIZE
+			ATTACK
+			DEFENSE
+			SIZE
+			DEFENSE
+			SPEED
+			SPEED
+			SIZE
+			ATTACK
+			SIZE
+		]
+		resume: [ 5, 2, 4, 4, 10 ]
+	}
+	{
+		DNA: [
+			REGEN
+			DEFENSE
+			REGEN
+			ATTACK
+			SPEED
+			REGEN
+			REGEN
+			SIZE
+			SIZE
+			SIZE
+			SIZE
+			SPEED
+			ATTACK
+			DEFENSE
+			REGEN
+			REGEN
+			SIZE
+			SIZE
+			SIZE
+			SIZE
+			SPEED
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+		]
+		resume: [ 8, 8, 3, 1, 5 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			REGEN
+			SPEED
+			SIZE
+			SPEED
+			SIZE
+			SIZE
+			ATTACK
+			REGEN
+			DEFENSE
+			REGEN
+			REGEN
+			DEFENSE
+			DEFENSE
+			SIZE
+			SPEED
+			DEFENSE
+			SPEED
+		]
+		resume: [ 6, 2, 5, 4, 8 ]
+	}
+	{
+		DNA: [
+			SPEED
+			ATTACK
+			ATTACK
+			SIZE
+			ATTACK
+			REGEN
+			SPEED
+			SPEED
+			REGEN
+			ATTACK
+			REGEN
+			SPEED
+			REGEN
+			ATTACK
+			SPEED
+			SIZE
+			REGEN
+			SIZE
+			SPEED
+			SIZE
+			REGEN
+			ATTACK
+			SIZE
+			REGEN
+			SPEED
+		]
+		resume: [ 8, 4, 3, 5, 5 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			ATTACK
+			SIZE
+			REGEN
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			SPEED
+			DEFENSE
+			DEFENSE
+			SIZE
+			SPEED
+			SIZE
+			SIZE
+			REGEN
+			DEFENSE
+			REGEN
+			SPEED
+			REGEN
+			SPEED
+			ATTACK
+			SIZE
+			DEFENSE
+			DEFENSE
+		]
+		resume: [ 5, 5, 5, 6, 4 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SPEED
+			REGEN
+			ATTACK
+			REGEN
+			REGEN
+			ATTACK
+			SIZE
+			DEFENSE
+			REGEN
+			SIZE
+			REGEN
+			SIZE
+			ATTACK
+			SIZE
+			DEFENSE
+			DEFENSE
+			REGEN
+			SPEED
+			SPEED
+			REGEN
+			DEFENSE
+			REGEN
+			SIZE
+			SIZE
+		]
+		resume: [ 7, 4, 5, 3, 6 ]
+	}
+	{
+		DNA: [
+			SPEED
+			REGEN
+			DEFENSE
+			DEFENSE
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			ATTACK
+			REGEN
+			REGEN
+			SIZE
+			SPEED
+			ATTACK
+			SIZE
+			DEFENSE
+			REGEN
+			SPEED
+			SIZE
+			REGEN
+			SPEED
+			SPEED
+		]
+		resume: [ 5, 3, 4, 5, 8 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+			ATTACK
+			SIZE
+			REGEN
+			DEFENSE
+			SIZE
+			REGEN
+			REGEN
+			SIZE
+			DEFENSE
+			SIZE
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			DEFENSE
+			ATTACK
+		]
+		resume: [ 5, 2, 6, 5, 7 ]
+	}
+	{
+		DNA: [
+			REGEN
+			REGEN
+			SIZE
+			SPEED
+			SPEED
+			ATTACK
+			ATTACK
+			ATTACK
+			REGEN
+			SPEED
+			DEFENSE
+			REGEN
+			REGEN
+			SIZE
+			DEFENSE
+			REGEN
+			REGEN
+			SIZE
+			REGEN
+			SIZE
+			REGEN
+			REGEN
+			SIZE
+			SPEED
+			ATTACK
+		]
+		resume: [ 7, 4, 5, 2, 7 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SPEED
+			REGEN
+			REGEN
+			SPEED
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			DEFENSE
+			REGEN
+			REGEN
+			SIZE
+			REGEN
+			SIZE
+			REGEN
+			ATTACK
+			REGEN
+			ATTACK
+			REGEN
+			SPEED
+			ATTACK
+			ATTACK
+			ATTACK
+			DEFENSE
+		]
+		resume: [ 5, 6, 6, 2, 6 ]
+	}
+	{
+		DNA: [
+			SPEED
+			REGEN
+			SIZE
+			REGEN
+			REGEN
+			ATTACK
+			SPEED
+			SIZE
+			DEFENSE
+			DEFENSE
+			REGEN
+			SIZE
+			SIZE
+			DEFENSE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			REGEN
+			DEFENSE
+			REGEN
+			SIZE
+			ATTACK
+			REGEN
+			REGEN
+			SIZE
+		]
+		resume: [ 4, 5, 1, 4, 11 ]
+	}
+	{
+		DNA: [
+			REGEN
+			ATTACK
+			SPEED
+			DEFENSE
+			DEFENSE
+			ATTACK
+			SPEED
+			SPEED
+			SPEED
+			REGEN
+			REGEN
+			SIZE
+			SPEED
+			SIZE
+			REGEN
+			SIZE
+			DEFENSE
+			ATTACK
+			SPEED
+			ATTACK
+			REGEN
+			REGEN
+			ATTACK
+			ATTACK
+			DEFENSE
+		]
+		resume: [ 4, 5, 2, 6, 8 ]
+	}
+	{
+		DNA: [
+			SPEED
+			DEFENSE
+			ATTACK
+			SPEED
+			DEFENSE
+			SPEED
+			REGEN
+			SPEED
+			ATTACK
+			DEFENSE
+			ATTACK
+			SIZE
+			SIZE
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+			SPEED
+			DEFENSE
+			ATTACK
+			SIZE
+			DEFENSE
+			REGEN
+			ATTACK
+			DEFENSE
+		]
+		resume: [ 4, 5, 8, 6, 2 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SIZE
+			SIZE
+			DEFENSE
+			SIZE
+			SPEED
+			REGEN
+			SPEED
+			SPEED
+			SIZE
+			SIZE
+			SPEED
+			ATTACK
+			SIZE
+			SPEED
+			DEFENSE
+			SIZE
+			REGEN
+			SIZE
+			SIZE
+			DEFENSE
+			REGEN
+			DEFENSE
+			SIZE
+			DEFENSE
+		]
+		resume: [ 5, 4, 7, 5, 4 ]
+	}
+	{
+		DNA: [
+			REGEN
+			DEFENSE
+			ATTACK
+			REGEN
+			SIZE
+			DEFENSE
+			SIZE
+			SIZE
+			ATTACK
+			SPEED
+			ATTACK
+			SPEED
+			SPEED
+			REGEN
+			SIZE
+			ATTACK
+			REGEN
+			SIZE
+			DEFENSE
+			SIZE
+			SIZE
+			SPEED
+			SPEED
+			ATTACK
+			ATTACK
+		]
+		resume: [ 10, 3, 3, 6, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			SIZE
+			SIZE
+			SPEED
+			SIZE
+			ATTACK
+			ATTACK
+			DEFENSE
+			REGEN
+			SIZE
+			SPEED
+			ATTACK
+			REGEN
+			DEFENSE
+			SIZE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+			DEFENSE
+			DEFENSE
+			SIZE
+			SIZE
+			REGEN
+			DEFENSE
+		]
+		resume: [ 8, 3, 5, 4, 5 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			SPEED
+			REGEN
+			ATTACK
+			REGEN
+			DEFENSE
+			REGEN
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+			ATTACK
+			SIZE
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			ATTACK
+			SIZE
+			REGEN
+			SPEED
+			ATTACK
+			REGEN
+		]
+		resume: [ 8, 5, 6, 3, 3 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			SIZE
+			DEFENSE
+			ATTACK
+			DEFENSE
+			SPEED
+			DEFENSE
+			SPEED
+			SIZE
+			SPEED
+			SPEED
+			SIZE
+			ATTACK
+			ATTACK
+			SIZE
+			SIZE
+			DEFENSE
+			ATTACK
+			SPEED
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			SPEED
+		]
+		resume: [ 5, 7, 3, 3, 7 ]
+	}
+	{
+		DNA: [
+			REGEN
+			SPEED
+			ATTACK
+			REGEN
+			DEFENSE
+			ATTACK
+			ATTACK
+			REGEN
+			REGEN
+			SIZE
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			REGEN
+			REGEN
+			DEFENSE
+			DEFENSE
+			SIZE
+			SIZE
+			DEFENSE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+		]
+		resume: [ 7, 6, 7, 5, 0 ]
+	}
+	{
+		DNA: [
+			SIZE
+			SIZE
+			DEFENSE
+			SPEED
+			SIZE
+			SPEED
+			SPEED
+			SIZE
+			ATTACK
+			REGEN
+			SIZE
+			SPEED
+			ATTACK
+			SIZE
+			REGEN
+			SIZE
+			DEFENSE
+			SIZE
+			ATTACK
+			ATTACK
+			REGEN
+			DEFENSE
+			ATTACK
+			SIZE
+			ATTACK
+		]
+		resume: [ 3, 8, 4, 2, 8 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			SIZE
+			SIZE
+			DEFENSE
+			ATTACK
+			ATTACK
+			REGEN
+			DEFENSE
+			DEFENSE
+			REGEN
+			SIZE
+			REGEN
+			SPEED
+			SIZE
+			SPEED
+			ATTACK
+			DEFENSE
+			REGEN
+			REGEN
+			DEFENSE
+			SPEED
+		]
+		resume: [ 8, 3, 3, 7, 4 ]
+	}
+	{
+		DNA: [
+			DEFENSE
+			REGEN
+			ATTACK
+			REGEN
+			SPEED
+			DEFENSE
+			DEFENSE
+			SPEED
+			SPEED
+			ATTACK
+			DEFENSE
+			SPEED
+			DEFENSE
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+			DEFENSE
+			SIZE
+			SPEED
+			SPEED
+			SIZE
+		]
+		resume: [ 7, 7, 4, 3, 4 ]
+	}
+	{
+		DNA: [
+			SPEED
+			ATTACK
+			ATTACK
+			DEFENSE
+			ATTACK
+			SIZE
+			REGEN
+			SPEED
+			SIZE
+			SIZE
+			DEFENSE
+			SIZE
+			REGEN
+			SIZE
+			DEFENSE
+			REGEN
+			DEFENSE
+			ATTACK
+			ATTACK
+			REGEN
+			SPEED
+			REGEN
+			DEFENSE
+			ATTACK
+			ATTACK
+		]
+		resume: [ 5, 4, 5, 4, 7 ]
+	}
+	{
+		DNA: [
+			REGEN
+			SIZE
+			SIZE
+			REGEN
+			DEFENSE
+			DEFENSE
+			SPEED
+			ATTACK
+			DEFENSE
+			SIZE
+			REGEN
+			REGEN
+			REGEN
+			DEFENSE
+			REGEN
+			DEFENSE
+			SIZE
+			SPEED
+			SIZE
+			ATTACK
+			REGEN
+			SIZE
+			SIZE
+			SIZE
+			DEFENSE
+		]
+		resume: [ 7, 4, 4, 2, 8 ]
+	}
+	{
+		DNA: [
+			SIZE
+			ATTACK
+			DEFENSE
+			DEFENSE
+			ATTACK
+			REGEN
+			DEFENSE
+			ATTACK
+			SIZE
+			SPEED
+			REGEN
+			DEFENSE
+			REGEN
+			REGEN
+			SPEED
+			ATTACK
+			SIZE
+			REGEN
+			DEFENSE
+			DEFENSE
+			SIZE
+			REGEN
+			DEFENSE
+			ATTACK
+			REGEN
+		]
+		resume: [ 3, 5, 9, 3, 5 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			DEFENSE
+			DEFENSE
+			SIZE
+			ATTACK
+			SIZE
+			ATTACK
+			SIZE
+			DEFENSE
+			REGEN
+			REGEN
+			SIZE
+			DEFENSE
+			REGEN
+			SIZE
+			SPEED
+			DEFENSE
+			DEFENSE
+			SIZE
+			REGEN
+			SPEED
+			ATTACK
+			SIZE
+			ATTACK
+			REGEN
+		]
+		resume: [ 5, 4, 6, 3, 7 ]
+	}
+	{
+		DNA: [
+			REGEN
+			REGEN
+			REGEN
+			REGEN
+			SIZE
+			SIZE
+			ATTACK
+			DEFENSE
+			REGEN
+			ATTACK
+			SPEED
+			DEFENSE
+			SPEED
+			REGEN
+			DEFENSE
+			ATTACK
+			DEFENSE
+			SIZE
+			DEFENSE
+			ATTACK
+			ATTACK
+			DEFENSE
+			SIZE
+			SPEED
+			SIZE
+		]
+		resume: [ 8, 5, 6, 2, 4 ]
 	}
 	{
 		DNA: [
@@ -4865,329 +4655,179 @@ population: [
 			ATTACK
 			ATTACK
 			DEFENSE
-			REGEN
 			SIZE
+			SIZE
+			ATTACK
+			SPEED
 			SPEED
 			SIZE
+			SPEED
+			DEFENSE
+			REGEN
+			DEFENSE
+			REGEN
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			REGEN
 			DEFENSE
 			SIZE
-			SIZE
+			DEFENSE
 			ATTACK
 			SIZE
-			SIZE
-			SIZE
-			REGEN
-			ATTACK
-			ATTACK
-			ATTACK
-			REGEN
-			REGEN
-			SPEED
-			ATTACK
-			REGEN
-			REGEN
 		]
-		resume: [ 5, 7, 1, 5, 7 ]
+		resume: [ 4, 6, 4, 3, 8 ]
 	}
 	{
 		DNA: [
+			SIZE
+			DEFENSE
 			ATTACK
-			SIZE
 			REGEN
-			REGEN
-			REGEN
-			SIZE
-			SIZE
-			SIZE
-			ATTACK
-			SIZE
 			SPEED
 			DEFENSE
 			ATTACK
-			SIZE
-			SPEED
-			REGEN
 			ATTACK
-			ATTACK
-			REGEN
-			SIZE
-			SPEED
-			ATTACK
-			ATTACK
-			REGEN
-			SPEED
-		]
-		resume: [ 8, 7, 2, 3, 5 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			ATTACK
-			ATTACK
-			ATTACK
-			REGEN
-			REGEN
-			REGEN
-			ATTACK
-			SIZE
-			SPEED
-			SIZE
 			ATTACK
 			DEFENSE
-			SPEED
-			SPEED
 			DEFENSE
-			SIZE
-			SIZE
 			SPEED
-			ATTACK
-			ATTACK
-			SPEED
-			SIZE
-			REGEN
-			SIZE
-		]
-		resume: [ 10, 5, 2, 4, 4 ]
-	}
-	{
-		DNA: [
-			REGEN
-			SIZE
 			SIZE
 			ATTACK
 			REGEN
-			SPEED
-			SIZE
-			SIZE
-			DEFENSE
-			SPEED
-			SPEED
-			DEFENSE
-			SIZE
+			ATTACK
+			ATTACK
 			REGEN
-			REGEN
+			ATTACK
 			DEFENSE
 			ATTACK
 			DEFENSE
-			SIZE
-			ATTACK
-			SPEED
 			DEFENSE
 			DEFENSE
-			ATTACK
 			ATTACK
 		]
-		resume: [ 2, 8, 7, 3, 5 ]
-	}
-	{
-		DNA: [
-			ATTACK
-			DEFENSE
-			DEFENSE
-			SPEED
-			REGEN
-			ATTACK
-			SIZE
-			DEFENSE
-			DEFENSE
-			SPEED
-			SPEED
-			DEFENSE
-			DEFENSE
-			REGEN
-			SPEED
-			REGEN
-			SPEED
-			SPEED
-			SPEED
-			REGEN
-			SPEED
-			SIZE
-			DEFENSE
-			SIZE
-			DEFENSE
-		]
-		resume: [ 6, 1, 5, 8, 5 ]
-	}
-	{
-		DNA: [
-			SPEED
-			REGEN
-			REGEN
-			ATTACK
-			SPEED
-			SIZE
-			SPEED
-			REGEN
-			SIZE
-			SIZE
-			ATTACK
-			SIZE
-			SPEED
-			SIZE
-			REGEN
-			REGEN
-			DEFENSE
-			REGEN
-			SPEED
-			DEFENSE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-			SIZE
-		]
-		resume: [ 6, 3, 4, 5, 7 ]
+		resume: [ 4, 6, 6, 4, 5 ]
 	}
 	{
 		DNA: [
 			ATTACK
 			ATTACK
-			DEFENSE
+			SPEED
+			REGEN
+			SPEED
+			SIZE
 			DEFENSE
 			REGEN
-			SIZE
-			ATTACK
+			SPEED
 			SPEED
 			SIZE
 			REGEN
+			REGEN
 			SIZE
-			SPEED
-			REGEN
-			REGEN
-			REGEN
-			SPEED
-			DEFENSE
-			DEFENSE
-			ATTACK
 			ATTACK
 			REGEN
-			DEFENSE
+			ATTACK
+			SPEED
 			DEFENSE
 			REGEN
+			ATTACK
+			REGEN
+			SPEED
+			ATTACK
 			SIZE
 		]
-		resume: [ 5, 4, 5, 5, 6 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			SPEED
-			ATTACK
-			SIZE
-			SPEED
-			DEFENSE
-			SIZE
-			ATTACK
-			DEFENSE
-			SPEED
-			ATTACK
-			REGEN
-			DEFENSE
-			SIZE
-			SIZE
-			REGEN
-			SIZE
-			SIZE
-			DEFENSE
-			ATTACK
-			SPEED
-			SIZE
-			SPEED
-			REGEN
-			DEFENSE
-		]
-		resume: [ 6, 5, 6, 4, 4 ]
-	}
-	{
-		DNA: [
-			DEFENSE
-			REGEN
-			SPEED
-			ATTACK
-			DEFENSE
-			SIZE
-			SPEED
-			REGEN
-			ATTACK
-			ATTACK
-			ATTACK
-			SPEED
-			ATTACK
-			ATTACK
-			ATTACK
-			DEFENSE
-			ATTACK
-			REGEN
-			SIZE
-			DEFENSE
-			DEFENSE
-			ATTACK
-			SPEED
-			SPEED
-			SIZE
-		]
-		resume: [ 3, 9, 5, 5, 3 ]
-	}
-	{
-		DNA: [
-			SIZE
-			REGEN
-			DEFENSE
-			SPEED
-			ATTACK
-			REGEN
-			SIZE
-			ATTACK
-			SPEED
-			REGEN
-			REGEN
-			SIZE
-			REGEN
-			REGEN
-			SPEED
-			DEFENSE
-			SIZE
-			ATTACK
-			SIZE
-			REGEN
-			REGEN
-			REGEN
-			ATTACK
-			ATTACK
-			REGEN
-		]
-		resume: [ 2, 6, 6, 5, 6 ]
+		resume: [ 4, 8, 5, 4, 4 ]
 	}
 	{
 		DNA: [
 			REGEN
-			SPEED
-			REGEN
-			SPEED
-			REGEN
-			REGEN
 			REGEN
 			SPEED
 			SPEED
+			REGEN
+			DEFENSE
 			DEFENSE
 			REGEN
-			ATTACK
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			DEFENSE
-			SPEED
-			ATTACK
-			ATTACK
-			SPEED
+			REGEN
 			SIZE
 			ATTACK
-			SIZE
+			ATTACK
 			REGEN
+			REGEN
+			SPEED
 			DEFENSE
+			DEFENSE
+			SPEED
+			ATTACK
+			REGEN
+			SPEED
+			DEFENSE
+			SIZE
+			ATTACK
+			ATTACK
 		]
-		resume: [ 6, 3, 3, 3, 10 ]
+		resume: [ 1, 8, 4, 6, 6 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			REGEN
+			SIZE
+			REGEN
+			REGEN
+			SPEED
+			ATTACK
+			SPEED
+			REGEN
+			ATTACK
+			DEFENSE
+			ATTACK
+			REGEN
+			ATTACK
+			SPEED
+			DEFENSE
+			DEFENSE
+			REGEN
+			ATTACK
+			SIZE
+			REGEN
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+		]
+		resume: [ 3, 5, 4, 3, 10 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			REGEN
+			SIZE
+			ATTACK
+			SIZE
+			DEFENSE
+			REGEN
+			SPEED
+			SPEED
+			SIZE
+			SIZE
+			ATTACK
+			SPEED
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			SIZE
+			SIZE
+			DEFENSE
+			DEFENSE
+			SIZE
+			SIZE
+			ATTACK
+			ATTACK
+		]
+		resume: [ 9, 6, 3, 3, 4 ]
 	}
 	{
 		DNA: [
@@ -5195,59 +4835,419 @@ population: [
 			SIZE
 			REGEN
 			ATTACK
+			SPEED
+			SPEED
 			REGEN
-			REGEN
+			SPEED
 			SIZE
 			DEFENSE
 			SPEED
+			SIZE
 			REGEN
-			SIZE
-			SIZE
-			DEFENSE
-			DEFENSE
 			ATTACK
-			DEFENSE
 			ATTACK
 			SIZE
+			REGEN
 			SPEED
 			DEFENSE
-			REGEN
-			ATTACK
 			DEFENSE
+			REGEN
+			DEFENSE
+			SIZE
 			DEFENSE
 			SPEED
 		]
-		resume: [ 5, 5, 7, 5, 3 ]
+		resume: [ 3, 4, 7, 7, 4 ]
+	}
+	{
+		DNA: [
+			REGEN
+			ATTACK
+			ATTACK
+			DEFENSE
+			SPEED
+			SIZE
+			SPEED
+			SPEED
+			SIZE
+			ATTACK
+			REGEN
+			REGEN
+			SPEED
+			REGEN
+			SPEED
+			REGEN
+			SPEED
+			REGEN
+			ATTACK
+			REGEN
+			SIZE
+			ATTACK
+			SIZE
+			SPEED
+			SPEED
+		]
+		resume: [ 6, 4, 4, 7, 4 ]
+	}
+	{
+		DNA: [
+			REGEN
+			SPEED
+			ATTACK
+			SPEED
+			SIZE
+			SIZE
+			SPEED
+			DEFENSE
+			DEFENSE
+			REGEN
+			SPEED
+			SPEED
+			DEFENSE
+			SPEED
+			DEFENSE
+			SPEED
+			SPEED
+			REGEN
+			REGEN
+			ATTACK
+			ATTACK
+			SIZE
+			DEFENSE
+			DEFENSE
+			REGEN
+		]
+		resume: [ 3, 5, 3, 6, 8 ]
+	}
+	{
+		DNA: [
+			REGEN
+			ATTACK
+			REGEN
+			SIZE
+			DEFENSE
+			SPEED
+			SPEED
+			SPEED
+			DEFENSE
+			SPEED
+			ATTACK
+			DEFENSE
+			REGEN
+			ATTACK
+			REGEN
+			DEFENSE
+			ATTACK
+			SPEED
+			SIZE
+			DEFENSE
+			SPEED
+			ATTACK
+			REGEN
+			ATTACK
+			SIZE
+		]
+		resume: [ 4, 4, 4, 8, 5 ]
 	}
 	{
 		DNA: [
 			SIZE
-			SPEED
 			ATTACK
 			SIZE
 			ATTACK
+			DEFENSE
+			REGEN
+			DEFENSE
+			SIZE
+			SPEED
+			SPEED
+			SPEED
+			SPEED
 			SPEED
 			ATTACK
+			ATTACK
 			SPEED
+			SPEED
+			SIZE
+			DEFENSE
+			SPEED
+			ATTACK
+			ATTACK
+			SIZE
+			REGEN
+			REGEN
+		]
+		resume: [ 2, 4, 6, 6, 7 ]
+	}
+	{
+		DNA: [
+			SPEED
+			SPEED
+			SIZE
+			SIZE
+			DEFENSE
+			SPEED
+			ATTACK
+			DEFENSE
+			DEFENSE
 			SPEED
 			DEFENSE
 			SIZE
+			SPEED
+			REGEN
+			SIZE
+			SIZE
+			REGEN
+			SPEED
+			SPEED
+			DEFENSE
+			REGEN
+			SPEED
+			DEFENSE
+			SPEED
+			REGEN
+		]
+		resume: [ 5, 6, 3, 9, 2 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			SIZE
+			SIZE
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			SIZE
+			DEFENSE
+			DEFENSE
+			DEFENSE
+			SPEED
+			SPEED
+			SIZE
+			REGEN
+			ATTACK
+			REGEN
+			ATTACK
+			SIZE
+			ATTACK
+			ATTACK
+			SIZE
+			SPEED
+			SPEED
+			ATTACK
+		]
+		resume: [ 7, 5, 4, 7, 2 ]
+	}
+	{
+		DNA: [
+			SPEED
+			DEFENSE
+			SPEED
+			ATTACK
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+			SPEED
+			SIZE
+			DEFENSE
+			ATTACK
+			REGEN
+			SIZE
+			SPEED
+			SIZE
 			ATTACK
 			REGEN
 			SPEED
+			SPEED
+			REGEN
 			DEFENSE
-			SIZE
+			REGEN
+			SPEED
+			DEFENSE
+		]
+		resume: [ 7, 6, 3, 4, 5 ]
+	}
+	{
+		DNA: [
+			ATTACK
+			ATTACK
+			SPEED
+			REGEN
+			ATTACK
+			DEFENSE
+			ATTACK
+			ATTACK
+			DEFENSE
+			ATTACK
+			ATTACK
+			SPEED
+			SPEED
 			SIZE
 			REGEN
+			REGEN
+			ATTACK
+			ATTACK
+			ATTACK
+			REGEN
+			SIZE
+			ATTACK
+			DEFENSE
+			SPEED
+			SPEED
+		]
+		resume: [ 5, 5, 5, 6, 4 ]
+	}
+	{
+		DNA: [
+			REGEN
+			DEFENSE
 			REGEN
 			SPEED
 			DEFENSE
 			REGEN
+			SIZE
+			DEFENSE
+			REGEN
+			ATTACK
+			SIZE
+			REGEN
+			SPEED
+			REGEN
+			SIZE
+			SPEED
+			ATTACK
+			SPEED
+			SPEED
+			SIZE
+			ATTACK
+			ATTACK
+			SIZE
+			SIZE
+			ATTACK
+		]
+		resume: [ 3, 12, 3, 3, 4 ]
+	}
+	{
+		DNA: [
+			SPEED
+			DEFENSE
+			REGEN
+			SIZE
+			DEFENSE
+			SIZE
+			SPEED
+			ATTACK
+			DEFENSE
+			SIZE
+			ATTACK
+			SIZE
+			REGEN
+			ATTACK
+			DEFENSE
+			REGEN
+			SPEED
+			SIZE
+			REGEN
+			ATTACK
+			DEFENSE
+			SIZE
 			REGEN
 			SPEED
 			SPEED
 		]
-		resume: [ 4, 3, 4, 6, 8 ]
+		resume: [ 5, 4, 3, 7, 6 ]
+	}
+	{
+		DNA: [
+			REGEN
+			REGEN
+			SPEED
+			DEFENSE
+			ATTACK
+			SIZE
+			SPEED
+			ATTACK
+			DEFENSE
+			ATTACK
+			SPEED
+			DEFENSE
+			SPEED
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+			SIZE
+			REGEN
+			SPEED
+			SPEED
+			DEFENSE
+			REGEN
+			DEFENSE
+			DEFENSE
+		]
+		resume: [ 6, 4, 7, 5, 3 ]
+	}
+	{
+		DNA: [
+			SPEED
+			REGEN
+			SIZE
+			ATTACK
+			REGEN
+			SIZE
+			DEFENSE
+			SPEED
+			REGEN
+			REGEN
+			SPEED
+			SPEED
+			SIZE
+			SIZE
+			ATTACK
+			REGEN
+			ATTACK
+			REGEN
+			SPEED
+			REGEN
+			DEFENSE
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+		]
+		resume: [ 5, 6, 5, 4, 5 ]
+	}
+	{
+		DNA: [
+			REGEN
+			REGEN
+			SPEED
+			REGEN
+			ATTACK
+			SPEED
+			REGEN
+			SIZE
+			ATTACK
+			SPEED
+			SIZE
+			SIZE
+			ATTACK
+			REGEN
+			SIZE
+			DEFENSE
+			ATTACK
+			ATTACK
+			ATTACK
+			ATTACK
+			SIZE
+			DEFENSE
+			SIZE
+			ATTACK
+			SPEED
+		]
+		resume: [ 6, 7, 2, 5, 5 ]
 	}
 ]
 }

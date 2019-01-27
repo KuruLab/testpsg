@@ -39,7 +39,7 @@ public class Cell extends Actor {
     private Vector2 bodyPosition, inputPosition, velocity;
     private float  baseRegeneration;
     public  float baseRadius, radiusEnergy, baseAttack, baseMove, actualEnergy, maxEnergy;
-    public int[] resume = new int[5];
+    private int[] resume = new int[5];
 
     public Cell(float x, float y, Team team) {
 

@@ -31,11 +31,11 @@ public class BotAction {
 
         // 0 = size, 1 = attack, 2 = defense, 3 = speed, 4 = regen
         for(int i = 0; i < 6; i++){
-            this.botActions[0 + i * 5] = random(50, 100);
-            this.botActions[1+ i * 5] = random(50, 100);
-            this.botActions[2 + i * 5] = random(50, 100);
-            this.botActions[3 + i * 5] = random(50, 100);
-            this.botActions[4 + i * 5] = random(50, 100);
+            this.botActions[0 + i * 5] = random(25, 50);
+            this.botActions[1+ i * 5] = random(25, 50);
+            this.botActions[2 + i * 5] = random(25, 50);
+            this.botActions[3 + i * 5] = random(25, 50);
+            this.botActions[4 + i * 5] = random(25, 50);
         }
     }
 
@@ -103,14 +103,18 @@ public class BotAction {
 
     public void Adjust(){
 
-        for(int i = 1; i <= MainGame.wins; i++){
-            botActions[random(0,29)] += i;
+        if(MainGame.win) {
+            for (int i = 1; i <= MainGame.wins; i++) {
+                botActions[random(0, 29)] += i;
+            }
+            timeAttack -= MainGame.wins;
         }
 
-        for(int i = 1; i <= MainGame.loses; i++){
-            botActions[random(0,29)] -= i;
+        if(MainGame.lose) {
+            for (int i = 1; i <= MainGame.loses; i++) {
+                botActions[random(0, 29)] -= i;
+            }
+            timeAttack += MainGame.loses;
         }
-
-        timeAttack = timeAttack - MainGame.wins + MainGame.loses;
     }
 }
