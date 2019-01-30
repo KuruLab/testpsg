@@ -4,13 +4,13 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.psg.Engine.Attribute;
-import com.mygdx.game.psg.Engine.BotAction;
-import com.mygdx.game.psg.Engine.History;
-import com.mygdx.game.psg.Engine.Population;
-import com.mygdx.game.psg.Engine.SaveGame;
-import com.mygdx.game.psg.Screens.MenuScreen;
-import com.mygdx.game.psg.Screens.PlayScreen;
+import com.mygdx.game.psg.old_engine.BotAction;
+import com.mygdx.game.psg.old_engine.History;
+import com.mygdx.game.psg.old_engine.OldAttribute;
+import com.mygdx.game.psg.old_engine.Population;
+import com.mygdx.game.psg.old_engine.SaveGame;
+import com.mygdx.game.psg.screens.MenuScreen;
+import com.mygdx.game.psg.screens.PlayScreen;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,9 +37,9 @@ public class MainGame extends Game{
 
     public SaveGame saveGame = new SaveGame();
 
-    public static Attribute[] attributes = new Attribute[175];
-    public static Attribute[] attributesLoad = new Attribute[175];
-    public static Attribute[] attributesNew = new Attribute[175];
+    public static OldAttribute[] oldAttributes = new OldAttribute[175];
+    public static OldAttribute[] attributesLoad = new OldAttribute[175];
+    public static OldAttribute[] attributesNew = new OldAttribute[175];
 
     public static boolean[] histories = new boolean[10];
     public static boolean[] historiesLoad = new boolean[10];
@@ -58,7 +58,6 @@ public class MainGame extends Game{
 	public static boolean alterated = true;
 
     public MainGame() throws IOException {
-
     }
 
     public enum Controler{
@@ -130,7 +129,15 @@ public class MainGame extends Game{
             saveGame.SaveHistory(loadHistory);
             historiesLoad = loadHistory.getHistory();
         }
+        callTestingMethods();
+    }
 
+    public void callTestingMethods() {
+        TestingMethods testing = new TestingMethods();
+        //testing.testJsonSave();
+        //testing.testJsonLoad();
+        //testing.generateModels();
+        testing.loadModels();
     }
 
 	@Override
@@ -178,9 +185,9 @@ public class MainGame extends Game{
             } else {
 
                 if(load){
-                    attributes = attributesLoad;
+                    oldAttributes = attributesLoad;
                 }else{
-                    attributes = attributesNew;
+                    oldAttributes = attributesNew;
                 }
 
                 try {

@@ -1,10 +1,10 @@
-package com.mygdx.game.psg.Engine;
+package com.mygdx.game.psg.old_engine;
 
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
-import com.mygdx.game.psg.Screens.PlayScreen;
+import com.mygdx.game.psg.screens.PlayScreen;
 
 public class Detector implements ContactListener{
 

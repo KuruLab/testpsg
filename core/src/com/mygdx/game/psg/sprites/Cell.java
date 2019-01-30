@@ -1,4 +1,4 @@
-package com.mygdx.game.psg.Sprites;
+package com.mygdx.game.psg.sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
@@ -7,9 +7,9 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.psg.Engine.Attribute;
 import com.mygdx.game.psg.MainGame;
-import com.mygdx.game.psg.Screens.PlayScreen;
+import com.mygdx.game.psg.old_engine.OldAttribute;
+import com.mygdx.game.psg.screens.PlayScreen;
 
 import static com.badlogic.gdx.math.MathUtils.randomBoolean;
 
@@ -33,7 +33,7 @@ public class Cell extends Actor {
 
     public Team team;
     public Body body;
-    public Attribute DNA;
+    public OldAttribute DNA;
     public static Status status;
 
     private Vector2 bodyPosition, inputPosition, velocity;
@@ -47,9 +47,9 @@ public class Cell extends Actor {
         inputPosition = new Vector2();
         velocity = new Vector2(0,0);
         if(MainGame.load){
-            DNA = PlayScreen.attribute;
+            DNA = PlayScreen.oldAttribute;
         }else {
-            DNA = new Attribute();
+            DNA = new OldAttribute();
         }
 
         // 0 = size, 1 = attack, 2 = defense, 3 = speed, 4 = regen
@@ -196,17 +196,17 @@ public class Cell extends Actor {
 
                 if (PlayScreen.targetCell.team == Team.PLAYER) {
 
-                    PlayScreen.typeAttack = Attribute.AttributeType.REGEN;
+                    PlayScreen.typeAttack = OldAttribute.AttributeType.REGEN;
 
                 } else {
 
                     if (PlayScreen.targetCell.team == Team.NEUTRAL) {
 
-                        PlayScreen.typeAttack = Attribute.AttributeType.SPEED;
+                        PlayScreen.typeAttack = OldAttribute.AttributeType.SPEED;
 
                     } else {
 
-                        PlayScreen.typeAttack = Attribute.AttributeType.ATTACK;
+                        PlayScreen.typeAttack = OldAttribute.AttributeType.ATTACK;
 
                     }
                 }
@@ -225,7 +225,7 @@ public class Cell extends Actor {
                     InputPosition(inputPosition).dst(BodyPosition(bodyPosition)) < (baseRadius + PlayScreen.touchRadius * PlayScreen.zoom)) {
                 PlayScreen.attackDirection = InputPosition(inputPosition).sub(bodyPosition).angle();
 
-                PlayScreen.typeAttack = Attribute.AttributeType.DEFENSE;
+                PlayScreen.typeAttack = OldAttribute.AttributeType.DEFENSE;
                 PlayScreen.oneFire = true;
             }
         }

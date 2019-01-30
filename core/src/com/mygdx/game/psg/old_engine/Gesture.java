@@ -1,8 +1,8 @@
-package com.mygdx.game.psg.Engine;
+package com.mygdx.game.psg.old_engine;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.psg.Screens.PlayScreen;
+import com.mygdx.game.psg.screens.PlayScreen;
 
 
 public class Gesture implements InputProcessor {

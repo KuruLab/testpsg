@@ -1,4 +1,4 @@
-package com.mygdx.game.psg.Screens;
+package com.mygdx.game.psg.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -14,10 +14,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mygdx.game.psg.Engine.Detector;
-import com.mygdx.game.psg.Engine.Gesture;
 import com.mygdx.game.psg.MainGame;
-import com.mygdx.game.psg.Sprites.Button;
+import com.mygdx.game.psg.old_engine.Detector;
+import com.mygdx.game.psg.old_engine.Gesture;
+import com.mygdx.game.psg.sprites.Button;
 
 import java.io.IOException;
 

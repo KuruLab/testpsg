@@ -1,4 +1,4 @@
-package com.mygdx.game.psg.Engine;
+package com.mygdx.game.psg.old_engine;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,38 +8,37 @@ import static com.badlogic.gdx.math.MathUtils.random;
 public class Wheel {
 
 
-    private Attribute.AttributeType[] X = new Attribute.AttributeType[25];
-    private Attribute.AttributeType[] Y = new Attribute.AttributeType[25];
-    private Attribute[] attribute;
-    private Attribute[] newAttribute = new Attribute[175];
+    OldAttribute.AttributeType x;
+    OldAttribute.AttributeType y;
+    private OldAttribute.AttributeType[] X = new OldAttribute.AttributeType[25];
+    private OldAttribute.AttributeType[] Y = new OldAttribute.AttributeType[25];
 
 
     private ArrayList<Integer> integers = new ArrayList<Integer>();
     private int[] fitness;
+    private OldAttribute[] oldAttribute;
+    private OldAttribute[] newOldAttribute = new OldAttribute[175];
 
-    Attribute.AttributeType x;
-    Attribute.AttributeType y;
-
-    public Wheel(Attribute[] attribute, int[] fitness) throws IOException {
-        this.attribute = attribute;
+    public Wheel(OldAttribute[] oldAttribute, int[] fitness) throws IOException {
+        this.oldAttribute = oldAttribute;
         this.fitness = fitness;
 
         for(int i = 0; i < 175; i++){
-            newAttribute[i] = new Attribute();
+            newOldAttribute[i] = new OldAttribute();
         }
     }
 
-    public Attribute[] NewGeneration(){
+    public OldAttribute[] NewGeneration() {
 
         //crosover
         for(int a = 0; a < 175; a++){
 
-            X = newAttribute[a].getDNA();
+            X = newOldAttribute[a].getDNA();
 
             if((a + 1) % 25 == 0){
-                Y = newAttribute[a - 24].getDNA();
+                Y = newOldAttribute[a - 24].getDNA();
             }else{
-                Y = newAttribute[a + 1].getDNA();
+                Y = newOldAttribute[a + 1].getDNA();
             }
 
             int onePoint = random(0, 24);
@@ -53,23 +52,23 @@ public class Wheel {
                 Y[b] = x;
             }
 
-            newAttribute[a].setDNA(X);
+            newOldAttribute[a].setDNA(X);
 
             if((a + 1) % 25 == 0){
-                newAttribute[a - 24].setDNA(Mutation(Y));
+                newOldAttribute[a - 24].setDNA(Mutation(Y));
             }else{
-                newAttribute[a + 1].setDNA(Mutation(Y));
+                newOldAttribute[a + 1].setDNA(Mutation(Y));
             }
         }
 
-        return newAttribute;
+        return newOldAttribute;
 
     }
 
-    private Attribute.AttributeType[] Mutation(Attribute.AttributeType[] DNA){
+    private OldAttribute.AttributeType[] Mutation(OldAttribute.AttributeType[] DNA) {
         //mutation
         if(random(0,100) <= 5) {
-            DNA[random(0, 24)] = Attribute.AttributeType.values()[random(0,4)];
+            DNA[random(0, 24)] = OldAttribute.AttributeType.values()[random(0, 4)];
         }
         return DNA;
     }
@@ -80,7 +79,7 @@ public class Wheel {
 
             for(int c = 0; c < 5; c++){
 
-                int difference = fitness[c] - attribute[b + a * 25].getResume()[c];
+                int difference = fitness[c] - oldAttribute[b + a * 25].getResume()[c];
 
                 if(difference > -5 && difference < 5){
                     integers.add(a * 5 + b);
@@ -103,7 +102,7 @@ public class Wheel {
 
     public void PreCrossover(int a){
         for(int i = 0; i < 25; i++){
-            newAttribute[i + a * 5] = attribute[integers.get(random(0, integers.size() - 1))];
+            newOldAttribute[i + a * 5] = oldAttribute[integers.get(random(0, integers.size() - 1))];
             integers.trimToSize();
         }
         integers.clear();
@@ -114,8 +113,8 @@ public class Wheel {
         //crosover
         for(int a = 0 + 25 * index; a < 25 + 25 * index; a++){
 
-            X = newAttribute[a].getDNA();
-            Y = newAttribute[a + 1].getDNA();
+            X = newOldAttribute[a].getDNA();
+            Y = newOldAttribute[a + 1].getDNA();
 
             int onePoint = random(0, 24);
 
@@ -128,8 +127,8 @@ public class Wheel {
                 Y[b] = x;
             }
 
-            newAttribute[a].setDNA(X);
-            newAttribute[a + 1].setDNA(Y);
+            newOldAttribute[a].setDNA(X);
+            newOldAttribute[a + 1].setDNA(Y);
         }
     }
 }

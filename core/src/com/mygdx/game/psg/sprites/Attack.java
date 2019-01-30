@@ -1,4 +1,4 @@
-package com.mygdx.game.psg.Sprites;
+package com.mygdx.game.psg.sprites;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -6,10 +6,9 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.psg.Engine.Actions;
-import com.mygdx.game.psg.Engine.Attribute;
 import com.mygdx.game.psg.MainGame;
-import com.mygdx.game.psg.Screens.PlayScreen;
+import com.mygdx.game.psg.old_engine.OldAttribute;
+import com.mygdx.game.psg.screens.PlayScreen;
 
 public class Attack extends Actor {
 
@@ -17,7 +16,7 @@ public class Attack extends Actor {
     public Cell.Team team;
     public Body body;
     private Vector2 velocity = new Vector2(0,0);
-    public Attribute.AttributeType type;
+    public OldAttribute.AttributeType type;
 
     public float baseAttack,maxEnergy, actualEnergy, energyRadius, baseRadius, baseMove;
     public boolean remove, modifyEnergy;
@@ -28,7 +27,7 @@ public class Attack extends Actor {
     private CircleShape circleShape = new CircleShape();
     private FixtureDef fixtureDef = new FixtureDef();
 
-    public Attack(Cell cell, Cell target, Attribute.AttributeType type, float angle){
+    public Attack(Cell cell, Cell target, OldAttribute.AttributeType type, float angle) {
         baseMove = cell.baseMove*2;
         baseAttack = cell.baseAttack;
         baseRadius = cell.baseRadius;

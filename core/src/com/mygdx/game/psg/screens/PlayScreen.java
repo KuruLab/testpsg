@@ -1,4 +1,4 @@
-package com.mygdx.game.psg.Screens;
+package com.mygdx.game.psg.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -15,25 +15,25 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mygdx.game.psg.Engine.Actions;
-import com.mygdx.game.psg.Engine.Attribute;
-import com.mygdx.game.psg.Engine.BotAction;
-import com.mygdx.game.psg.Engine.Detector;
-import com.mygdx.game.psg.Engine.Gesture;
-import com.mygdx.game.psg.Engine.History;
-import com.mygdx.game.psg.Engine.Population;
-import com.mygdx.game.psg.Engine.SaveGame;
-import com.mygdx.game.psg.Engine.Wheel;
 import com.mygdx.game.psg.MainGame;
-import com.mygdx.game.psg.Sprites.Attack;
-import com.mygdx.game.psg.Sprites.Cell;
+import com.mygdx.game.psg.old_engine.Actions;
+import com.mygdx.game.psg.old_engine.BotAction;
+import com.mygdx.game.psg.old_engine.Detector;
+import com.mygdx.game.psg.old_engine.Gesture;
+import com.mygdx.game.psg.old_engine.History;
+import com.mygdx.game.psg.old_engine.OldAttribute;
+import com.mygdx.game.psg.old_engine.Population;
+import com.mygdx.game.psg.old_engine.SaveGame;
+import com.mygdx.game.psg.old_engine.Wheel;
+import com.mygdx.game.psg.sprites.Attack;
+import com.mygdx.game.psg.sprites.Cell;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.badlogic.gdx.math.MathUtils.random;
 import static com.badlogic.gdx.math.MathUtils.randomBoolean;
-import static com.mygdx.game.psg.Sprites.Cell.Clear;
+import static com.mygdx.game.psg.sprites.Cell.Clear;
 
 public class PlayScreen implements Screen{
 
@@ -50,7 +50,7 @@ public class PlayScreen implements Screen{
     public Wheel wheel;
 
     //load game
-    public static Attribute attribute;
+    public static OldAttribute oldAttribute;
     public BotAction botAction = new BotAction();
     public History history = new History();
     public Population population = new Population();
@@ -65,7 +65,7 @@ public class PlayScreen implements Screen{
     public static Cell[] selectedBots = new Cell[6];
     public static ArrayList<Body> contact = new ArrayList<Body>();
     public static float touchRadius, zoom, zoomInit, zoomFinal, attackDirection;
-    public static Attribute.AttributeType typeAttack, botAttack;
+    public static OldAttribute.AttributeType typeAttack, botAttack;
     private float camX, camY;
     private static int explosionCount, initCount;
     public static int numberAttack, restartCount, timeAttack;
@@ -124,57 +124,57 @@ public class PlayScreen implements Screen{
         newGame();
     }
 
-    @Override
-    public void render(float delta) {
+    private static void Contact(Actor actorA, Actor actorB) {
 
-        if(initCount == 0) {
-            if (Math.abs(zoom - zoomFinal) > 0.005f) {
-                zoom = zoom + (zoomFinal - zoom) * delta*2.5f;
+        if (actorA.getClass() == Cell.class) {
+
+            if (((Cell) actorA).team == ((Attack) actorB).team) {
+                if (((Attack) actorB).type != OldAttribute.AttributeType.SIZE) {
+                    ((Cell) actorA).actualEnergy = ((Cell) actorA).actualEnergy + ((Attack) actorB).actualEnergy * 0.75f;
+                } else {
+                    ((Cell) actorA).actualEnergy = ((Cell) actorA).actualEnergy + ((Attack) actorB).actualEnergy * 0.3f;
+                }
             } else {
-                zoom = zoomFinal;
+                ((Cell) actorA).actualEnergy = ((Cell) actorA).actualEnergy - ((Attack) actorB).actualEnergy;
             }
-        }else{
-            zoom = zoom + (zoomFinal - zoom) * delta*0.5f;
-            initCount--;
-        }
 
-        if(move){
-            actions.AddAction(Cell.Team.PLAYER, Attribute.AttributeType.SPEED);
-            move = false;
-        }
+            if (((Cell) actorA).actualEnergy < 0) {
+                ((Cell) actorA).actualEnergy = (-1) * ((Cell) actorA).actualEnergy;
+                ((Cell) actorA).team = ((Attack) actorB).team;
+            }
 
-        //physics time execute
-        world.step(1/60f, 6,2);
+            ((Attack) actorB).actualEnergy = ((Attack) actorB).actualEnergy - ((Attack) actorB).actualEnergy * 0.3f;
+            ((Attack) actorB).modifyEnergy = true;
+            ((Attack) actorB).inativity = 0;
 
-        //clear board
-        Gdx.gl.glClearColor(0.0f,0.0f,0.0f,1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+            if (((Attack) actorB).actualEnergy <= ((Attack) actorB).baseAttack) {
+                ((Attack) actorB).remove = true;
+            }
 
-        //Draw body
-        Matrix4 matrix4 = game.batch.getProjectionMatrix().cpy().scale(MainGame.PPM, MainGame.PPM, 0);
-        //box2DDebugRenderer.render(world, matrix4);
-        game.batch.setProjectionMatrix(camera.combined);
+        } else {
 
-        //update players
-        stage.act();
-        createAttack();
-        explosionCount++;
+            if (((Cell) actorB).team == ((Attack) actorA).team) {
+                if (((Attack) actorA).type != OldAttribute.AttributeType.SIZE) {
+                    ((Cell) actorB).actualEnergy = ((Cell) actorB).actualEnergy + ((Attack) actorA).actualEnergy * 0.75f;
+                } else {
+                    ((Cell) actorB).actualEnergy = ((Cell) actorB).actualEnergy + ((Attack) actorA).actualEnergy * 0.3f;
+                }
+            } else {
+                ((Cell) actorB).actualEnergy = ((Cell) actorB).actualEnergy - ((Attack) actorA).actualEnergy;
+            }
 
-        //count players
-        player = 0;
-        neutral = 0;
-        bots = 0;
+            if (((Cell) actorB).actualEnergy < 0) {
+                ((Cell) actorB).actualEnergy = (-1) * ((Cell) actorB).actualEnergy;
+                ((Cell) actorB).team = ((Attack) actorA).team;
+            }
 
-        //other updates
-        if(restartCount == 0) {
-            updateCollision();
-        }
-        updateCamera(delta);
-        Draw();
-        try {
-            WinOrLose();
-        } catch (IOException e) {
-            e.printStackTrace();
+            ((Attack) actorA).actualEnergy = ((Attack) actorA).actualEnergy - ((Attack) actorA).actualEnergy * 0.3f;
+            ((Attack) actorA).modifyEnergy = true;
+            ((Attack) actorA).inativity = 0;
+
+            if (((Attack) actorA).actualEnergy < ((Attack) actorA).baseAttack) {
+                ((Attack) actorA).remove = true;
+            }
         }
     }
 
@@ -299,57 +299,57 @@ public class PlayScreen implements Screen{
         }
     }
 
-    private static void Contact(Actor actorA, Actor actorB){
+    @Override
+    public void render(float delta) {
 
-        if(actorA.getClass() == Cell.class){
-
-            if(((Cell) actorA).team == ((Attack) actorB).team ){
-                if( ((Attack) actorB).type != Attribute.AttributeType.SIZE){
-                ((Cell)actorA).actualEnergy = ((Cell)actorA).actualEnergy + ((Attack)actorB).actualEnergy*0.75f;
-                }else{
-                ((Cell)actorA).actualEnergy = ((Cell)actorA).actualEnergy + ((Attack)actorB).actualEnergy*0.3f;
-                }
-            }else {
-                ((Cell) actorA).actualEnergy = ((Cell) actorA).actualEnergy - ((Attack) actorB).actualEnergy;
+        if (initCount == 0) {
+            if (Math.abs(zoom - zoomFinal) > 0.005f) {
+                zoom = zoom + (zoomFinal - zoom) * delta * 2.5f;
+            } else {
+                zoom = zoomFinal;
             }
+        } else {
+            zoom = zoom + (zoomFinal - zoom) * delta * 0.5f;
+            initCount--;
+        }
 
-            if(((Cell)actorA).actualEnergy < 0){
-                ((Cell)actorA).actualEnergy = (-1)*((Cell)actorA).actualEnergy;
-                ((Cell)actorA).team = ((Attack)actorB).team;
-            }
+        if (move) {
+            actions.AddAction(Cell.Team.PLAYER, OldAttribute.AttributeType.SPEED);
+            move = false;
+        }
 
-            ((Attack)actorB).actualEnergy = ((Attack)actorB).actualEnergy - ((Attack)actorB).actualEnergy*0.3f;
-            ((Attack)actorB).modifyEnergy = true;
-            ((Attack)actorB).inativity = 0;
+        //physics time execute
+        world.step(1 / 60f, 6, 2);
 
-            if(((Attack)actorB).actualEnergy <= ((Attack)actorB).baseAttack){
-                ((Attack)actorB).remove = true;
-            }
+        //clear board
+        Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1f);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        }else{
+        //Draw body
+        Matrix4 matrix4 = game.batch.getProjectionMatrix().cpy().scale(MainGame.PPM, MainGame.PPM, 0);
+        //box2DDebugRenderer.render(world, matrix4);
+        game.batch.setProjectionMatrix(camera.combined);
 
-            if(((Cell)actorB).team == ((Attack)actorA).team) {
-                if(((Attack)actorA).type != Attribute.AttributeType.SIZE){
-                ((Cell)actorB).actualEnergy = ((Cell)actorB).actualEnergy + ((Attack)actorA).actualEnergy * 0.75f;
-                }else{
-                ((Cell)actorB).actualEnergy = ((Cell)actorB).actualEnergy + ((Attack)actorA).actualEnergy * 0.3f;
-                }
-            }else {
-                ((Cell) actorB).actualEnergy = ((Cell) actorB).actualEnergy - ((Attack) actorA).actualEnergy;
-            }
+        //update players
+        stage.act();
+        createAttack();
+        explosionCount++;
 
-            if(((Cell)actorB).actualEnergy < 0){
-                ((Cell)actorB).actualEnergy = (-1)*((Cell)actorB).actualEnergy;
-                ((Cell)actorB).team = ((Attack)actorA).team;
-            }
+        //count players
+        player = 0;
+        neutral = 0;
+        bots = 0;
 
-            ((Attack)actorA).actualEnergy = ((Attack)actorA).actualEnergy - ((Attack)actorA).actualEnergy*0.3f;
-            ((Attack)actorA).modifyEnergy = true;
-            ((Attack)actorA).inativity = 0;
-
-            if(((Attack)actorA).actualEnergy < ((Attack)actorA).baseAttack){
-                ((Attack)actorA).remove = true;
-            }
+        //other updates
+        if (restartCount == 0) {
+            updateCollision();
+        }
+        updateCamera(delta);
+        Draw();
+        try {
+            WinOrLose();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -456,7 +456,7 @@ public class PlayScreen implements Screen{
         bots = 0;
 
 
-            //Player
+        //PlayerModel
             int teamCells = 0;
             while (teamCells == 0) {
                 teamCells = random(min, max);
@@ -464,12 +464,12 @@ public class PlayScreen implements Screen{
 
             for (int i = 0; i < teamCells; i++) {
                 if (i == 0) {
-                    attribute = MainGame.attributes[random(0,24)];
+                    oldAttribute = MainGame.oldAttributes[random(0, 24)];
                     stage.addActor(new Cell(0, 0, Cell.Team.PLAYER));
                     selectedCell = (Cell) stage.getActors().get(0);
                     oneSelected = true;
                 } else {
-                    attribute = MainGame.attributes[random(0,24)];
+                    oldAttribute = MainGame.oldAttributes[random(0, 24)];
                     stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                             random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.PLAYER));
                 }
@@ -480,7 +480,7 @@ public class PlayScreen implements Screen{
                 //Bot1
                 if (randomBoolean()) {
                     for (int i = 0; i < teamCells; i++) {
-                        attribute = MainGame.attributes[random(25,49)];
+                        oldAttribute = MainGame.oldAttributes[random(25, 49)];
                         stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                                 random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT1));
                         bots++;
@@ -490,7 +490,7 @@ public class PlayScreen implements Screen{
                 //Bot2
                 if (randomBoolean()) {
                     for (int i = 0; i < teamCells; i++) {
-                        attribute = MainGame.attributes[random(50,74)];
+                        oldAttribute = MainGame.oldAttributes[random(50, 74)];
                         stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                                 random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT2));
                         bots++;
@@ -500,7 +500,7 @@ public class PlayScreen implements Screen{
                 //Bot3
                 if (randomBoolean()) {
                     for (int i = 0; i < teamCells; i++) {
-                        attribute = MainGame.attributes[random(75,99)];
+                        oldAttribute = MainGame.oldAttributes[random(75, 99)];
                         stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                                 random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT3));
                         bots++;
@@ -511,7 +511,7 @@ public class PlayScreen implements Screen{
                 //Bot4
                 if (randomBoolean()) {
                     for (int i = 0; i < teamCells; i++) {
-                        attribute = MainGame.attributes[random(100,124)];
+                        oldAttribute = MainGame.oldAttributes[random(100, 124)];
                         stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                                 random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT4));
                         bots++;
@@ -521,7 +521,7 @@ public class PlayScreen implements Screen{
                 //Bot5
                 if (randomBoolean()) {
                     for (int i = 0; i < teamCells; i++) {
-                        attribute = MainGame.attributes[random(125,149)];
+                        oldAttribute = MainGame.oldAttributes[random(125, 149)];
                         stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                                 random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.BOT5));
                         bots++;
@@ -533,7 +533,7 @@ public class PlayScreen implements Screen{
             //Neutral
             int teamNeutral = random(total / 4, total / 2);
             for (int i = 0; i < teamNeutral; i++) {
-                attribute = MainGame.attributes[random(150,174)];
+                oldAttribute = MainGame.oldAttributes[random(150, 174)];
                 stage.addActor(new Cell(random(-MainGame.V_Width, MainGame.V_Width),
                         random(-MainGame.V_Height, MainGame.V_Height), Cell.Team.NEUTRAL));
             }
@@ -545,17 +545,17 @@ public class PlayScreen implements Screen{
 
         if(oneSelected && oneTarget && selectedCell.team == Cell.Team.PLAYER || oneFire){
 
-            if(typeAttack == Attribute.AttributeType.DEFENSE){
+            if (typeAttack == OldAttribute.AttributeType.DEFENSE) {
                 actions.AddAction(Cell.Team.PLAYER, typeAttack);
                 float angle1 = attackDirection;
                 float angle2 = attackDirection;
-                stage.addActor(new Attack(selectedCell, targetCell, Attribute.AttributeType.DEFENSE, attackDirection));
+                stage.addActor(new Attack(selectedCell, targetCell, OldAttribute.AttributeType.DEFENSE, attackDirection));
                 for(int i = 0; i < 2; i++){
 
                     angle1 += 30;
-                    stage.addActor(new Attack(selectedCell, targetCell, Attribute.AttributeType.DEFENSE, angle1));
+                    stage.addActor(new Attack(selectedCell, targetCell, OldAttribute.AttributeType.DEFENSE, angle1));
                     angle2 -= 30;
-                    stage.addActor(new Attack(selectedCell, targetCell, Attribute.AttributeType.DEFENSE, angle2));
+                    stage.addActor(new Attack(selectedCell, targetCell, OldAttribute.AttributeType.DEFENSE, angle2));
 
                 }
                 selectedCell.actualEnergy = selectedCell.actualEnergy * 0.8f;
@@ -574,11 +574,11 @@ public class PlayScreen implements Screen{
 
         for(int i = 0; i < 20; i++){
 
-            stage.addActor(new Attack(cell, targetCell, Attribute.AttributeType.SIZE, angle));
+            stage.addActor(new Attack(cell, targetCell, OldAttribute.AttributeType.SIZE, angle));
             angle += 18;
 
         }
-        actions.AddAction(cell.team, Attribute.AttributeType.SIZE);
+        actions.AddAction(cell.team, OldAttribute.AttributeType.SIZE);
         cell.team = Cell.Team.NEUTRAL;
         cell.actualEnergy = cell.maxEnergy * 0.75f;
     }
@@ -858,13 +858,13 @@ public class PlayScreen implements Screen{
                         if (bot.team != Cell.Team.NEUTRAL) {
                             float angle1 = (((Cell) targetBot).body.getPosition()).sub(bot.body.getPosition()).angle();
                             float angle2 = angle1;
-                            stage.addActor(new Attack(bot, (Cell) targetBot, Attribute.AttributeType.DEFENSE, angle1));
+                            stage.addActor(new Attack(bot, (Cell) targetBot, OldAttribute.AttributeType.DEFENSE, angle1));
                             for(int i = 0; i < 2; i++){
 
                                 angle1 += 30;
-                                stage.addActor(new Attack(bot, (Cell) targetBot, Attribute.AttributeType.DEFENSE, angle1));
+                                stage.addActor(new Attack(bot, (Cell) targetBot, OldAttribute.AttributeType.DEFENSE, angle1));
                                 angle2 -= 30;
-                                stage.addActor(new Attack(bot, (Cell) targetBot, Attribute.AttributeType.DEFENSE, angle2));
+                                stage.addActor(new Attack(bot, (Cell) targetBot, OldAttribute.AttributeType.DEFENSE, angle2));
 
                             }
                             actions.AddAction(bot.team, botAttack);
@@ -877,7 +877,7 @@ public class PlayScreen implements Screen{
                     timeAttack++;
                 }else{
                     if(bot.team != Cell.Team.NEUTRAL){
-                        stage.addActor(new Attack(bot, (Cell) targetBot, Attribute.AttributeType.ATTACK, random(0, 360)));
+                        stage.addActor(new Attack(bot, (Cell) targetBot, OldAttribute.AttributeType.ATTACK, random(0, 360)));
                         timeAttack = 0;
                     }
                 }

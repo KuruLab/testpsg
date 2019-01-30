@@ -1,4 +1,4 @@
-package com.mygdx.game.psg.Sprites;
+package com.mygdx.game.psg.sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -9,11 +9,11 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.psg.MainGame;
-import com.mygdx.game.psg.Screens.MenuScreen;
-import com.mygdx.game.psg.Screens.PlayScreen;
+import com.mygdx.game.psg.screens.MenuScreen;
 
-import static com.mygdx.game.psg.Sprites.Button.TypeButton.*;
 import static com.badlogic.gdx.math.MathUtils.random;
+import static com.mygdx.game.psg.sprites.Button.TypeButton.COLOR;
+import static com.mygdx.game.psg.sprites.Button.TypeButton.EFFECT;
 
 public class Button extends Actor {
 

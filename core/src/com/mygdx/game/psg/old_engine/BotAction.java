@@ -1,9 +1,8 @@
-package com.mygdx.game.psg.Engine;
+package com.mygdx.game.psg.old_engine;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.psg.MainGame;
-import com.mygdx.game.psg.Sprites.Attack;
-import com.mygdx.game.psg.Sprites.Cell;
+import com.mygdx.game.psg.sprites.Cell;
 
 import static com.badlogic.gdx.math.MathUtils.random;
 
@@ -44,32 +43,32 @@ public class BotAction {
     }
 
 
-    public Attribute.AttributeType getAction(Cell selected, Actor target){
+    public OldAttribute.AttributeType getAction(Cell selected, Actor target) {
 
             switch (random(1, 6)) {
                 case 1:
                     if (random(0, 20000) < botActions[0 + getIndex(selected.team)]) {
-                        return Attribute.AttributeType.SIZE;
+                        return OldAttribute.AttributeType.SIZE;
                     }
                     break;
                 case 2:
                     if (random(0, 20000) < botActions[1 + getIndex(selected.team)]) {
-                        return Attribute.AttributeType.ATTACK;
+                        return OldAttribute.AttributeType.ATTACK;
                     }
                     break;
                 case 3:
                     if (random(0, 20000) < botActions[2 + getIndex(selected.team)]) {
-                        return Attribute.AttributeType.DEFENSE;
+                        return OldAttribute.AttributeType.DEFENSE;
                     }
                     break;
                 case 4:
                     if (random(0, 20000) < botActions[3 + getIndex(selected.team)]) {
-                        return Attribute.AttributeType.SPEED;
+                        return OldAttribute.AttributeType.SPEED;
                     }
                     break;
                 case 5: if (random(0, 20000) < botActions[4 + getIndex(selected.team)]) {
                     if(((Cell)target).team == selected.team){
-                    return Attribute.AttributeType.REGEN;
+                        return OldAttribute.AttributeType.REGEN;
                     }
                     break;
                 }

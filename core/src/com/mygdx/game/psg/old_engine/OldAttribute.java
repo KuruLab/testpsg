@@ -1,8 +1,8 @@
-package com.mygdx.game.psg.Engine;
+package com.mygdx.game.psg.old_engine;
 
 import static com.badlogic.gdx.math.MathUtils.random;
 
-public class Attribute {
+public class OldAttribute {
 
     public enum AttributeType {
         SIZE,
@@ -16,7 +16,7 @@ public class Attribute {
     private AttributeType[] DNA = new AttributeType[25];
     private int[] resume = new int[5];
 
-    public Attribute(){
+    public OldAttribute() {
         setDNA();
         setResume();
     }
@@ -60,7 +60,7 @@ public class Attribute {
 
         for(int i = 0; i < 5; i ++) {
 
-            resume[i] = this.AttributeCount(Attribute.AttributeType.values()[i]);
+            resume[i] = this.AttributeCount(OldAttribute.AttributeType.values()[i]);
 
         }
     }
